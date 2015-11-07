@@ -9,7 +9,7 @@ case class Office( company:String,
                    id: String,
                    name: String,
                    description: String,
-                   active: String,
+                   active: Boolean,
                    officeTypeId: String,
                    contactId: String
                    )

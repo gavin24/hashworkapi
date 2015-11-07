@@ -20,14 +20,14 @@ import scala.concurrent.Future
 //contactNumber: String,
 //postalCode: String,
 //emailAddress: String
-sealed class ContactRepository extends CassandraTable[ContactRepository,Contacts]{
+sealed class ContactsRepository extends CassandraTable[ContactsRepository,Contacts]{
   object company extends StringColumn(this) with PartitionKey[String]
   object id extends StringColumn(this) with PrimaryKey[String]
-  object postalAddress extends MapColumn[ContactRepository, Contacts, String, String](this)
-  object physicalAddress extends MapColumn[ContactRepository, Contacts, String, String](this)
-  object contactNumber extends MapColumn[ContactRepository, Contacts, String, String](this)
-  object postalCode extends MapColumn[ContactRepository, Contacts, String, String](this)
-  object emailAddress extends MapColumn[ContactRepository, Contacts, String, String](this)
+  object postalAddress extends MapColumn[ContactsRepository, Contacts, String, String](this)
+  object physicalAddress extends MapColumn[ContactsRepository, Contacts, String, String](this)
+  object contactNumber extends MapColumn[ContactsRepository, Contacts, String, String](this)
+  object postalCode extends MapColumn[ContactsRepository, Contacts, String, String](this)
+  object emailAddress extends MapColumn[ContactsRepository, Contacts, String, String](this)
 
 
   override def fromRow(r: Row): Contacts = {
@@ -43,7 +43,7 @@ sealed class ContactRepository extends CassandraTable[ContactRepository,Contacts
   }
 }
 
-object ContactsRepository extends ContactRepository with RootConnector {
+object ContactsRepository extends ContactsRepository with RootConnector {
   override lazy val tableName = "contacts"
 
   override implicit def space: KeySpace = DataConnection.keySpace

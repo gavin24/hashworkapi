@@ -16,7 +16,7 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
 
   object id extends StringColumn(this) with PartitionKey[String]
 
-  object name extends StringColumn(this)
+  object name extends StringColumn(this) with PrimaryKey[String] with ClusteringOrder[String] with Descending
 
   object details extends MapColumn[CompanyRepository, Company, String, String](this)
 
@@ -38,7 +38,7 @@ object CompanyRepository extends CompanyRepository with RootConnector {
 
   def save(company: Company) = {
     insert
-      .value(_.id, company)
+      .value(_.id, company.id)
       .value(_.name, company.name)
       .value(_.details, company.details)
       .future()

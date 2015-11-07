@@ -17,16 +17,16 @@ sealed class ContactTypeRepository extends CassandraTable[ContactTypeRepository,
 }
 
 object ContactTypeRepository extends ContactTypeRepository with RootConnector {
-  override lazy val tableName = "conacttypes"
+  override lazy val tableName = "contypes"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 
   override implicit def session: Session = DataConnection.session
 
-  def save(ContactType: ContactType): Future[ResultSet] = {
+  def save(contypes: ContactType): Future[ResultSet] = {
     insert
-      .value(_.id, ContactType)
-      .value(_.name, ContactType.name)
+      .value(_.id, contypes.id)
+      .value(_.name, contypes.name)
       .future()
   }
 

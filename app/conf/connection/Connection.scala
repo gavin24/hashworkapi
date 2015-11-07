@@ -21,7 +21,8 @@ trait DefaultsConnector extends SimpleConnector {
 }
 
 object DataConnection extends DefaultsConnector {
-
+//  override implicit val keySpace: KeySpace = KeySpace(Config.config.getString("cassandra.keyspace"))
+//  override implicit lazy val session: Session = ContactPoints(hosts).keySpace(keySpace.name).session
 }
 
 

@@ -23,10 +23,10 @@ object PositionTypeRepository extends PositionTypeRepository with RootConnector 
 
   override implicit def session: Session = DataConnection.session
 
-  def save(PositionType: PositionType): Future[ResultSet] = {
+  def save(positionType: PositionType): Future[ResultSet] = {
     insert
-      .value(_.id, PositionType)
-      .value(_.name, PositionType.name)
+      .value(_.id, positionType.id)
+      .value(_.name, positionType.name)
       .future()
   }
 
