@@ -2,7 +2,7 @@ package controllers
 
 import play.api.libs.json.Json
 import play.api.mvc._
-import services.setup.SchemaSetUpService
+import services.setup.{AccountSetupService, SchemaSetUpService}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class Application extends Controller {
@@ -14,11 +14,13 @@ class Application extends Controller {
   def setup = Action.async {
     val results = for {
     //Comments
-      person <-SchemaSetUpService.createCompanySchema
+      setup <-SchemaSetUpService.createCompanySchema
+      roles <- AccountSetupService.createRoles
+      user <-AccountSetupService.createAdmin
 
-    } yield (person)
+    } yield (setup)
     results map (result => {
-      Ok(Json.toJson("Done"))
+      Ok(Json.toJson(result.isExhausted))
     })
   }
 

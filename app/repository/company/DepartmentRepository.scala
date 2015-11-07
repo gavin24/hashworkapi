@@ -20,7 +20,7 @@ sealed class DepartmentRepository extends CassandraTable[DepartmentRepository, D
 
   object company extends StringColumn(this) with PartitionKey[String]
 
-  object id extends StringColumn(this) with PrimaryKey[String]
+  object id extends StringColumn(this) with PrimaryKey[String] with ClusteringOrder[String] with Descending
 
   object name extends StringColumn(this) with PrimaryKey[String] with ClusteringOrder[String] with Descending
 

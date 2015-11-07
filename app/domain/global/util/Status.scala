@@ -1,3 +1,4 @@
+package domain.global.util
 import play.api.libs.json.Json
 
 case class Status(id:String,name:String,value:String)

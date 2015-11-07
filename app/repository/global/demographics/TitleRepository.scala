@@ -1,3 +1,4 @@
+package repository.global.demographics
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._

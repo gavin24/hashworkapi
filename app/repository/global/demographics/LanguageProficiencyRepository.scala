@@ -1,9 +1,13 @@
+package repository.global.demographics
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
 import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
+import domain.global.demographics.LanguageProficiency
+import views.html.helper
+import views.html.helper.select
 
 import scala.concurrent.Future
 

@@ -1,3 +1,6 @@
+
+package domain.global.location
+
 import play.api.libs.json.Json
 
 case class AddressType(id:String, name:String)
