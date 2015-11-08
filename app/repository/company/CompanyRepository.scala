@@ -2,9 +2,12 @@ package repository.company
 
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
+import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
 import domain.company.Company
+
+import scala.concurrent.Future
 
 
 /**
@@ -47,5 +50,10 @@ object CompanyRepository extends CompanyRepository with RootConnector {
   def findById(id: String) = {
     select.where(_.id eqs id).one()
   }
+
+  def findAll: Future[Seq[Company]] = {
+    select.fetchEnumerator() run Iteratee.collect()
+  }
+
 
 }
