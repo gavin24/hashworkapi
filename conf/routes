@@ -8,5 +8,12 @@ OPTIONS        /*path               @controllers.Application.options(path)
 GET            /                    @controllers.Application.index
 GET            /setup               @controllers.Application.setup
 
+# Company
+
+
+# Contacts
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET            /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+

@@ -3,12 +3,12 @@ package services.setup
 
 import repository.company.{OfficeRepository, DepartmentRepository}
 import repository.contacts.ContactsRepository
-import repository.global.demographics._
-import repository.global.education.{EvaluationRepository, EducationTypeRepository}
-import repository.global.job.JobClassificationRepository
-import repository.global.location.{AddressTypeRepository, LocationTypeRepository}
-import repository.global.position.PositionTypeRepository
-import repository.global.util.{CurrencyRepository, StatusRepository}
+import repository.common.demographics._
+import repository.common.education.{EvaluationRepository, EducationTypeRepository}
+import repository.common.job.JobClassificationRepository
+import repository.common.location.{AddressTypeRepository, LocationTypeRepository}
+import repository.common.position.PositionTypeRepository
+import repository.common.util.{CurrencyRepository, StatusRepository}
 import repository.people.{PersonRoleRepository, PersonRepository}
 
 import services.Service

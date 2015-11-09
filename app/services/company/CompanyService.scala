@@ -4,6 +4,7 @@ import com.datastax.driver.core.ResultSet
 import domain.company.Company
 import repository.company.CompanyRepository
 import services.Service
+import scala.concurrent.ExecutionContext.Implicits.global
 
 import scala.concurrent.Future
 
@@ -23,7 +24,7 @@ object CompanyService extends Service {
   def isAvailable(id: String): Future[Boolean] = {
     CompanyRepository.findById(id) map (company => {
       company match {
-        case Some => true
+        case Some(_) => true
         case None => false
       }
     })

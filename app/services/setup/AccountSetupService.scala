@@ -3,12 +3,12 @@ package services.setup
 import java.util.UUID
 
 import conf.util.Util
-import domain.global.demographics.Role
+import domain.common.demographics.Role
 import domain.people.{PersonRole, Person}
-import repository.global.demographics.RoleRepository
+import repository.common.demographics.RoleRepository
 import repository.people.{PersonRoleRepository, PersonRepository}
 import services.Service
-import domain.global.demographics.RolesList._
+import domain.common.demographics.RolesList._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**

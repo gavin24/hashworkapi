@@ -1,12 +1,19 @@
+import com.typesafe.sbt.packager.archetypes.ServerLoader
+
 name := """hashworkapi"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
+lazy val root = (project in file(".")).enablePlugins(PlayScala,DebianPlugin,JavaServerAppPackaging)
 
 scalaVersion := "2.11.7"
 
 val PhantomVersion = "1.12.2"
+
+maintainer := "Boniface Kabaso <boniface@kabaso.com>"
+packageSummary in Linux := "Hashwork REST API"
+packageDescription :=  "Hashwork API Backend "
+serverLoading in Debian := ServerLoader.SystemV
 
 libraryDependencies ++= Seq(
   jdbc,

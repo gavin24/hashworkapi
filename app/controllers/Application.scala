@@ -13,11 +13,9 @@ class Application extends Controller {
 
   def setup = Action.async {
     val results = for {
-    //Comments
       setup <-SchemaSetUpService.createCompanySchema
       roles <- AccountSetupService.createRoles
       user <-AccountSetupService.createAdmin
-
     } yield (setup)
     results map (result => {
       Ok(Json.toJson(result.isExhausted))
