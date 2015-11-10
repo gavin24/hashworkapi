@@ -14,23 +14,20 @@ class GenderController extends Controller {
 
   def createOrUpdate = Action.async(parse.json) {
     request =>
-      val input = request.body
-      val entity = Json.fromJson[Gender](input).get
-      val results = GenderService.saveOrUpdate(entity)
-      results.map(result =>
+      val entity = Json.fromJson[Gender](request.body).get
+      GenderService.saveOrUpdate(entity) map (result =>
         Ok(Json.toJson(entity)))
   }
 
-  def getGender(id: String) = Action.async {
-    val results = GenderService.get(id)
-    results map (result =>
-      Ok(Json.toJson(result)))
+  def getById(id: String) = Action.async {
+    request =>
+      GenderService.get(id) map (result =>
+        Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
-    val genders = GenderService.getAll
-    genders map (gender =>
-      Ok(Json.toJson(gender)))
+    request =>
+      GenderService.getAll map (result =>
+        Ok(Json.toJson(result)))
   }
-
 }

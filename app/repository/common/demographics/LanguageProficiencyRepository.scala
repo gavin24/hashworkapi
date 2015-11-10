@@ -14,8 +14,9 @@ import scala.concurrent.Future
 sealed class LanguageProficiencyRepository extends CassandraTable[LanguageProficiencyRepository,LanguageProficiency]{
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): LanguageProficiency = {
-    LanguageProficiency(id(r),name(r))
+    LanguageProficiency(id(r),name(r),state(r))
   }
 }
 

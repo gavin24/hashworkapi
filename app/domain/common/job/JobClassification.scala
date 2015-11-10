@@ -11,7 +11,7 @@ case class JobClassification(id: String,
                              oldCode: String,
                              currentCode: String,
                              codeConversion: String,
-                             comment: String
+                             comment: String,state:String
                               )
 
 object JobClassification {

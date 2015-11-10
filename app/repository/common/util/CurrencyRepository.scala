@@ -23,8 +23,9 @@ sealed class CurrencyRepository extends CassandraTable[CurrencyRepository,Curren
   object code extends StringColumn(this)
   object name extends StringColumn(this)
   object symbol extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): Currency = {
-    Currency(id(r),code(r),name(r),symbol(r))
+    Currency(id(r),code(r),name(r),symbol(r),state(r))
   }
 }
 

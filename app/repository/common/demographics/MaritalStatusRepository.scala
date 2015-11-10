@@ -13,8 +13,9 @@ sealed class MaritalStatusRepository extends CassandraTable[MaritalStatusReposit
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
   object description extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): MaritalStatus = {
-    MaritalStatus(id(r),name(r))
+    MaritalStatus(id(r),name(r),state(r))
   }
 }
 

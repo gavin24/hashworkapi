@@ -11,7 +11,7 @@ case class Contacts(company: String,
                     physicalAddress: Map[String,String],
                     contactNumber: Map[String,String],
                     postalCode: Map[String,String],
-                    emailAddress: Map[String,String]
+                    emailAddress: Map[String,String],state:String
                      )
 object Contacts {
   implicit val contactsFmt = Json.format[Contacts]

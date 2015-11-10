@@ -13,8 +13,9 @@ sealed class LocationTypeRepository extends CassandraTable[LocationTypeRepositor
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
   object code extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): LocationType = {
-    LocationType(id(r),name(r),code(r))
+    LocationType(id(r),name(r),code(r),state(r))
   }
 }
 

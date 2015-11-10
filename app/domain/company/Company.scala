@@ -8,7 +8,7 @@ import play.api.libs.json.Json
 case class Company(
                     id: String,
                     name: String,
-                    details:Map[String,String]
+                    details:Map[String,String],state:String
                     )
 object Company {
   implicit val companyFmt = Json.format[Company]

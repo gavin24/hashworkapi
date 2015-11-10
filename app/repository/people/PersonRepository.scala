@@ -39,7 +39,7 @@ sealed class PersonRepository extends CassandraTable[PersonRepository, Person] {
   object credentialsNonExpired extends BooleanColumn(this)
 
   object accountNonLocked extends BooleanColumn(this)
-
+  object state extends StringColumn(this)
 
   override def fromRow(r: Row): Person = {
     Person(
@@ -54,7 +54,7 @@ sealed class PersonRepository extends CassandraTable[PersonRepository, Person] {
       enabled(r),
       accountNonExpired(r),
       credentialsNonExpired(r),
-      accountNonLocked(r)
+      accountNonLocked(r),state(r)
     )
   }
 }

@@ -1,14 +1,13 @@
 package services.setup
 
-import java.util.UUID
-
 import conf.util.Util
 import domain.common.demographics.Role
-import domain.people.{PersonRole, Person}
-import repository.common.demographics.RoleRepository
-import repository.people.{PersonRoleRepository, PersonRepository}
-import services.Service
 import domain.common.demographics.RolesList._
+import domain.people.{Person, PersonRole}
+import repository.common.demographics.RoleRepository
+import repository.people.{PersonRepository, PersonRoleRepository}
+import services.Service
+
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
@@ -18,15 +17,15 @@ object AccountSetupService extends Service {
 
 
   def createRoles = {
-    val admin = Role(ROLE_ADMIN, ROLE_ADMIN, ADMIN)
-    val prospect = Role(ROLE_PROSPECT, ROLE_PROSPECT, PROSPECT)
-    val hrmanager = Role(ROLE_HRMANAGER, ROLE_HRMANAGER, HRMANAGER)
-    val companyadmin = Role(ROLE_COMPANY_ADMIN, ROLE_COMPANY_ADMIN, COMPANY_ADMIN)
-    val hrstaff = Role(ROLE_HRSTAFF, ROLE_HRSTAFF, HRSTAFF)
-    val manager = Role(ROLE_MANAGER, ROLE_MANAGER, MANAGER)
-    val employee = Role(ROLE_EMPLOYEE, ROLE_EMPLOYEE, EMPLOYEE)
-    val trainer = Role(ROLE_TRAINER, ROLE_TRAINER, TRAINER)
-    val panelist = Role(ROLE_PANELIST, ROLE_PANELIST, PANELIST)
+    val admin = Role(ROLE_ADMIN, ROLE_ADMIN, ADMIN,"ACTIVE")
+    val prospect = Role(ROLE_PROSPECT, ROLE_PROSPECT, PROSPECT,"ACTIVE")
+    val hrmanager = Role(ROLE_HRMANAGER, ROLE_HRMANAGER, HRMANAGER,"ACTIVE")
+    val companyadmin = Role(ROLE_COMPANY_ADMIN, ROLE_COMPANY_ADMIN, COMPANY_ADMIN,"ACTIVE")
+    val hrstaff = Role(ROLE_HRSTAFF, ROLE_HRSTAFF, HRSTAFF,"ACTIVE")
+    val manager = Role(ROLE_MANAGER, ROLE_MANAGER, MANAGER,"ACTIVE")
+    val employee = Role(ROLE_EMPLOYEE, ROLE_EMPLOYEE, EMPLOYEE,"ACTIVE")
+    val trainer = Role(ROLE_TRAINER, ROLE_TRAINER, TRAINER,"ACTIVE")
+    val panelist = Role(ROLE_PANELIST, ROLE_PANELIST, PANELIST,"ACTIVE")
     val repo = RoleRepository
     for {
       result1 <- repo.save(admin)
@@ -51,9 +50,9 @@ object AccountSetupService extends Service {
       "System",
       "Admin",
       "admin@test.com",
-      "Administrator", "MR", Util.encode("admin"), true, true, true, true)
+      "Administrator", "MR", Util.encode("admin"), true, true, true, true,"ACTIVE")
 
-    val personrole = PersonRole("HASHCODE", ROLE_ADMIN)
+    val personrole = PersonRole("HASHCODE", ROLE_ADMIN,"ACTIVE")
 
     val prepo = PersonRepository
     val rrepo = PersonRoleRepository

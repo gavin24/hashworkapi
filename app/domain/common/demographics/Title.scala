@@ -6,7 +6,7 @@ package domain.common.demographics
 
 import play.api.libs.json.Json
 
-case class Title(id: String, name: String)
+case class Title(id: String, name: String,state:String)
 
 object Title {
   implicit val titleFmt = Json.format[Title]

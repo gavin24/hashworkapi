@@ -12,8 +12,9 @@ import scala.concurrent.Future
 sealed class RaceRepository extends CassandraTable[RaceRepository,Race]{
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): Race = {
-    Race(id(r),name(r))
+    Race(id(r),name(r),state(r))
   }
 }
 

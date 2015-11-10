@@ -10,7 +10,7 @@ GET            /setup                                  @controllers.Application.
 
 # Demgraphics
 POST           /api/demographics/gender/post           @controllers.common.demographics.GenderController.createOrUpdate
-GET            /api/demographics/gender/get/:id        @controllers.common.demographics.GenderController.getGender(id)
+GET            /api/demographics/gender/get/:id        @controllers.common.demographics.GenderController.getById(id)
 GET            /api/demographics/genders/get           @controllers.common.demographics.GenderController.getAll
 
 # Contacts

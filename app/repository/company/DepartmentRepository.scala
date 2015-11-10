@@ -27,6 +27,7 @@ sealed class DepartmentRepository extends CassandraTable[DepartmentRepository, D
   object description extends StringColumn(this)
 
   object active extends BooleanColumn(this)
+  object state extends StringColumn(this)
 
   override def fromRow(r: Row): Department = {
     Department(
@@ -34,7 +35,7 @@ sealed class DepartmentRepository extends CassandraTable[DepartmentRepository, D
       id(r),
       name(r),
       description(r),
-      active(r))
+      active(r),state(r))
   }
 }
 

@@ -13,8 +13,9 @@ sealed class PositionTypeRepository extends CassandraTable[PositionTypeRepositor
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
   object description extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): PositionType = {
-    PositionType(id(r),name(r))
+    PositionType(id(r),name(r),state(r))
   }
 }
 

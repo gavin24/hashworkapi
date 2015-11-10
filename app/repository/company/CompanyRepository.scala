@@ -22,12 +22,13 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
   object name extends StringColumn(this) with PrimaryKey[String] with ClusteringOrder[String] with Descending
 
   object details extends MapColumn[CompanyRepository, Company, String, String](this)
+  object state extends StringColumn(this)
 
-  override def fromRow(row: Row): Company = {
+  override def fromRow(r: Row): Company = {
     Company(
-      id(row),
-      name(row),
-      details(row)
+      id(r),
+      name(r),
+      details(r),state(r)
     )
   }
 }

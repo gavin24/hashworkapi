@@ -25,10 +25,11 @@ sealed class JobClassificationRepository extends CassandraTable[JobClassificatio
   object currentCode extends StringColumn(this)
   object codeConversion extends StringColumn(this)
   object comment extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): JobClassification = {
     JobClassification(id(r)
       ,currentTitle(r),
-      oldTitle(r),oldCode(r),currentCode(r),codeConversion(r),comment(r))
+      oldTitle(r),oldCode(r),currentCode(r),codeConversion(r),comment(r),state(r))
   }
 }
 

@@ -16,8 +16,9 @@ import scala.concurrent.Future
 sealed class GenderRepository extends CassandraTable[GenderRepository,Gender]{
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): Gender = {
-    Gender(id(r),name(r))
+    Gender(id(r),name(r),state(r))
   }
 }
 

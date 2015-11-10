@@ -13,8 +13,9 @@ sealed class EducationTypeRepository extends CassandraTable[EducationTypeReposit
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
   object description extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): EducationType = {
-    EducationType(id(r),name(r))
+    EducationType(id(r),name(r),state(r))
   }
 }
 

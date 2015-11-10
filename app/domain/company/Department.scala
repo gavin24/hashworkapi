@@ -9,7 +9,7 @@ case class Department( company:String,
                        id: String,
                        name: String,
                        description: String,
-                       active: Boolean
+                       active: Boolean,state:String
                        )
 object Department {
   implicit val  departmentFmt = Json.format[Department]

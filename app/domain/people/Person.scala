@@ -16,7 +16,7 @@ case class Person( company:String,
                    enabled: Boolean,
                    accountNonExpired: Boolean,
                    credentialsNonExpired: Boolean,
-                   accountNonLocked: Boolean
+                   accountNonLocked: Boolean,state:String
                    )
 
 object Person {

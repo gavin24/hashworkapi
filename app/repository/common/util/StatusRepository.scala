@@ -13,8 +13,9 @@ sealed class StatusRepository extends CassandraTable[StatusRepository,Status]{
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
   object value extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): Status = {
-    Status(id(r),name(r),value(r))
+    Status(id(r),name(r),value(r),state(r))
   }
 }
 

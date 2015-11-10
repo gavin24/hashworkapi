@@ -11,7 +11,7 @@ case class Office( company:String,
                    description: String,
                    active: Boolean,
                    officeTypeId: String,
-                   contactId: String
+                   contactId: String,state:String
                    )
 object Office {
   implicit val officeFmt = Json.format[Office]

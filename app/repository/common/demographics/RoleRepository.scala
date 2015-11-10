@@ -19,8 +19,9 @@ sealed class RoleRepository extends CassandraTable[RoleRepository,Role]{
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
   object description extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): Role = {
-    Role(id(r),name(r),description(r))
+    Role(id(r),name(r),description(r),state(r))
   }
 }
 

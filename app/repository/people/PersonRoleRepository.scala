@@ -20,10 +20,11 @@ sealed class PersonRoleRepository extends CassandraTable[PersonRoleRepository, P
   object personId extends StringColumn(this) with PartitionKey[String]
 
   object roleId extends StringColumn(this) with PrimaryKey[String]
+  object state extends StringColumn(this)
 
   override def fromRow(r: Row): PersonRole = {
     PersonRole(
-      personId(r), roleId(r)
+      personId(r), roleId(r),state(r)
     )
   }
 }

@@ -32,10 +32,11 @@ sealed class OfficeRepository extends CassandraTable[OfficeRepository, Office] {
   object officeTypeId extends StringColumn(this)
 
   object contactId extends StringColumn(this)
+  object state extends StringColumn(this)
 
   override def fromRow(r: Row): Office = {
     Office(
-    company(r),id(r),name(r),description(r),active(r),officeTypeId(r),contactId(r)
+    company(r),id(r),name(r),description(r),active(r),officeTypeId(r),contactId(r),state(r)
     )
   }
 }

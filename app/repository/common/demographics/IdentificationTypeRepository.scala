@@ -16,8 +16,9 @@ import scala.concurrent.Future
 sealed class IdentificationTypeRepository extends CassandraTable[IdentificationTypeRepository,IdentificationType]{
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
+  object state extends StringColumn(this)
   override def fromRow(r: Row): IdentificationType = {
-    IdentificationType(id(r),name(r))
+    IdentificationType(id(r),name(r),state(r))
   }
 }
 

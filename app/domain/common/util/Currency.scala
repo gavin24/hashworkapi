@@ -9,7 +9,7 @@ case class Currency(
                      id: String,
                      code: String,
                      name: String,
-                     symbol: String
+                     symbol: String,state:String
                      )
 object Currency {
   implicit val currencymt = Json.format[Currency]

@@ -28,6 +28,7 @@ sealed class ContactsRepository extends CassandraTable[ContactsRepository,Contac
   object contactNumber extends MapColumn[ContactsRepository, Contacts, String, String](this)
   object postalCode extends MapColumn[ContactsRepository, Contacts, String, String](this)
   object emailAddress extends MapColumn[ContactsRepository, Contacts, String, String](this)
+  object state extends StringColumn(this)
 
 
   override def fromRow(r: Row): Contacts = {
@@ -38,7 +39,7 @@ sealed class ContactsRepository extends CassandraTable[ContactsRepository,Contac
       physicalAddress(r),
       contactNumber(r),
       postalCode(r),
-      emailAddress(r))
+      emailAddress(r),state(r))
 
   }
 }
