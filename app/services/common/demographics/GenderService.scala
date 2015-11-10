@@ -15,4 +15,12 @@ object GenderService extends Service{
   def saveOrUpdate(entity: Gender): Future[ResultSet] = {
     GenderRepository.save(entity)
   }
+
+  def get(id:String):Future[Option[Gender]] ={
+    GenderRepository.findById(id)
+  }
+
+  def getAll:Future[Seq[Gender]] ={
+    GenderRepository.findAll
+  }
 }
