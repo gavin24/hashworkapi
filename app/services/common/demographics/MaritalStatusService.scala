@@ -1,8 +1,8 @@
 package services.common.demographics
 
 import com.datastax.driver.core.ResultSet
-import domain.common.demographics.MaritalStatus
-import repository.common.demographics.MaritalStatusRepository
+import domain.common.demographics.{Gender, MaritalStatus}
+import repository.common.demographics.{GenderRepository, MaritalStatusRepository}
 import services.Service
 
 import scala.concurrent.Future
@@ -15,4 +15,11 @@ object MaritalStatusService extends Service{
     MaritalStatusRepository.save(entity)
   }
 
+  def get(id:String):Future[Option[Gender]] ={
+    GenderRepository.findById(id)
+  }
+
+  def getAll:Future[Seq[Gender]] ={
+    GenderRepository.findAll
+  }
 }

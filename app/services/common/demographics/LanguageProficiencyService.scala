@@ -1,8 +1,8 @@
 package services.common.demographics
 
 import com.datastax.driver.core.ResultSet
-import domain.common.demographics.LanguageProficiency
-import repository.common.demographics.LanguageProficiencyRepository
+import domain.common.demographics.{Gender, LanguageProficiency}
+import repository.common.demographics.{GenderRepository, LanguageProficiencyRepository}
 import services.Service
 
 import scala.concurrent.Future
@@ -14,5 +14,12 @@ object LanguageProficiencyService extends Service{
 
   def saveOrUpdate(entity: LanguageProficiency): Future[ResultSet] = {
     LanguageProficiencyRepository.save(entity)
+  }
+  def get(id:String):Future[Option[Gender]] ={
+    GenderRepository.findById(id)
+  }
+
+  def getAll:Future[Seq[Gender]] ={
+    GenderRepository.findAll
   }
 }

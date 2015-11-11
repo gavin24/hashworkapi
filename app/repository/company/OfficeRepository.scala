@@ -3,6 +3,7 @@ package repository.company
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
+import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
 import domain.company.{Department, Office}
@@ -60,8 +61,14 @@ object OfficeRepository extends OfficeRepository with RootConnector {
       .future()
   }
 
-  def findById(id: String) = {
-    select.where(_.id eqs id).one()
+  def findById(company:String,id: String) = {
+    select.where(_.company eqs company).and(_.id eqs id).one()
   }
+
+  def findOffices(company:String) = {
+    select.where(_.company eqs company)fetchEnumerator() run Iteratee.collect()
+
+  }
+
 }
 

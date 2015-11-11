@@ -3,9 +3,12 @@ package repository.company
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
+import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
 import domain.company.{Company, Department}
+
+import scala.concurrent.Future
 
 /**
  * Created by hashcode on 2015/10/31.
@@ -56,8 +59,10 @@ object DepartmentRepository extends DepartmentRepository with RootConnector {
       .future()
   }
 
-  def findById(id: String) = {
-    select.where(_.id eqs id).one()
+  def findDepartment(company:String, id: String):Future[Option[Department]] = {
+    select.where(_.company eqs company).and(_.id eqs id).one()
   }
-
+  def findDepartments(company:String):Future[Seq[Department]] = {
+    select.where(_.company eqs company)fetchEnumerator() run Iteratee.collect()
+  }
 }

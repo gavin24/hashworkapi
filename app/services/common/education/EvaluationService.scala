@@ -1,7 +1,9 @@
 package services.common.education
 
 import com.datastax.driver.core.ResultSet
+import domain.common.demographics.Gender
 import domain.common.education.Evaluation
+import repository.common.demographics.GenderRepository
 import repository.common.education.EvaluationRepository
 import services.Service
 
@@ -14,5 +16,12 @@ object EvaluationService extends Service{
 
   def saveOrUpdate(entity: Evaluation): Future[ResultSet] = {
     EvaluationRepository.save(entity)
+  }
+  def get(id:String):Future[Option[Gender]] ={
+    GenderRepository.findById(id)
+  }
+
+  def getAll:Future[Seq[Gender]] ={
+    GenderRepository.findAll
   }
 }

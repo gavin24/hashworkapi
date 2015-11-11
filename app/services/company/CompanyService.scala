@@ -1,7 +1,9 @@
 package services.company
 
 import com.datastax.driver.core.ResultSet
+import domain.common.demographics.Gender
 import domain.company.Company
+import repository.common.demographics.GenderRepository
 import repository.company.CompanyRepository
 import services.Service
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -19,6 +21,10 @@ object CompanyService extends Service {
 
   def getById(id: String): Future[Option[Company]] = {
     CompanyRepository.findById(id)
+  }
+
+  def getAll:Future[Seq[Company]] ={
+    CompanyRepository.findAll
   }
 
   def isAvailable(id: String): Future[Boolean] = {
