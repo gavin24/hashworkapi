@@ -15,11 +15,11 @@ object MaritalStatusService extends Service{
     MaritalStatusRepository.save(entity)
   }
 
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[MaritalStatus]] ={
+    MaritalStatusRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[MaritalStatus]] ={
+    MaritalStatusRepository.findAll
   }
 }

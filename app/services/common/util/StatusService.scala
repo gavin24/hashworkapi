@@ -16,12 +16,12 @@ object  StatusService extends Service{
   def saveOrUpdate(entity: Status): Future[ResultSet] = {
     StatusRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[Status]] ={
+    StatusRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[Status]] ={
+    StatusRepository.findAll
   }
 
 }

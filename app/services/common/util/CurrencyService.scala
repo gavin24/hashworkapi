@@ -16,11 +16,11 @@ object CurrencyService extends Service {
   def saveOrUpdate(entity: Currency): Future[ResultSet] = {
     CurrencyRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[Currency]] ={
+    CurrencyRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[Currency]] ={
+    CurrencyRepository.findAll
   }
 }

@@ -17,11 +17,11 @@ object EvaluationService extends Service{
   def saveOrUpdate(entity: Evaluation): Future[ResultSet] = {
     EvaluationRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[Evaluation]] ={
+    EvaluationRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[Evaluation]] ={
+    EvaluationRepository.findAll
   }
 }

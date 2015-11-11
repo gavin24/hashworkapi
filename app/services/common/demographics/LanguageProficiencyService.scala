@@ -15,11 +15,11 @@ object LanguageProficiencyService extends Service{
   def saveOrUpdate(entity: LanguageProficiency): Future[ResultSet] = {
     LanguageProficiencyRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[LanguageProficiency]] ={
+    LanguageProficiencyRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[LanguageProficiency]] ={
+    LanguageProficiencyRepository.findAll
   }
 }

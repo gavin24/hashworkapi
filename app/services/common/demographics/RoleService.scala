@@ -15,11 +15,11 @@ object RoleService extends Service{
   def saveOrUpdate(entity: Role): Future[ResultSet] = {
     RoleRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[Role]] ={
+    RoleRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[Role]] ={
+    RoleRepository.findAll
   }
 }

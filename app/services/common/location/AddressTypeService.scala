@@ -16,12 +16,12 @@ object AddressTypeService extends Service{
   def saveOrUpdate(entity: AddressType): Future[ResultSet] = {
     AddressTypeRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[AddressType]] ={
+    AddressTypeRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[AddressType]] ={
+    AddressTypeRepository.findAll
   }
 
 }

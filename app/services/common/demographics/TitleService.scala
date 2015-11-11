@@ -14,12 +14,12 @@ object TitleService extends Service{
   def saveOrUpdate(entity: Title): Future[ResultSet] = {
     TitleRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[Title]] ={
+    TitleRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[Title]] ={
+    TitleRepository.findAll
   }
 
 }

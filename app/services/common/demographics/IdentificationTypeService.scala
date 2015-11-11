@@ -15,11 +15,11 @@ object IdentificationTypeService extends Service{
   def saveOrUpdate(entity: IdentificationType): Future[ResultSet] = {
     IdentificationTypeRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[IdentificationType]] ={
+    IdentificationTypeRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[IdentificationType]] ={
+    IdentificationTypeRepository.findAll
   }
 }

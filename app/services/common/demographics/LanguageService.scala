@@ -14,12 +14,12 @@ object LanguageService extends Service{
   def saveOrUpdate(entity: Language): Future[ResultSet] = {
     LanguageRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[Language]] ={
+    LanguageRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[Language]] ={
+    LanguageRepository.findAll
   }
 
 }

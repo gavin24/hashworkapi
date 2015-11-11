@@ -17,11 +17,11 @@ object ContactTypeService extends Service {
   def saveOrUpdate(entity: ContactType): Future[ResultSet] = {
     ContactTypeRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[ContactType]] ={
+    ContactTypeRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[ContactType]] ={
+    ContactTypeRepository.findAll
   }
 }

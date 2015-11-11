@@ -17,11 +17,11 @@ object JobClassificationService extends Service{
   def saveOrUpdate(entity: JobClassification): Future[ResultSet] = {
     JobClassificationRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[JobClassification]] ={
+    JobClassificationRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[JobClassification]] ={
+    JobClassificationRepository.findAll
   }
 }

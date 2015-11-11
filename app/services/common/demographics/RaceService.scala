@@ -15,11 +15,11 @@ object RaceService extends Service{
   def saveOrUpdate(entity: Race): Future[ResultSet] = {
     RaceRepository.save(entity)
   }
-  def get(id:String):Future[Option[Gender]] ={
-    GenderRepository.findById(id)
+  def get(id:String):Future[Option[Race]] ={
+    RaceRepository.findById(id)
   }
 
-  def getAll:Future[Seq[Gender]] ={
-    GenderRepository.findAll
+  def getAll:Future[Seq[Race]] ={
+    RaceRepository.findAll
   }
 }
