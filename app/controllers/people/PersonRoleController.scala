@@ -3,6 +3,7 @@ package controllers.people
 import domain.people.PersonRole
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
+import services.common.demographics.GenderService
 import services.people.PersonRoleService
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -21,6 +22,18 @@ class PersonRoleController extends Controller {
       val results = PersonRoleService.saveOrUpdate(entity)
       results.map(result =>
         Ok(Json.toJson(entity)))
+  }
+
+  def getById(id: String,roleId:String) = Action.async {
+    request =>
+      PersonRoleService.get(id,roleId) map (result =>
+        Ok(Json.toJson(result)))
+  }
+
+  def getAllPersonRoles(id:String) = Action.async {
+    request =>
+      PersonRoleService.getAllRoles(id) map (result =>
+        Ok(Json.toJson(result)))
   }
 
 }

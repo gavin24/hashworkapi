@@ -20,5 +20,15 @@ class RaceController extends Controller{
       results.map(result =>
         Ok(Json.toJson(entity)))
   }
+  def getById(id: String) = Action.async {
+    request =>
+      GenderService.get(id) map (result =>
+        Ok(Json.toJson(result)))
+  }
 
+  def getAll = Action.async {
+    request =>
+      GenderService.getAll map (result =>
+        Ok(Json.toJson(result)))
+  }
 }

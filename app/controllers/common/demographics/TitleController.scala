@@ -3,7 +3,7 @@ package controllers.common.demographics
 import domain.common.demographics.Title
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.common.demographics.TitleService
+import services.common.demographics.{GenderService, TitleService}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 /**
@@ -18,6 +18,18 @@ class TitleController extends Controller{
       val results = TitleService.saveOrUpdate(entity)
       results.map(result =>
         Ok(Json.toJson(entity)))
+  }
+
+  def getById(id: String) = Action.async {
+    request =>
+      GenderService.get(id) map (result =>
+        Ok(Json.toJson(result)))
+  }
+
+  def getAll = Action.async {
+    request =>
+      GenderService.getAll map (result =>
+        Ok(Json.toJson(result)))
   }
 
 }
