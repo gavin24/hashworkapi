@@ -22,13 +22,13 @@ class EvaluationController extends Controller{
 
   def getById(id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      EvaluationService.get(id) map (result =>
         Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      EvaluationService.getAll map (result =>
         Ok(Json.toJson(result)))
   }
 

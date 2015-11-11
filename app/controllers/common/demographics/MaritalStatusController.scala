@@ -3,7 +3,7 @@ package controllers.common.demographics
 import domain.common.demographics.MaritalStatus
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.common.demographics.MaritalStatusService
+import services.common.demographics.{GenderService, MaritalStatusService}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 /**
@@ -22,13 +22,13 @@ class MaritalStatusController extends Controller{
 
   def getById(id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      MaritalStatusService.get(id) map (result =>
         Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      MaritalStatusService.getAll map (result =>
         Ok(Json.toJson(result)))
   }
 

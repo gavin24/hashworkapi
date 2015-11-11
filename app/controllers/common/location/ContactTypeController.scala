@@ -3,6 +3,7 @@ package controllers.common.location
 import domain.common.location.ContactType
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
+import services.common.demographics.GenderService
 import services.common.location.ContactTypeService
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -22,13 +23,13 @@ class ContactTypeController extends Controller{
 
   def getById(id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      ContactTypeService.get(id) map (result =>
         Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      ContactTypeService.getAll map (result =>
         Ok(Json.toJson(result)))
   }
 

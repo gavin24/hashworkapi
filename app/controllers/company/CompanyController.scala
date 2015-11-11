@@ -3,6 +3,7 @@ package controllers.company
 import domain.company.Company
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
+import services.common.demographics.GenderService
 import services.company.CompanyService
 import scala.concurrent.ExecutionContext.Implicits.global
 /**
@@ -21,13 +22,19 @@ class CompanyController extends Controller{
 
   def getById(id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      CompanyService.getById(id) map (result =>
         Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      CompanyService.getAll map (result =>
+        Ok(Json.toJson(result)))
+  }
+
+  def isAvailable(name:String) = Action.async {
+    request =>
+      CompanyService.isAvailable(name) map (result =>
         Ok(Json.toJson(result)))
   }
 }

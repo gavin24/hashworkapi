@@ -3,6 +3,7 @@ package controllers.common.position
 import domain.common.position.PositionType
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
+import services.common.demographics.GenderService
 import services.common.position.PositionTypeService
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -23,13 +24,13 @@ class PositionTypeController extends Controller{
 
   def getById(id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      PositionTypeService.get(id) map (result =>
         Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      PositionTypeService.getAll map (result =>
         Ok(Json.toJson(result)))
   }
 }

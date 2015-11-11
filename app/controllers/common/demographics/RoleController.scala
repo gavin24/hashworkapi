@@ -3,7 +3,7 @@ package controllers.common.demographics
 import domain.common.demographics.Role
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.common.demographics.RoleService
+import services.common.demographics.{GenderService, RoleService}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -23,13 +23,13 @@ class RoleController extends Controller{
 
   def getById(id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      RoleService.get(id) map (result =>
         Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      RoleService.getAll map (result =>
         Ok(Json.toJson(result)))
   }
 }

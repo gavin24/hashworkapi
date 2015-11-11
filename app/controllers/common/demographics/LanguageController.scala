@@ -3,7 +3,7 @@ package controllers.common.demographics
 import domain.common.demographics.Language
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.common.demographics.LanguageService
+import services.common.demographics.{GenderService, LanguageService}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 /**
@@ -22,13 +22,13 @@ class LanguageController extends Controller {
 
   def getById(id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      LanguageService.get(id) map (result =>
         Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      LanguageService.getAll map (result =>
         Ok(Json.toJson(result)))
   }
 

@@ -21,13 +21,13 @@ class IdentificationTypeController extends Controller{
   }
   def getById(id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      IdentificationTypeService.get(id) map (result =>
         Ok(Json.toJson(result)))
   }
 
   def getAll = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      IdentificationTypeService.getAll map (result =>
         Ok(Json.toJson(result)))
   }
 
