@@ -29,7 +29,7 @@ object RaceRepository extends RaceRepository with RootConnector {
     insert
       .value(_.id, race.id)
       .value(_.name, race.name)
-      .value(_.state, gender.state)
+      .value(_.state, race.state)
       .future()
   }
 
