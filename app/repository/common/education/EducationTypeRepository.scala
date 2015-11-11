@@ -30,6 +30,7 @@ object EducationTypeRepository extends EducationTypeRepository with RootConnecto
     insert
       .value(_.id, edutype.id)
       .value(_.name, edutype.name)
+      .value(_.state, edutype.state)
       .future()
   }
 

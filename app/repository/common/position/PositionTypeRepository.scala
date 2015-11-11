@@ -30,6 +30,7 @@ object PositionTypeRepository extends PositionTypeRepository with RootConnector 
     insert
       .value(_.id, positionType.id)
       .value(_.name, positionType.name)
+      .value(_.state, positionType.state)
       .future()
   }
 

@@ -39,6 +39,7 @@ object PersonRoleRepository extends PersonRoleRepository with RootConnector {
     insert
       .value(_.personId, role.personId)
       .value(_.roleId, role.roleId)
+      .value(_.state, role.state)
       .future()
   }
 

@@ -29,6 +29,7 @@ object TitleRepository extends TitleRepository with RootConnector {
     insert
       .value(_.id, title.id)
       .value(_.name, title.name)
+      .value(_.state, title.state)
       .future()
   }
 

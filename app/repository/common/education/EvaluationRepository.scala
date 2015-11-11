@@ -29,6 +29,7 @@ object EvaluationRepository extends EvaluationRepository with RootConnector {
     insert
       .value(_.id, evaluation.id)
       .value(_.name, evaluation.name)
+      .value(_.state, evaluation.state)
       .future()
   }
 

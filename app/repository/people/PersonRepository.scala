@@ -78,6 +78,7 @@ object PersonRepository extends PersonRepository with RootConnector {
       .value(_.lastName, person.lastName)
       .value(_.middleName, person.middleName)
       .value(_.title, person.title)
+      .value(_.state, person.state)
       .future()
   }
 

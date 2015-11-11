@@ -37,6 +37,7 @@ object RoleRepository extends RoleRepository with RootConnector {
       .value(_.id, role.id)
       .value(_.name, role.name)
       .value(_.description, role.description)
+      .value(_.state, gender.state)
       .future()
   }
 

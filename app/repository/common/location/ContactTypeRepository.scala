@@ -29,6 +29,7 @@ object ContactTypeRepository extends ContactTypeRepository with RootConnector {
     insert
       .value(_.id, contypes.id)
       .value(_.name, contypes.name)
+      .value(_.state, contypes.state)
       .future()
   }
 

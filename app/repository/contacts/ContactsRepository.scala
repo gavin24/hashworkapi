@@ -60,6 +60,7 @@ object ContactsRepository extends ContactsRepository with RootConnector {
       .value(_.physicalAddress, contact.physicalAddress)
       .value(_.postalAddress, contact.postalAddress)
       .value(_.postalCode, contact.postalCode)
+      .value(_.state, contact.state)
       .future()
   }
 

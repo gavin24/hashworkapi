@@ -30,6 +30,7 @@ object LanguageRepository extends LanguageRepository with RootConnector {
     insert
       .value(_.id, language.id)
       .value(_.name, language.name)
+      .value(_.state, gender.state)
       .future()
   }
 

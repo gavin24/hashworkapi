@@ -30,6 +30,7 @@ object AddressTypeRepository extends AddressTypeRepository with RootConnector {
     insert
       .value(_.id, addtype.id)
       .value(_.name, addtype.name)
+      .value(_.state, addtype.state)
       .future()
   }
 

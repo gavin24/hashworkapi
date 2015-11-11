@@ -58,6 +58,7 @@ object OfficeRepository extends OfficeRepository with RootConnector {
       .value(_.active, office.active)
       .value(_.officeTypeId, office.officeTypeId)
       .value(_.contactId, office.contactId)
+      .value(_.state, office.state)
       .future()
   }
 

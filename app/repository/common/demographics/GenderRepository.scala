@@ -33,6 +33,7 @@ object GenderRepository extends GenderRepository with RootConnector {
     insert
       .value(_.id, gender.id)
       .value(_.name, gender.name)
+      .value(_.state, gender.state)
       .future()
   }
 

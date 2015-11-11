@@ -33,6 +33,7 @@ object IdentificationTypeRepository extends IdentificationTypeRepository with Ro
     insert
       .value(_.id, idtype.id)
       .value(_.name, idtype.name)
+      .value(_.state, gender.state)
       .future()
   }
 

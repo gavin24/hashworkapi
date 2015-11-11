@@ -56,6 +56,7 @@ object DepartmentRepository extends DepartmentRepository with RootConnector {
       .value(_.name, dept.name)
       .value(_.description, dept.description)
       .value(_.active, dept.active)
+      .value(_.state, dept.state)
       .future()
   }
 

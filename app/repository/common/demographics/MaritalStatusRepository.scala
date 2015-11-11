@@ -30,6 +30,7 @@ object MaritalStatusRepository extends MaritalStatusRepository with RootConnecto
     insert
       .value(_.id, maritals.id)
       .value(_.name, maritals.name)
+      .value(_.state, gender.state)
       .future()
   }
 

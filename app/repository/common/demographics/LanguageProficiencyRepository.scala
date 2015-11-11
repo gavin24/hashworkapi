@@ -31,6 +31,7 @@ object LanguageProficiencyRepository extends LanguageProficiencyRepository with 
     insert
       .value(_.id, langpr.id)
       .value(_.name, langpr.name)
+      .value(_.state, gender.state)
       .future()
   }
 

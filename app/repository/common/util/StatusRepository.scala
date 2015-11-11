@@ -31,6 +31,7 @@ object StatusRepository extends StatusRepository with RootConnector {
       .value(_.id, status.id)
       .value(_.name, status.name)
       .value(_.value, status.value)
+      .value(_.state, status.state)
       .future()
   }
 

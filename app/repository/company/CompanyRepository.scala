@@ -45,6 +45,7 @@ object CompanyRepository extends CompanyRepository with RootConnector {
       .value(_.id, company.id)
       .value(_.name, company.name)
       .value(_.details, company.details)
+      .value(_.state, company.state)
       .future()
   }
 

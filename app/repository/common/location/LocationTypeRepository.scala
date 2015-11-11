@@ -31,6 +31,7 @@ object LocationTypeRepository extends LocationTypeRepository with RootConnector 
       .value(_.id, locationtypes.id)
       .value(_.name, locationtypes.name)
       .value(_.code, locationtypes.code)
+      .value(_.state, locationtypes.state)
       .future()
   }
 

@@ -49,6 +49,7 @@ object JobClassificationRepository extends JobClassificationRepository with Root
       .value(_.oldTitle, jobClassification.oldTitle)
       .value(_.oldCode, jobClassification.oldCode)
       .value(_.currentTitle, jobClassification.currentTitle)
+      .value(_.state, jobClassification.state)
       .future()
   }
 
