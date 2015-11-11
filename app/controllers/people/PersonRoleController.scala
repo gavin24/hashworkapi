@@ -8,7 +8,6 @@ import services.people.PersonRoleService
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-
 /**
  * Created by hashcode on 2015/11/09.
  */
