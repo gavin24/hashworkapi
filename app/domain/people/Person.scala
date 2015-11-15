@@ -16,7 +16,9 @@ case class Person( company:String,
                    enabled: Boolean,
                    accountNonExpired: Boolean,
                    credentialsNonExpired: Boolean,
-                   accountNonLocked: Boolean,state:String
+                   accountNonLocked: Boolean,
+                   companies:Set[String],
+                   state:String
                    )
 
 object Person {

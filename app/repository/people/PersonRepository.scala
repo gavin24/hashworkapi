@@ -39,7 +39,10 @@ sealed class PersonRepository extends CassandraTable[PersonRepository, Person] {
   object credentialsNonExpired extends BooleanColumn(this)
 
   object accountNonLocked extends BooleanColumn(this)
+
   object state extends StringColumn(this)
+
+  object companies extends SetColumn[PersonRepository, Person, String](this)
 
   override def fromRow(r: Row): Person = {
     Person(
@@ -54,14 +57,18 @@ sealed class PersonRepository extends CassandraTable[PersonRepository, Person] {
       enabled(r),
       accountNonExpired(r),
       credentialsNonExpired(r),
-      accountNonLocked(r),state(r)
+      accountNonLocked(r),
+      companies(r),
+      state(r)
     )
   }
 }
 
 object PersonRepository extends PersonRepository with RootConnector {
   override lazy val tableName = "person"
+
   override implicit def space: KeySpace = DataConnection.keySpace
+
   override implicit def session: Session = DataConnection.session
 
   def save(person: Person): Future[ResultSet] = {
@@ -78,15 +85,16 @@ object PersonRepository extends PersonRepository with RootConnector {
       .value(_.lastName, person.lastName)
       .value(_.middleName, person.middleName)
       .value(_.title, person.title)
+      .value(_.companies,person.companies)
       .value(_.state, person.state)
       .future()
   }
 
-  def findPeople(company: String):Future[Seq[Person]]= {
+  def findPeople(company: String): Future[Seq[Person]] = {
     select.where(_.company eqs company).fetchEnumerator() run Iteratee.collect()
   }
 
-  def findPerson(company: String,personId:String):Future[Option[Person]] = {
+  def findPerson(company: String, personId: String): Future[Option[Person]] = {
     select.where(_.company eqs company).and(_.id eqs personId).one()
   }
 
