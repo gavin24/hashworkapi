@@ -17,7 +17,6 @@ case class Person( company:String,
                    accountNonExpired: Boolean,
                    credentialsNonExpired: Boolean,
                    accountNonLocked: Boolean,
-                   companies:Set[String],
                    state:String
                    )
 

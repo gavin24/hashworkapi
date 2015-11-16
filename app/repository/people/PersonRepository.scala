@@ -42,8 +42,6 @@ sealed class PersonRepository extends CassandraTable[PersonRepository, Person] {
 
   object state extends StringColumn(this)
 
-  object companies extends SetColumn[PersonRepository, Person, String](this)
-
   override def fromRow(r: Row): Person = {
     Person(
       company(r),
@@ -58,7 +56,6 @@ sealed class PersonRepository extends CassandraTable[PersonRepository, Person] {
       accountNonExpired(r),
       credentialsNonExpired(r),
       accountNonLocked(r),
-      companies(r),
       state(r)
     )
   }
@@ -85,7 +82,6 @@ object PersonRepository extends PersonRepository with RootConnector {
       .value(_.lastName, person.lastName)
       .value(_.middleName, person.middleName)
       .value(_.title, person.title)
-      .value(_.companies,person.companies)
       .value(_.state, person.state)
       .future()
   }
