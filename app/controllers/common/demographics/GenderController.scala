@@ -14,6 +14,7 @@ class GenderController extends Controller {
 
   def createOrUpdate = Action.async(parse.json) {
     request =>
+
       val entity = Json.fromJson[Gender](request.body).get
       GenderService.saveOrUpdate(entity) map (result =>
         Ok(Json.toJson(entity)))

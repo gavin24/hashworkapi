@@ -23,7 +23,7 @@ GET            /api/proles/:id                            @controllers.people.Pe
 #Company
 POST           /api/company/post                          @controllers.company.CompanyController.createOrUpdate
 GET            /api/company/get/:id                       @controllers.company.CompanyController.getById(id)
-GET            /api/companies/get                        @controllers.company.CompanyController.getAll
+GET            /api/companies/get                         @controllers.company.CompanyController.getAll
 
 
 POST           /api/department/post                       @controllers.company.DepartmentController.createOrUpdate
