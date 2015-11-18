@@ -11,7 +11,7 @@ GET            /setup                                     @controllers.Applicati
 # Person
 POST           /api/people/post                           @controllers.people.PeopleController.createOrUpdate
 GET            /api/people/get/:company/:id               @controllers.people.PeopleController.getPerson(company,id)
-GET            /api/peoples/:id                           @controllers.people.PeopleController.getCompanyPeople(id)
+GET            /api/peoples/:company                      @controllers.people.PeopleController.getCompanyPeople(company)
 
 
 POST           /api/prole/post                            @controllers.people.PersonRoleController.createOrUpdate

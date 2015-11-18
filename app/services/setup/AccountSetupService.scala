@@ -52,7 +52,7 @@ object AccountSetupService extends Service {
       "admin@test.com",
       "Administrator", "MR", Util.encode("admin"), true, true, true, true,"ACTIVE")
 
-    val personrole = PersonRole("HASHCODE", ROLE_ADMIN,"ACTIVE")
+    val personrole = PersonRole(person.id, ROLE_ADMIN,"ACTIVE")
 
     val prepo = PersonRepository
     val rrepo = PersonRoleRepository

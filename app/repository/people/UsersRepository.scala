@@ -3,7 +3,6 @@ package repository.people
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
-import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
 import domain.people.Person
@@ -11,20 +10,19 @@ import domain.people.Person
 import scala.concurrent.Future
 
 /**
- * Created by hashcode on 2015/10/31.
+ * Created by hashcode on 2015/11/18.
  */
+class UsersRepository extends CassandraTable[UsersRepository, Person] {
 
-sealed class PersonRepository extends CassandraTable[PersonRepository, Person] {
+  object company extends StringColumn(this)
 
-  object company extends StringColumn(this) with PartitionKey[String]
-
-  object id extends StringColumn(this) with PrimaryKey[String]
+  object id extends StringColumn(this)
 
   object firstName extends StringColumn(this)
 
   object middleName extends StringColumn(this)
 
-  object emailAddress extends StringColumn(this)
+  object emailAddress extends StringColumn(this) with PartitionKey[String]
 
   object lastName extends StringColumn(this)
 
@@ -61,8 +59,8 @@ sealed class PersonRepository extends CassandraTable[PersonRepository, Person] {
   }
 }
 
-object PersonRepository extends PersonRepository with RootConnector {
-  override lazy val tableName = "person"
+object UsersRepository extends UsersRepository with RootConnector {
+  override lazy val tableName = "emailp"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 
@@ -83,35 +81,12 @@ object PersonRepository extends PersonRepository with RootConnector {
       .value(_.middleName, person.middleName)
       .value(_.title, person.title)
       .value(_.state, person.state)
-      .future() flatMap {
-      _ => {
-        UsersRepository.insert
-          .value(_.company, person.company)
-          .value(_.accountNonExpired, person.accountNonExpired)
-          .value(_.authvalue, person.authvalue)
-          .value(_.credentialsNonExpired, person.credentialsNonExpired)
-          .value(_.accountNonLocked, person.accountNonLocked)
-          .value(_.emailAddress, person.emailAddress)
-          .value(_.enabled, person.enabled)
-          .value(_.firstName, person.firstName)
-          .value(_.id, person.id)
-          .value(_.lastName, person.lastName)
-          .value(_.middleName, person.middleName)
-          .value(_.title, person.title)
-          .value(_.state, person.state)
-          .future()
-      }
-    }
-
-
+      .future()
   }
 
-  def findPeople(company: String): Future[Seq[Person]] = {
-    select.where(_.company eqs company).fetchEnumerator() run Iteratee.collect()
+  def findByEmail(email: String): Future[Option[Person]] = {
+    select.where(_.emailAddress eqs email).one()
   }
 
-  def findPerson(company: String, personId: String): Future[Option[Person]] = {
-    select.where(_.company eqs company).and(_.id eqs personId).one()
-  }
 
 }

@@ -5,7 +5,7 @@ import play.api.libs.json.Json
 /**
  * Created by hashcode on 2015/10/30.
  */
-case class Person( company:String,
+case class Person(company:String,
                    id: String,
                    firstName: String,
                    middleName: String,
