@@ -33,4 +33,11 @@ class PeopleController extends Controller {
         Ok(Json.toJson(result)))
   }
 
+  def getPersonByEmail(email:String) = Action.async {
+    request =>
+      PeopleService.getPersonByEmail(email) map (result =>
+        Ok(Json.toJson(result)))
+  }
+
+
 }

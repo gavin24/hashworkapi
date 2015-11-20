@@ -4,7 +4,7 @@ import com.datastax.driver.core.ResultSet
 import domain.common.demographics.Gender
 import domain.people.Person
 import repository.common.demographics.GenderRepository
-import repository.people.PersonRepository
+import repository.people.{UsersRepository, PersonRepository}
 import services.Service
 
 import scala.concurrent.Future
@@ -23,6 +23,9 @@ object PeopleService extends Service{
 
   def getPerson(company:String,id:String):Future[Option[Person]] ={
     PersonRepository.findPerson(company,id)
+  }
+  def getPersonByEmail(email:String):Future[Option[Person]] = {
+    UsersRepository.findByEmail(email)
   }
 
 }

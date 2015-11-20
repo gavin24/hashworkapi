@@ -12,7 +12,7 @@ GET            /setup                                     @controllers.Applicati
 POST           /api/people/post                           @controllers.people.PeopleController.createOrUpdate
 GET            /api/people/get/:company/:id               @controllers.people.PeopleController.getPerson(company,id)
 GET            /api/peoples/:company                      @controllers.people.PeopleController.getCompanyPeople(company)
-
+GET            /api/people/email/:email                   @controllers.people.PeopleController.getPersonByEmail(email)
 
 POST           /api/prole/post                            @controllers.people.PersonRoleController.createOrUpdate
 GET            /api/prole/get/:id/:roleId                 @controllers.people.PersonRoleController.getById(id,roleId)
