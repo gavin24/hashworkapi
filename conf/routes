@@ -16,7 +16,7 @@ GET            /api/people/email/:email                   @controllers.people.Pe
 
 POST           /api/prole/post                            @controllers.people.PersonRoleController.createOrUpdate
 GET            /api/prole/get/:id/:roleId                 @controllers.people.PersonRoleController.getById(id,roleId)
-GET            /api/proles/:id                            @controllers.people.PersonRoleController.getAllPersonRoles(id)
+GET            /api/proles/:personId                      @controllers.people.PersonRoleController.getAllPersonRoles(personId)
 
 
 

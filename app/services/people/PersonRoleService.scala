@@ -21,8 +21,8 @@ object PersonRoleService extends Service {
     PersonRoleRepository.findRole(id, roleId)
   }
 
-  def getAllRoles(id: String): Future[Seq[PersonRole]] = {
-    PersonRoleRepository.findRolesById(id)
+  def getAllRoles(personId: String): Future[Seq[PersonRole]] = {
+    PersonRoleRepository.findRolesById(personId)
   }
 
 }

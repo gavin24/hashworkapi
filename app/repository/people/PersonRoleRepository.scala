@@ -43,8 +43,8 @@ object PersonRoleRepository extends PersonRoleRepository with RootConnector {
       .future()
   }
 
-  def findRolesById(id: String): Future[Seq[PersonRole]] = {
-    select.where(_.personId eqs id).fetchEnumerator() run Iteratee.collect()
+  def findRolesById(personId: String): Future[Seq[PersonRole]] = {
+    select.where(_.personId eqs personId).fetchEnumerator() run Iteratee.collect()
   }
   def findRole(id: String,roleId:String): Future[Option[PersonRole]] = {
     select.where(_.personId eqs id).and(_.roleId eqs roleId).one

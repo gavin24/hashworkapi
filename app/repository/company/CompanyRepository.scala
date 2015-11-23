@@ -1,5 +1,7 @@
 package repository.company
 
+import java.util.Date
+
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
 import com.websudos.phantom.iteratee.Iteratee
@@ -20,8 +22,9 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
   object id extends StringColumn(this) with PartitionKey[String]
 
   object name extends StringColumn(this) with PrimaryKey[String] with ClusteringOrder[String] with Descending
-
   object details extends MapColumn[CompanyRepository, Company, String, String](this)
+  object adminattached extends StringColumn(this)
+  object date extends DateColumn(this)
 
   object state extends StringColumn(this)
 
@@ -29,7 +32,7 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
     Company(
       id(r),
       name(r),
-      details(r), state(r)
+      details(r),adminattached(r),date(r), state(r)
     )
   }
 }
@@ -46,6 +49,8 @@ object CompanyRepository extends CompanyRepository with RootConnector {
       .value(_.id, company.id)
       .value(_.name, company.name)
       .value(_.details, company.details)
+      .value(_.adminattached, company.adminattached)
+      .value(_.date, company.date)
       .value(_.state, company.state)
       .future()
   }

@@ -1,5 +1,7 @@
 package domain.company
 
+import java.util.Date
+
 import play.api.libs.json.Json
 
 /**
@@ -8,7 +10,10 @@ import play.api.libs.json.Json
 case class Company(
                     id: String,
                     name: String,
-                    details:Map[String,String],state:String
+                    details:Map[String,String],
+                    adminattached:String,
+                    date:Date,
+                    state:String
                     )
 object Company {
   implicit val companyFmt = Json.format[Company]
