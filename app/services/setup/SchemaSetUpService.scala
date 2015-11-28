@@ -8,7 +8,7 @@ import repository.common.education.{EvaluationRepository, EducationTypeRepositor
 import repository.common.job.JobClassificationRepository
 import repository.common.location.{AddressTypeRepository, LocationTypeRepository}
 import repository.common.position.PositionTypeRepository
-import repository.common.util.{CurrencyRepository, StatusRepository}
+import repository.common.util.{MailRepository, CurrencyRepository, StatusRepository}
 import repository.people.{UsersRepository, PersonRoleRepository, PersonRepository}
 
 import services.Service
@@ -57,12 +57,13 @@ object SchemaSetUpService extends Service {
 
     //util
     status <- StatusRepository.create.ifNotExists().future()
-    currerency <- CurrencyRepository.create.ifNotExists().future()
+    currency <- CurrencyRepository.create.ifNotExists().future()
 
     //people
     emailp <- UsersRepository.create.ifNotExists().future()
-    comapny <- CompanyRepository.create.ifNotExists().future()
+    company <- CompanyRepository.create.ifNotExists().future()
     locatype <- LocationTypeRepository.create.ifNotExists().future()
     addretype <- AddressTypeRepository.create.ifNotExists().future()
+    mail <-MailRepository.create.ifNotExists().future()
   } yield person
 }

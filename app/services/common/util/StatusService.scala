@@ -1,9 +1,7 @@
 package services.common.util
 
 import com.datastax.driver.core.ResultSet
-import domain.common.demographics.Gender
 import domain.common.util.Status
-import repository.common.demographics.GenderRepository
 import repository.common.util.StatusRepository
 import services.Service
 

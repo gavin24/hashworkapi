@@ -138,6 +138,10 @@ POST           /api/util/status/post                      @controllers.common.ut
 GET            /api/util/status/get/:id                   @controllers.common.util.StatusController.getById(id)
 GET            /api/util/statuses/get                     @controllers.common.util.StatusController.getAll
 
+POST           /api/util/mail/post                        @controllers.common.util.MailController.createOrUpdate
+GET            /api/util/mail/get/:id                     @controllers.common.util.MailController.getById(id)
+GET            /api/util/mails/get                        @controllers.common.util.MailController.getAll
+
 
 
 
