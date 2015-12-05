@@ -8,7 +8,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala,DebianPlugin,Java
 
 scalaVersion := "2.11.7"
 
-val PhantomVersion = "1.12.2"
+val PhantomVersion = "1.16.0"
 
 maintainer := "Boniface Kabaso <boniface@kabaso.com>"
 packageSummary in Linux := "Hashwork REST API"
