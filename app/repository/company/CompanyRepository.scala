@@ -58,6 +58,16 @@ object CompanyRepository extends CompanyRepository with RootConnector {
       .future()
   }
 
+  def updateCompany(company:Company):Future[ResultSet] ={
+    update.where(_.id eqs company.id)
+      .modify(_.name setTo  company.name)
+      .and(_.details setTo company.details)
+      .and(_.adminattached setTo company.adminattached)
+      .and(_.date setTo company.date)
+      .and(_.state setTo company.state)
+      .future()
+  }
+
   def findById(id: String) = {
     select.where(_.id eqs id).one()
   }
