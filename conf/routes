@@ -59,7 +59,7 @@ GET            /api/demographics/idtypes/get              @controllers.common.de
 ## Language
 POST           /api/demographics/language/post            @controllers.common.demographics.LanguageController.createOrUpdate
 GET            /api/demographics/language/get/:id         @controllers.common.demographics.LanguageController.getById(id)
-GET            /api/demographics/languages/get             @controllers.common.demographics.LanguageController.getAll
+GET            /api/demographics/languages/get            @controllers.common.demographics.LanguageController.getAll
 
 ## LanguageProficiency
 POST           /api/demographics/languagep/post           @controllers.common.demographics.LanguageProficiencyController.createOrUpdate
@@ -99,11 +99,16 @@ POST           /api/education/edutype/post                @controllers.common.ed
 GET            /api/education/edutype/get/:id             @controllers.common.education.EducationTypeController.getById(id)
 GET            /api/education/edutypes/get                @controllers.common.education.EducationTypeController.getAll
 
+# EducationType
+POST           /api/education/degreetype/post             @controllers.common.education.DegreeTypeController.createOrUpdate
+GET            /api/education/degreetype/get/:id          @controllers.common.education.DegreeTypeController.getById(id)
+GET            /api/education/degreetypes/get             @controllers.common.education.DegreeTypeController.getAll
+
 #Job
 # JobClassification
-POST           /api/job/jobclassiffication/post                      @controllers.common.job.JobClassificationController.createOrUpdate
-GET            /api/job/jobclassiffication/get/:id                   @controllers.common.job.JobClassificationController.getById(id)
-GET            /api/jobs/jobclassiffications/get                     @controllers.common.job.JobClassificationController.getAll
+POST           /api/job/jobclassiffication/post           @controllers.common.job.JobClassificationController.createOrUpdate
+GET            /api/job/jobclassiffication/get/:id        @controllers.common.job.JobClassificationController.getById(id)
+GET            /api/jobs/jobclassiffications/get          @controllers.common.job.JobClassificationController.getAll
 
 #Location
 POST           /api/location/addresstype/post             @controllers.common.location.AddressTypeController.createOrUpdate
