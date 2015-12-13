@@ -59,7 +59,7 @@ GET            /api/demographics/idtypes/get              @controllers.common.de
 ## Language
 POST           /api/demographics/language/post            @controllers.common.demographics.LanguageController.createOrUpdate
 GET            /api/demographics/language/get/:id         @controllers.common.demographics.LanguageController.getById(id)
-GET            /api/demographics/language/get             @controllers.common.demographics.LanguageController.getAll
+GET            /api/demographics/languages/get             @controllers.common.demographics.LanguageController.getAll
 
 ## LanguageProficiency
 POST           /api/demographics/languagep/post           @controllers.common.demographics.LanguageProficiencyController.createOrUpdate
@@ -101,9 +101,9 @@ GET            /api/education/edutypes/get                @controllers.common.ed
 
 #Job
 # JobClassification
-POST           /api/job/edutype/post                      @controllers.common.job.JobClassificationController.createOrUpdate
-GET            /api/job/edutype/get/:id                   @controllers.common.job.JobClassificationController.getById(id)
-GET            /api/jobs/edutypes/get                     @controllers.common.job.JobClassificationController.getAll
+POST           /api/job/jobclassiffication/post                      @controllers.common.job.JobClassificationController.createOrUpdate
+GET            /api/job/jobclassiffication/get/:id                   @controllers.common.job.JobClassificationController.getById(id)
+GET            /api/jobs/jobclassiffications/get                     @controllers.common.job.JobClassificationController.getAll
 
 #Location
 POST           /api/location/addresstype/post             @controllers.common.location.AddressTypeController.createOrUpdate
