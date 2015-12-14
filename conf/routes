@@ -99,7 +99,7 @@ POST           /api/education/edutype/post                @controllers.common.ed
 GET            /api/education/edutype/get/:id             @controllers.common.education.EducationTypeController.getById(id)
 GET            /api/education/edutypes/get                @controllers.common.education.EducationTypeController.getAll
 
-# EducationType
+# DegreeType
 POST           /api/education/degreetype/post             @controllers.common.education.DegreeTypeController.createOrUpdate
 GET            /api/education/degreetype/get/:id          @controllers.common.education.DegreeTypeController.getById(id)
 GET            /api/education/degreetypes/get             @controllers.common.education.DegreeTypeController.getAll

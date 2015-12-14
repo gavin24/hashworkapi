@@ -4,7 +4,7 @@ package services.setup
 import repository.company.{CompanyRepository, OfficeRepository, DepartmentRepository}
 import repository.contacts.ContactsRepository
 import repository.common.demographics._
-import repository.common.education.{EvaluationRepository, EducationTypeRepository}
+import repository.common.education.{DegreeTypeRepository, EvaluationRepository, EducationTypeRepository}
 import repository.common.job.JobClassificationRepository
 import repository.common.location.{ContactTypeRepository, AddressTypeRepository, LocationTypeRepository}
 import repository.common.position.PositionTypeRepository
@@ -66,5 +66,6 @@ object SchemaSetUpService extends Service {
     addretype <- AddressTypeRepository.create.ifNotExists().future()
     mail <-MailRepository.create.ifNotExists().future()
     ctypes <- ContactTypeRepository.create.ifNotExists().future()
+    degreeType <-DegreeTypeRepository.create.ifNotExists().future()
   } yield person
 }
