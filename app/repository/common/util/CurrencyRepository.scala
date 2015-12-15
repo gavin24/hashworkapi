@@ -42,6 +42,7 @@ object CurrencyRepository extends CurrencyRepository with RootConnector {
       .value(_.name, currency.name)
       .value(_.code, currency.code)
       .value(_.symbol, currency.symbol)
+      .value(_.state, currency.state)
       .future()
   }
 
