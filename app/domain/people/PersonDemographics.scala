@@ -13,9 +13,10 @@ case class PersonDemographics(id: String,
                               dateOfBirth: Date,
                               maritalStatusId: String,
                               numberOfDependencies: Int,
-                              dateCreated: Date,state:String)
+                              dateCreated: Date,
+                              state:String)
 
 object PersonDemographics {
-  implicit val personFmt = Json.format[PersonDemographics]
+  implicit val personDemoFmt = Json.format[PersonDemographics]
 
 }
