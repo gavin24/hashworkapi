@@ -1,6 +1,7 @@
 package domain.people
 
-import java.sql.Date
+
+import java.util.Date
 
 import play.api.libs.json.Json
 

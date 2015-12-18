@@ -1,24 +1,24 @@
 package repository.people
-
+import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
+import com.websudos.phantom.dsl._
+import com.websudos.phantom.iteratee.Iteratee
+import com.websudos.phantom.keys.PartitionKey
+import conf.connection.DataConnection
+import domain.contacts.Contacts
 import domain.people.Person
+import repository.contacts.ContactsRepository._
+
+import scala.concurrent.Future
 
 /**
  * Created by hashcode on 2015/12/17.
  */
-class PersonEmploymentHistoryRepository extends CassandraTable[UsersRepository, Person] {
+class PersonEmploymentHistoryRepository extends CassandraTable[PersonEmploymentHistoryRepository, Person] {
 
-  import com.websudos.phantom.column.PrimitiveColumn
-  import com.websudos.phantom.dsl._
-  import com.websudos.phantom.keys.PartitionKey
-  import conf.connection.DataConnection
-  import domain.people.Person
+  object personId extends StringColumn(this) with PartitionKey[String]
 
-  import scala.concurrent.Future
-
-  object company extends StringColumn(this)
-
-  object id extends StringColumn(this)
+  object id extends StringColumn(this) with PrimaryKey[String]
 
   object firstName extends StringColumn(this)
 
@@ -61,7 +61,7 @@ class PersonEmploymentHistoryRepository extends CassandraTable[UsersRepository, 
   }
 }
 
-object UsersRepository extends UsersRepository with RootConnector {
+object PersonEmploymentHistoryRepository extends PersonEmploymentHistoryRepository with RootConnector {
   override lazy val tableName = "emailp"
 
   override implicit def space: KeySpace = DataConnection.keySpace
@@ -86,8 +86,11 @@ object UsersRepository extends UsersRepository with RootConnector {
       .future()
   }
 
-  def findByEmail(email: String): Future[Option[Person]] = {
-    select.where(_.emailAddress eqs email).one()
+  def findById(company:String, id: String):Future[Option[Contacts]] = {
+    select.where(_.company eqs company).and(_.id eqs id).one()
+  }
+  def findAll(company:String): Future[Seq[Contacts]] = {
+    select.where(_.company eqs company).fetchEnumerator() run Iteratee.collect()
   }
 
 
