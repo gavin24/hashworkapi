@@ -3,10 +3,9 @@ package controllers.people
 import domain.people.PersonRole
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.common.demographics.GenderService
 import services.people.PersonRoleService
-import scala.concurrent.ExecutionContext.Implicits.global
 
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by hashcode on 2015/11/09.

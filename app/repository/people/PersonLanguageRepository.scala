@@ -46,7 +46,7 @@ class PersonLanguageRepository extends CassandraTable[PersonLanguageRepository, 
 }
 
 object PersonLanguageRepository extends PersonLanguageRepository with RootConnector {
-  override lazy val tableName = "planguage"
+  override lazy val tableName = "plang"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 

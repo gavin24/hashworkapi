@@ -4,6 +4,7 @@ import domain.people.PersonEmploymentHistory
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
 import services.people.PersonEmploymentHistoryService
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by hashcode on 2015/12/17.

@@ -17,6 +17,40 @@ GET            /api/people/email/:email                   @controllers.people.Pe
 POST           /api/prole/post                            @controllers.people.PersonRoleController.createOrUpdate
 GET            /api/prole/get/:id/:roleId                 @controllers.people.PersonRoleController.getById(id,roleId)
 GET            /api/proles/:personId                      @controllers.people.PersonRoleController.getAllPersonRoles(personId)
+#1
+POST           /api/paddr/post                            @controllers.people.PersonAddressController.createOrUpdate
+GET            /api/paddr/get/:personId/:id               @controllers.people.PersonAddressController.getById(personId,id)
+GET            /api/paddrs/:personId                      @controllers.people.PersonAddressController.getAllValues(personId)
+
+POST           /api/pcont/post                            @controllers.people.PersonContactController.createOrUpdate
+GET            /api/pcont/get/:personId/:id               @controllers.people.PersonContactController.getById(personId,id)
+GET            /api/pconts/:personId                      @controllers.people.PersonContactController.getAllValues(personId)
+
+POST           /api/pced/post                             @controllers.people.PersonContinuingEducationController.createOrUpdate
+GET            /api/pced/get/:personId/:id                @controllers.people.PersonContinuingEducationController.getById(personId,id)
+GET            /api/pceds/:personId                       @controllers.people.PersonContinuingEducationController.getAllValues(personId)
+
+POST           /api/pdemo/post                            @controllers.people.PersonDemographicsController.createOrUpdate
+GET            /api/pdemo/get/:personId/:id               @controllers.people.PersonDemographicsController.getById(personId,id)
+GET            /api/pdemos/:personId                      @controllers.people.PersonDemographicsController.getAllValues(personId)
+
+POST           /api/pedu/post                             @controllers.people.PersonEducationHistoryController.createOrUpdate
+GET            /api/pedu/get/:personId/:id                @controllers.people.PersonEducationHistoryController.getById(personId,id)
+GET            /api/pdus/:personId                        @controllers.people.PersonEducationHistoryController.getAllValues(personId)
+
+POST           /api/pemp/post                             @controllers.people.PersonEmploymentHistoryController.createOrUpdate
+GET            /api/pmep/get/:personId/:id                @controllers.people.PersonEmploymentHistoryController.getById(personId,id)
+GET            /api/pemps/:personId                       @controllers.people.PersonEmploymentHistoryController.getAllValues(personId)
+
+POST           /api/pid/post                              @controllers.people.PersonIdentityController.createOrUpdate
+GET            /api/pid/get/:personId/:id                 @controllers.people.PersonIdentityController.getById(personId,id)
+GET            /api/pids/:personId                        @controllers.people.PersonIdentityController.getAllValues(personId)
+
+POST           /api/plang/post                            @controllers.people.PersonLanguageController.createOrUpdate
+GET            /api/plang/get/:personId/:id               @controllers.people.PersonLanguageController.getById(personId,id)
+GET            /api/plangs/:personId                      @controllers.people.PersonLanguageController.getAllValues(personId)
+
+
 
 
 

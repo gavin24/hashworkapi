@@ -52,7 +52,7 @@ class PersonEducationHistoryRepository extends CassandraTable[PersonEducationHis
 }
 
 object PersonEducationHistoryRepository extends PersonEducationHistoryRepository with RootConnector {
-  override lazy val tableName = "peducation"
+  override lazy val tableName = "pedu"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 

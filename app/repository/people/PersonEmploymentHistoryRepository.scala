@@ -76,7 +76,7 @@ class PersonEmploymentHistoryRepository extends CassandraTable[PersonEmploymentH
 }
 
 object PersonEmploymentHistoryRepository extends PersonEmploymentHistoryRepository with RootConnector {
-  override lazy val tableName = "pemployment"
+  override lazy val tableName = "pemp"
 
 
   override implicit def space: KeySpace = DataConnection.keySpace

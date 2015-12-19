@@ -4,6 +4,7 @@ import domain.people.PersonDemographics
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
 import services.people.PersonDemographicsService
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by hashcode on 2015/12/17.

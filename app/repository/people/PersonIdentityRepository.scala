@@ -43,7 +43,7 @@ class PersonIdentityRepository extends CassandraTable[PersonIdentityRepository, 
 }
 
 object PersonIdentityRepository extends PersonIdentityRepository with RootConnector {
-  override lazy val tableName = "pidentity"
+  override lazy val tableName = "pids"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 

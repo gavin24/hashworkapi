@@ -9,7 +9,7 @@ import repository.common.job.JobClassificationRepository
 import repository.common.location.{ContactTypeRepository, AddressTypeRepository, LocationTypeRepository}
 import repository.common.position.PositionTypeRepository
 import repository.common.util.{MailRepository, CurrencyRepository, StatusRepository}
-import repository.people.{UsersRepository, PersonRoleRepository, PersonRepository}
+import repository.people._
 
 import services.Service
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -67,5 +67,15 @@ object SchemaSetUpService extends Service {
     mail <-MailRepository.create.ifNotExists().future()
     ctypes <- ContactTypeRepository.create.ifNotExists().future()
     degreeType <-DegreeTypeRepository.create.ifNotExists().future()
+    pa <- PersonAddressRepository.create.ifNotExists().future()
+    pcont <-PersonContactRepository.create.ifNotExists().future()
+    pced <-PersonContinuingEducationRepository.create.ifNotExists().future()
+    pdemo <-PersonDemographicsRepository.create.ifNotExists().future()
+    pedu <-PersonEducationHistoryRepository.create.ifNotExists().future()
+    pemp <-PersonEmploymentHistoryRepository.create.ifNotExists().future()
+    pid <- PersonIdentityRepository.create.ifNotExists().future()
+    plang <- PersonLanguageRepository.create.ifNotExists().future()
+
+
   } yield person
 }
