@@ -1,96 +1,116 @@
 package repository.people
+
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
 import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
-import domain.contacts.Contacts
-import domain.people.Person
-import repository.contacts.ContactsRepository._
+import domain.people.PersonEmploymentHistory
 
 import scala.concurrent.Future
 
 /**
  * Created by hashcode on 2015/12/17.
  */
-class PersonEmploymentHistoryRepository extends CassandraTable[PersonEmploymentHistoryRepository, Person] {
+class PersonEmploymentHistoryRepository extends CassandraTable[PersonEmploymentHistoryRepository, PersonEmploymentHistory] {
+
 
   object personId extends StringColumn(this) with PartitionKey[String]
 
   object id extends StringColumn(this) with PrimaryKey[String]
 
-  object firstName extends StringColumn(this)
+  object companyName extends StringColumn(this)
 
-  object middleName extends StringColumn(this)
+  object companyAddress extends StringColumn(this)
 
-  object emailAddress extends StringColumn(this) with PartitionKey[String]
+  object companyTelephone extends StringColumn(this)
 
-  object lastName extends StringColumn(this)
+  object applicatSupervisor extends StringColumn(this)
 
-  object title extends StringColumn(this)
+  object contactSupervisor extends BooleanColumn(this)
 
-  object authvalue extends StringColumn(this)
+  object reasonsForLeaving extends StringColumn(this)
 
-  object enabled extends BooleanColumn(this)
+  object startDate extends DateColumn(this)
 
-  object accountNonExpired extends BooleanColumn(this)
+  object endDate extends DateColumn(this)
 
-  object credentialsNonExpired extends BooleanColumn(this)
+  object startingSalary extends BigDecimalColumn(this)
 
-  object accountNonLocked extends BooleanColumn(this)
+  object endingSalary extends BigDecimalColumn(this)
+
+  object currencyId extends StringColumn(this)
+
+  object jobResponsibility extends StringColumn(this)
+
+  object jobId extends StringColumn(this)
+
+  object date extends DateColumn(this)
 
   object state extends StringColumn(this)
 
-  override def fromRow(r: Row): Person = {
-    Person(
-      company(r),
+
+
+  override def fromRow(r: Row): PersonEmploymentHistory = {
+    PersonEmploymentHistory(
+      personId(r),
       id(r),
-      firstName(r),
-      middleName(r),
-      emailAddress(r),
-      lastName(r),
-      title(r),
-      authvalue(r),
-      enabled(r),
-      accountNonExpired(r),
-      credentialsNonExpired(r),
-      accountNonLocked(r),
+      companyName(r),
+      companyAddress(r),
+      companyTelephone(r),
+      applicatSupervisor(r),
+      contactSupervisor(r),
+      reasonsForLeaving(r),
+      startDate(r),
+      endDate(r),
+      startingSalary(r),
+      endingSalary(r),
+      currencyId(r),
+      jobResponsibility(r),
+      jobId(r),
+      date(r),
       state(r)
     )
   }
 }
 
 object PersonEmploymentHistoryRepository extends PersonEmploymentHistoryRepository with RootConnector {
-  override lazy val tableName = "emailp"
+  override lazy val tableName = "pemployment"
+
 
   override implicit def space: KeySpace = DataConnection.keySpace
 
   override implicit def session: Session = DataConnection.session
 
-  def save(person: Person): Future[ResultSet] = {
+  def save(person: PersonEmploymentHistory): Future[ResultSet] = {
     insert
-      .value(_.company, person.company)
-      .value(_.accountNonExpired, person.accountNonExpired)
-      .value(_.authvalue, person.authvalue)
-      .value(_.credentialsNonExpired, person.credentialsNonExpired)
-      .value(_.accountNonLocked, person.accountNonLocked)
-      .value(_.emailAddress, person.emailAddress)
-      .value(_.enabled, person.enabled)
-      .value(_.firstName, person.firstName)
+      .value(_.personId, person.personId)
       .value(_.id, person.id)
-      .value(_.lastName, person.lastName)
-      .value(_.middleName, person.middleName)
-      .value(_.title, person.title)
+      .value(_.companyName, person.companyName)
+      .value(_.companyAddress, person.companyAddress)
+      .value(_.companyName, person.companyTelephone)
+      .value(_.applicatSupervisor, person.applicatSupervisor)
+      .value(_.contactSupervisor, person.contactSupervisor)
+      .value(_.reasonsForLeaving, person.reasonsForLeaving)
+      .value(_.startDate, person.startDate)
+      .value(_.endDate, person.endDate)
+      .value(_.startingSalary, person.startingSalary)
+      .value(_.currencyId, person.currencyId)
+      .value(_.jobResponsibility, person.jobResponsibility)
+      .value(_.jobId, person.jobId)
+      .value(_.date, person.date)
+      .value(_.endingSalary, person.endingSalary)
       .value(_.state, person.state)
       .future()
   }
 
-  def findById(company:String, id: String):Future[Option[Contacts]] = {
-    select.where(_.company eqs company).and(_.id eqs id).one()
+  def findById(personId: String, id: String): Future[Option[PersonEmploymentHistory]] = {
+    select.where(_.personId eqs personId).and(_.id eqs id).one()
   }
-  def findAll(company:String): Future[Seq[Contacts]] = {
-    select.where(_.company eqs company).fetchEnumerator() run Iteratee.collect()
+
+  def findPersonEmploymentHistory(personId: String): Future[Seq[PersonEmploymentHistory]] = {
+    select.where(_.personId eqs personId).fetchEnumerator() run Iteratee.collect()
   }
 
 

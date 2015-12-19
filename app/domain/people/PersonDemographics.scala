@@ -13,7 +13,7 @@ case class PersonDemographics(id: String,
                               dateOfBirth: Date,
                               maritalStatusId: String,
                               numberOfDependencies: Int,
-                              dateCreated: Date,
+                              date: Date,
                               state:String)
 
 object PersonDemographics {

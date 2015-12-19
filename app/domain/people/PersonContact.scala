@@ -12,7 +12,8 @@ case class PersonContact(id: String,
                          addressTypeId: String,
                          contactValue: String,
                          status: String,
-                         date: Date)
+                         date: Date,
+                         state: String)
 
 object PersonContact {
   implicit val personcontactFmt = Json.format[PersonContact]
