@@ -20,7 +20,7 @@ object PersonAddressService extends Service {
     PersonAddressRepository.findPersonAddresses(personId)
   }
 
-  def getPersonAddress(personId: String, id: String): Future[Option[PersonAddress]] = {
+  def getPersonValue(personId: String, id: String): Future[Option[PersonAddress]] = {
     PersonAddressRepository.findById(personId, id)
   }
 }

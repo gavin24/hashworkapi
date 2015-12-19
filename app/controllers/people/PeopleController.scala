@@ -3,8 +3,8 @@ package controllers.people
 import domain.people.Person
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.common.demographics.GenderService
 import services.people.PeopleService
+
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
@@ -27,13 +27,13 @@ class PeopleController extends Controller {
         Ok(Json.toJson(result)))
   }
 
-  def getPerson(company:String,id:String) = Action.async {
+  def getPerson(company: String, id: String) = Action.async {
     request =>
-      PeopleService.getPerson(company,id) map (result =>
+      PeopleService.getPerson(company, id) map (result =>
         Ok(Json.toJson(result)))
   }
 
-  def getPersonByEmail(email:String) = Action.async {
+  def getPersonByEmail(email: String) = Action.async {
     request =>
       PeopleService.getPersonByEmail(email) map (result =>
         Ok(Json.toJson(result)))
