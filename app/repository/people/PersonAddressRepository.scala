@@ -1,6 +1,8 @@
 package repository.people
 
 
+import java.util.Date
+
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
@@ -33,10 +35,11 @@ class PersonAddressRepository extends CassandraTable[PersonAddressRepository, Pe
   object state extends StringColumn(this)
 
 
+
   override def fromRow(r: Row): PersonAddress = {
     PersonAddress(
-      personId(r),
       id(r),
+      personId(r),
       description(r),
       postalCode(r),
       addressTypeId(r),

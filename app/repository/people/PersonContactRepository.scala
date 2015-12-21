@@ -1,5 +1,7 @@
 package repository.people
 
+import java.util.Date
+
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
@@ -29,10 +31,11 @@ class PersonContactRepository extends CassandraTable[PersonContactRepository, Pe
 
   object state extends StringColumn(this)
 
+
   override def fromRow(r: Row): PersonContact = {
     PersonContact(
-      personId(r),
       id(r),
+      personId(r),
       addressTypeId(r),
       contactValue(r),
       status(r),
