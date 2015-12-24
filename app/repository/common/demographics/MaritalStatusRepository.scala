@@ -12,7 +12,6 @@ import scala.concurrent.Future
 sealed class MaritalStatusRepository extends CassandraTable[MaritalStatusRepository,MaritalStatus]{
   object id extends StringColumn(this) with PartitionKey[String]
   object name extends StringColumn(this)
-  object description extends StringColumn(this)
   object state extends StringColumn(this)
   override def fromRow(r: Row): MaritalStatus = {
     MaritalStatus(id(r),name(r),state(r))
