@@ -23,7 +23,7 @@ class PersonDemographicsRepository extends CassandraTable[PersonDemographicsRepo
 
   object dateOfBirth extends DateColumn(this)
 
-  object maritalStatusId extends StringColumn(this) with PartitionKey[String]
+  object maritalStatusId extends StringColumn(this)
 
   object numberOfDependencies extends IntColumn(this)
 
