@@ -37,8 +37,8 @@ class PersonEducationHistoryRepository extends CassandraTable[PersonEducationHis
 
   override def fromRow(r: Row): PersonEducationHistory = {
     PersonEducationHistory(
-      personId(r),
       id(r),
+      personId(r),
       institutionLocation(r),
       institutionLocation(r),
       yearOfGraduation(r),

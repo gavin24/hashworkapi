@@ -33,8 +33,8 @@ class PersonLanguageRepository extends CassandraTable[PersonLanguageRepository, 
 
   override def fromRow(r: Row): PersonLanguage = {
     PersonLanguage(
-      personId(r),
       id(r),
+      personId(r),
       languageId(r),
       reading(r),
       writing(r),

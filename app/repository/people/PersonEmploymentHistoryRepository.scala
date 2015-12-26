@@ -54,8 +54,8 @@ class PersonEmploymentHistoryRepository extends CassandraTable[PersonEmploymentH
 
   override def fromRow(r: Row): PersonEmploymentHistory = {
     PersonEmploymentHistory(
-      personId(r),
       id(r),
+      personId(r),
       companyName(r),
       companyAddress(r),
       companyTelephone(r),

@@ -33,8 +33,8 @@ class PersonDemographicsRepository extends CassandraTable[PersonDemographicsRepo
 
   override def fromRow(r: Row): PersonDemographics = {
     PersonDemographics(
-      personId(r),
       id(r),
+      personId(r),
       genderId(r),
       dateOfBirth(r),
       maritalStatusId(r),

@@ -31,8 +31,8 @@ class PersonIdentityRepository extends CassandraTable[PersonIdentityRepository, 
 
   override def fromRow(r: Row): PersonIdentity = {
     PersonIdentity(
-      personId(r),
       id(r),
+      personId(r),
       idType(r),
       idValue(r),
       preffered(r),
