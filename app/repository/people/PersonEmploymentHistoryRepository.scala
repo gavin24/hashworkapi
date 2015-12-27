@@ -89,7 +89,7 @@ object PersonEmploymentHistoryRepository extends PersonEmploymentHistoryReposito
       .value(_.id, person.id)
       .value(_.companyName, person.companyName)
       .value(_.companyAddress, person.companyAddress)
-      .value(_.companyName, person.companyTelephone)
+      .value(_.companyTelephone, person.companyTelephone)
       .value(_.applicatSupervisor, person.applicatSupervisor)
       .value(_.contactSupervisor, person.contactSupervisor)
       .value(_.reasonsForLeaving, person.reasonsForLeaving)

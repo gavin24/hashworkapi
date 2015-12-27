@@ -39,7 +39,7 @@ class PersonEducationHistoryRepository extends CassandraTable[PersonEducationHis
     PersonEducationHistory(
       id(r),
       personId(r),
-      institutionLocation(r),
+      institutionName(r),
       institutionLocation(r),
       yearOfGraduation(r),
       educationTypeId(r),

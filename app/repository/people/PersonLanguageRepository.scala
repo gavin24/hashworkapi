@@ -62,7 +62,6 @@ object PersonLanguageRepository extends PersonLanguageRepository with RootConnec
       .value(_.writing, personLanguage.writing)
       .value(_.date, personLanguage.date)
       .value(_.state, personLanguage.state)
-      .value(_.id, personLanguage.id)
       .future()
   }
 

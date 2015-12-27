@@ -32,8 +32,8 @@ class PersonContinuingEducationRepository extends CassandraTable[PersonContinuin
 
   override def fromRow(r: Row): PersonContinuingEducation = {
     PersonContinuingEducation(
-      personId(r),
       id(r),
+      personId(r),
       courseId(r),
       competencyEvaluationId(r),
       courseScheduleId(r),
