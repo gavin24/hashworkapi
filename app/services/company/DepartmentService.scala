@@ -21,7 +21,7 @@ object DepartmentService extends Service{
     DepartmentRepository.findDepartment(company,id)
   }
 
-  def getDepartmets(company:String):Future[Seq[Department]] ={
+  def getDepartments(company:String):Future[Seq[Department]] ={
     DepartmentRepository.findDepartments(company)
   }
 

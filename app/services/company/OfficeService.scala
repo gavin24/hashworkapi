@@ -1,10 +1,8 @@
 package services.company
 
 import com.datastax.driver.core.ResultSet
-import domain.common.demographics.Gender
-import domain.company.{Office, Company}
-import repository.common.demographics.GenderRepository
-import repository.company.{OfficeRepository, CompanyRepository}
+import domain.company.Office
+import repository.company.OfficeRepository
 import services.Service
 
 import scala.concurrent.Future

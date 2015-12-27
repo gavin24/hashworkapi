@@ -29,7 +29,7 @@ sealed class DepartmentRepository extends CassandraTable[DepartmentRepository, D
 
   object description extends StringColumn(this)
 
-  object active extends BooleanColumn(this)
+  object active extends StringColumn(this)
   object state extends StringColumn(this)
 
   override def fromRow(r: Row): Department = {
@@ -38,12 +38,13 @@ sealed class DepartmentRepository extends CassandraTable[DepartmentRepository, D
       id(r),
       name(r),
       description(r),
-      active(r),state(r))
+      active(r),
+      state(r))
   }
 }
 
 object DepartmentRepository extends DepartmentRepository with RootConnector {
-  override lazy val tableName = "dept"
+  override lazy val tableName = "depts"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 

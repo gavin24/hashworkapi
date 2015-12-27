@@ -6,7 +6,7 @@ import com.websudos.phantom.dsl._
 import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
-import domain.contacts.Contacts
+import domain.companycontacts.CompanyContacts
 
 import scala.concurrent.Future
 
@@ -14,60 +14,82 @@ import scala.concurrent.Future
  * Created by hashcode on 2015/10/31.
  */
 //company: String,
+//entityId: String,
 //id: String,
-//postalAddress: String,
-//physicalAddress: String,
-//contactNumber: String,
-//postalCode: String,
-//emailAddress: String
-sealed class ContactsRepository extends CassandraTable[ContactsRepository,Contacts]{
+//postalAddress: Map[String, String],
+//physicalAddress: Map[String, String],
+//contactNumber: Map[String, String],
+//postalCode: Map[String, String],
+//emailAddress: Map[String, String],
+//state: String,
+//lastupdate: Date
+sealed class ContactsRepository extends CassandraTable[ContactsRepository, CompanyContacts] {
+
   object company extends StringColumn(this) with PartitionKey[String]
+
+  object entityId extends StringColumn(this) with PrimaryKey[String]
+
   object id extends StringColumn(this) with PrimaryKey[String]
-  object postalAddress extends MapColumn[ContactsRepository, Contacts, String, String](this)
-  object physicalAddress extends MapColumn[ContactsRepository, Contacts, String, String](this)
-  object contactNumber extends MapColumn[ContactsRepository, Contacts, String, String](this)
-  object postalCode extends MapColumn[ContactsRepository, Contacts, String, String](this)
-  object emailAddress extends MapColumn[ContactsRepository, Contacts, String, String](this)
+
+  object postalAddress extends MapColumn[ContactsRepository, CompanyContacts, String, String](this)
+
+  object physicalAddress extends MapColumn[ContactsRepository, CompanyContacts, String, String](this)
+
+  object contactNumber extends MapColumn[ContactsRepository, CompanyContacts, String, String](this)
+
+  object emailAddress extends MapColumn[ContactsRepository, CompanyContacts, String, String](this)
+
   object state extends StringColumn(this)
 
+  object lastupdate extends DateColumn(this)
 
-  override def fromRow(r: Row): Contacts = {
-    Contacts(
+
+  override def fromRow(r: Row): CompanyContacts = {
+    CompanyContacts(
       company(r),
+      entityId(r),
       id(r),
       postalAddress(r),
       physicalAddress(r),
       contactNumber(r),
-      postalCode(r),
-      emailAddress(r),state(r))
+      emailAddress(r),
+      state(r),
+      lastupdate(r)
+    )
 
   }
 }
 
 object ContactsRepository extends ContactsRepository with RootConnector {
-  override lazy val tableName = "contacts"
+  override lazy val tableName = "ccontacts"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 
   override implicit def session: Session = DataConnection.session
 
-  def save(contact: Contacts): Future[ResultSet] = {
+  def save(contact: CompanyContacts): Future[ResultSet] = {
     insert
       .value(_.id, contact.id)
+      .value(_.entityId, contact.entityId)
       .value(_.company, contact.company)
       .value(_.contactNumber, contact.contactNumber)
       .value(_.emailAddress, contact.emailAddress)
       .value(_.physicalAddress, contact.physicalAddress)
       .value(_.postalAddress, contact.postalAddress)
-      .value(_.postalCode, contact.postalCode)
+      .value(_.lastupdate, contact.lastupdate)
       .value(_.state, contact.state)
       .future()
   }
 
-  def findById(company:String, id: String):Future[Option[Contacts]] = {
-    select.where(_.company eqs company).and(_.id eqs id).one()
+  def findById(company: String, entityId:String, id: String): Future[Option[CompanyContacts]] = {
+    select.where(_.company eqs company).and(_.entityId eqs entityId).and(_.id eqs id).one()
   }
-  def findAll(company:String): Future[Seq[Contacts]] = {
+
+  def findAll(company: String): Future[Seq[CompanyContacts]] = {
     select.where(_.company eqs company).fetchEnumerator() run Iteratee.collect()
+  }
+
+  def findEntityContacts(company: String, entityId:String): Future[Seq[CompanyContacts]] = {
+    select.where(_.company eqs company).and(_.entityId eqs entityId).fetchEnumerator() run Iteratee.collect()
   }
 }

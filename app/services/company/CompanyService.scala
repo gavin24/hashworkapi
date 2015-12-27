@@ -1,13 +1,11 @@
 package services.company
 
 import com.datastax.driver.core.ResultSet
-import domain.common.demographics.Gender
 import domain.company.Company
-import repository.common.demographics.GenderRepository
 import repository.company.CompanyRepository
 import services.Service
-import scala.concurrent.ExecutionContext.Implicits.global
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 /**

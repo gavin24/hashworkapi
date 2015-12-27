@@ -9,7 +9,7 @@ import com.websudos.phantom.dsl._
 import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
-import domain.contacts.Contacts
+import domain.companycontacts.CompanyContacts
 import domain.people.{PersonAddress, Person}
 import repository.contacts.ContactsRepository._
 import scala.concurrent.Future

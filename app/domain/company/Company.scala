@@ -13,6 +13,7 @@ case class Company(
                     details:Map[String,String],
                     adminattached:String,
                     date:Date,
+                    status:String,
                     state:String
                     )
 object Company {

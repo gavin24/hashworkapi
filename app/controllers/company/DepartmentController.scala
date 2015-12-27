@@ -29,8 +29,7 @@ class DepartmentController extends Controller{
 
   def getAllDepartments(company:String) = Action.async {
     request =>
-      DepartmentService.getDepartmets(company) map (result =>
+      DepartmentService.getDepartments(company) map (result =>
         Ok(Json.toJson(result)))
   }
-
 }

@@ -28,22 +28,30 @@ sealed class OfficeRepository extends CassandraTable[OfficeRepository, Office] {
 
   object description extends StringColumn(this)
 
-  object active extends BooleanColumn(this)
+  object active extends StringColumn(this)
 
   object officeTypeId extends StringColumn(this)
 
-  object contactId extends StringColumn(this)
   object state extends StringColumn(this)
+
+  object date extends DateColumn(this)
 
   override def fromRow(r: Row): Office = {
     Office(
-    company(r),id(r),name(r),description(r),active(r),officeTypeId(r),contactId(r),state(r)
+      company(r),
+      id(r),
+      name(r),
+      description(r),
+      active(r),
+      officeTypeId(r),
+      state(r),
+      date(r)
     )
   }
 }
 
 object OfficeRepository extends OfficeRepository with RootConnector {
-  override lazy val tableName = "office"
+  override lazy val tableName = "offices"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 
@@ -57,17 +65,17 @@ object OfficeRepository extends OfficeRepository with RootConnector {
       .value(_.description, office.description)
       .value(_.active, office.active)
       .value(_.officeTypeId, office.officeTypeId)
-      .value(_.contactId, office.contactId)
       .value(_.state, office.state)
+      .value(_.date, office.date)
       .future()
   }
 
-  def findById(company:String,id: String) = {
+  def findById(company: String, id: String) = {
     select.where(_.company eqs company).and(_.id eqs id).one()
   }
 
-  def findOffices(company:String) = {
-    select.where(_.company eqs company)fetchEnumerator() run Iteratee.collect()
+  def findOffices(company: String) = {
+    select.where(_.company eqs company) fetchEnumerator() run Iteratee.collect()
 
   }
 

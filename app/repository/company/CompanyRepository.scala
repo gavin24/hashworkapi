@@ -17,6 +17,7 @@ import scala.concurrent.Future
  */
 
 
+
 sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company] {
 
   object id extends StringColumn(this) with PartitionKey[String]
@@ -29,13 +30,19 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
 
   object date extends DateColumn(this)
 
+  object status extends StringColumn(this)
+
   object state extends StringColumn(this)
 
   override def fromRow(r: Row): Company = {
     Company(
       id(r),
       name(r),
-      details(r), adminattached(r), date(r), state(r)
+      details(r),
+      adminattached(r),
+      date(r),
+      status(r),
+      state(r)
     )
   }
 }
@@ -54,6 +61,7 @@ object CompanyRepository extends CompanyRepository with RootConnector {
       .value(_.details, company.details)
       .value(_.adminattached, company.adminattached)
       .value(_.date, company.date)
+      .value(_.status, company.status)
       .value(_.state, company.state)
       .future()
   }
@@ -65,6 +73,7 @@ object CompanyRepository extends CompanyRepository with RootConnector {
       .and(_.adminattached setTo company.adminattached)
       .and(_.date setTo company.date)
       .and(_.state setTo company.state)
+      .and(_.status setTo company.status)
       .future()
   }
 

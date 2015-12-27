@@ -24,18 +24,18 @@ object SchemaSetUpService extends Service {
     person <- PersonRepository.create.ifNotExists().future()
     depart <- DepartmentRepository.create.ifNotExists().future()
     office <- OfficeRepository.create.ifNotExists().future()
-    //contacts
+    //companycontacts
     contacts <- ContactsRepository.create.ifNotExists().future()
     // demo
     gender <- GenderRepository.create.ifNotExists().future()
     id <- IdentificationTypeRepository.create.ifNotExists().future()
     lanp <- LanguageProficiencyRepository.create.ifNotExists().future()
-    //contacts
+    //companycontacts
     lang <- LanguageRepository.create.ifNotExists().future()
     marital <- MaritalStatusRepository.create.ifNotExists().future()
     depart <- RaceRepository.create.ifNotExists().future()
     role <- RoleRepository.create.ifNotExists().future()
-    //contacts
+    //companycontacts
     title <- StatusRepository.create.ifNotExists().future()
     preole <- PersonRoleRepository.create.ifNotExists().future()
 
