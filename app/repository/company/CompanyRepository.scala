@@ -30,7 +30,6 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
 
   object date extends DateColumn(this)
 
-  object status extends StringColumn(this)
 
   object state extends StringColumn(this)
 
@@ -41,7 +40,6 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
       details(r),
       adminattached(r),
       date(r),
-      status(r),
       state(r)
     )
   }
@@ -61,7 +59,6 @@ object CompanyRepository extends CompanyRepository with RootConnector {
       .value(_.details, company.details)
       .value(_.adminattached, company.adminattached)
       .value(_.date, company.date)
-      .value(_.status, company.status)
       .value(_.state, company.state)
       .future()
   }
@@ -73,7 +70,6 @@ object CompanyRepository extends CompanyRepository with RootConnector {
       .and(_.adminattached setTo company.adminattached)
       .and(_.date setTo company.date)
       .and(_.state setTo company.state)
-      .and(_.status setTo company.status)
       .future()
   }
 
