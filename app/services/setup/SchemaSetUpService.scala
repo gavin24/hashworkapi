@@ -10,6 +10,7 @@ import repository.common.location.{ContactTypeRepository, AddressTypeRepository,
 import repository.common.position.PositionTypeRepository
 import repository.common.util.{MailRepository, CurrencyRepository, StatusRepository}
 import repository.people._
+import repository.storage.{CompanyImagesRepository, CompanyFilesRepository}
 
 import services.Service
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -75,6 +76,8 @@ object SchemaSetUpService extends Service {
     pemp <-PersonEmploymentHistoryRepository.create.ifNotExists().future()
     pid <- PersonIdentityRepository.create.ifNotExists().future()
     plang <- PersonLanguageRepository.create.ifNotExists().future()
+    cfiles <- CompanyFilesRepository.create.ifNotExists().future()
+    cimages <- CompanyImagesRepository.create.ifNotExists().future()
 
 
   } yield person
