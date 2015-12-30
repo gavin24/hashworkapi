@@ -22,13 +22,17 @@ sealed class CompanyFilesRepository extends CassandraTable[CompanyFilesRepositor
 
   object file extends BlobColumn(this)
 
-  object fileBuffer extends ByteStringColumn(this)
+  object filename extends StringColumn(this)
+
+  object mimetype extends StringColumn(this)
 
   override def fromRow(r: Row): CompanyFiles = {
     CompanyFiles(
       company(r),
-      id(r), file(r),
-      fileBuffer(r)
+      id(r),
+      file(r),
+      filename(r),
+      mimetype(r)
     )
   }
 }
@@ -45,7 +49,8 @@ object CompanyFilesRepository extends CompanyFilesRepository with RootConnector 
       .value(_.company, file.company)
       .value(_.id, file.id)
       .value(_.file, file.file)
-      .value(_.fileBuffer, file.fileBuffer)
+      .value(_.filename, file.filename)
+      .value(_.mimetype, file.mimetype)
       .future()
   }
 

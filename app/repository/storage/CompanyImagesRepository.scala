@@ -13,7 +13,7 @@ import scala.concurrent.Future
 /**
  * Created by hashcode on 2015/12/29.
  */
-sealed class CompanyImagesRepository  extends CassandraTable[CompanyImagesRepository, CompanyImages] {
+sealed class CompanyImagesRepository extends CassandraTable[CompanyImagesRepository, CompanyImages] {
 
   object company extends StringColumn(this) with PartitionKey[String]
 
@@ -21,14 +21,17 @@ sealed class CompanyImagesRepository  extends CassandraTable[CompanyImagesReposi
 
   object image extends BlobColumn(this)
 
-  object imageBuffer extends ByteStringColumn(this)
+  object filename extends StringColumn(this)
+
+  object mimetype extends StringColumn(this)
 
   override def fromRow(r: Row): CompanyImages = {
     CompanyImages(
       company(r),
       id(r),
       image(r),
-      imageBuffer(r)
+      filename(r),
+      mimetype(r)
     )
   }
 }
@@ -45,15 +48,16 @@ object CompanyImagesRepository extends CompanyImagesRepository with RootConnecto
       .value(_.company, image.company)
       .value(_.id, image.id)
       .value(_.image, image.image)
-      .value(_.imageBuffer, image.imageBuffer)
+      .value(_.filename, image.filename)
+      .value(_.mimetype, image.mimetype)
       .future()
   }
 
-  def findCompanyFiles(company: String): Future[Seq[CompanyImages]] = {
+  def findCompanyImages(company: String): Future[Seq[CompanyImages]] = {
     select.where(_.company eqs company).fetchEnumerator() run Iteratee.collect()
   }
 
-  def findFileById(company: String, id: String): Future[Option[CompanyImages]] = {
+  def findImageById(company: String, id: String): Future[Option[CompanyImages]] = {
     select.where(_.company eqs company).and(_.id eqs id).one()
   }
 
