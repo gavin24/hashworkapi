@@ -28,6 +28,10 @@ libraryDependencies += "com.jason-goodwin" % "authentikat-jwt_2.11" % "0.4.1"
 libraryDependencies += "org.springframework.security" % "spring-security-core" % "4.0.3.RELEASE"
 libraryDependencies += "me.lessis" % "base64_2.11" % "0.2.0"
 libraryDependencies += "junit" % "junit" % "4.12"
+libraryDependencies += "org.apache.tika" % "tika-core" % "1.11"
+
+libraryDependencies += "org.apache.tika" % "tika" % "1.11"
+libraryDependencies += "com.sksamuel.scrimage" % "scrimage-core_2.11" % "2.1.1"
 
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
