@@ -1,6 +1,6 @@
-package domain.storage
+package services.storage
 
-import java.io.{InputStream, File}
+import java.io.{File, InputStream}
 
 import org.apache.tika.Tika
 

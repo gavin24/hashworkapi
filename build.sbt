@@ -32,6 +32,7 @@ libraryDependencies += "org.apache.tika" % "tika-core" % "1.11"
 
 libraryDependencies += "org.apache.tika" % "tika" % "1.11"
 libraryDependencies += "com.sksamuel.scrimage" % "scrimage-core_2.11" % "2.1.1"
+libraryDependencies += "org.imgscalr" % "imgscalr-lib" % "4.2"
 
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"

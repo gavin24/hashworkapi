@@ -2,11 +2,11 @@ package controllers.storage
 
 import java.text.SimpleDateFormat
 
-import domain.storage.{FileServices, FileTypeService, FileMeta}
+import domain.storage.FileMeta
 import play.api.libs.iteratee.Enumerator
 import play.api.libs.json.Json
 import play.api.mvc.{ResponseHeader, Result, Action, Controller}
-import services.storage.StorageService
+import services.storage.{FileTypeService, FileServices, StorageService}
 
 import scala.concurrent.Future
 

@@ -1,9 +1,12 @@
-package domain.storage
+package services.storage
 
-import java.io.{FileInputStream, File}
+import java.io.{File, FileInputStream}
+import java.util.UUID
 import javax.imageio.ImageIO
 
 import com.sksamuel.scrimage.{Format, FormatDetector}
+import domain.storage.{CompanyFiles, FileMeta, FileResults}
+import org.imgscalr.Scalr
 
 import scala.concurrent.Future
 
@@ -11,8 +14,10 @@ import scala.concurrent.Future
  * Created by hashcode on 2015/12/30.
  */
 object FileServices {
-  def getFile(id: String): Option[GridFSDBFile] = {
-    FilesRepository.getFileById(id)
+
+
+  def getFile(company:String, id: String): Future[Option[CompanyFiles]] = {
+   StorageService.findFileById(company,id)
   }
 
   def processFile(data: File, meta: FileMeta): Future[Seq[FileResults]] = {
