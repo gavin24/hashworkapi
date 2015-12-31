@@ -1,12 +1,16 @@
 package services.storage
 
-import java.io.{File, FileInputStream}
+import java.io.{FileOutputStream, File, FileInputStream}
+import java.nio.ByteBuffer
 import java.util.UUID
 import javax.imageio.ImageIO
 
 import com.sksamuel.scrimage.{Format, FormatDetector}
+import conf.util.Util
 import domain.storage.{CompanyFiles, FileMeta, FileResults}
+import org.apache.commons.io.IOUtils
 import org.imgscalr.Scalr
+import repository.storage.CompanyFilesRepository
 
 import scala.concurrent.Future
 
@@ -20,14 +24,19 @@ object FileServices {
    StorageService.findFileById(company,id)
   }
 
-  def processFile(data: File, meta: FileMeta): Future[Seq[FileResults]] = {
+  def processFile(data: FileInputStream, meta: FileMeta): Future[Seq[FileResults]] = {
 
     import scala.concurrent.ExecutionContext.Implicits.global
     meta.contentType.startsWith("image") match {
       case true => Future {
-        val ext = getFileExtension(data)
-        val normal = resizeImage(data, ext, 650)
-        val thumb = resizeImage(data, ext, 150)
+
+        val file = new File("/tmp/tmp" + UUID.randomUUID().toString +meta.fileName)
+
+
+        val ext = getFileExtension(file)
+        val normal = resizeImage(file, ext, 650)
+        val thumb = resizeImage(file, ext, 150)
+
 
         val thumbnailImageId = FilesRepository.save(new FileInputStream(thumb), meta)
         val thumbnailImageMetaData = FileResults(
@@ -44,9 +53,20 @@ object FileServices {
         Seq[FileResults](normalImageMetaData, thumbnailImageMetaData)
       }
       case false => Future {
-        val fileId = FilesRepository.save(new FileInputStream(data), meta)
-        val fileMetaData = FileResults(fileId.toString,
-          "/api/static/" + fileId.toString+"/"+getFileName(fileId.toString),
+        val bytesBufferFile = ByteBuffer.wrap(IOUtils.toByteArray(data))
+
+        val fileData:CompanyFiles = {
+         CompanyFiles(
+           meta.company,
+           Util.md5Hash(UUID.randomUUID().toString),
+           bytesBufferFile,
+           meta.fileName,
+           meta.contentType)
+
+        }
+        CompanyFilesRepository.save(fileData)
+        val fileMetaData = FileResults(fileData.id,
+          "/api/static/" + fileData.id+"/"+fileData.filename,
           None)
         Seq[FileResults](fileMetaData)
       }
@@ -71,14 +91,9 @@ object FileServices {
     val image = ImageIO.read(file)
     val thumbnail = Scalr.resize(image, size)
     val resizedImage = new File("/tmp/tmp" + UUID.randomUUID().toString +"."+ ext)
+
     ImageIO.write(thumbnail, ext, resizedImage)
     resizedImage
   }
 
-  private def getFileName(id:String):String={
-    FilesRepository.getFileById(id) match {
-      case Some(data) => data.filename.get
-      case None => "nofile"
-    }
-  }
 }
