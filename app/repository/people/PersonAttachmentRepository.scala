@@ -1,19 +1,19 @@
-package repository.company
+package repository.people
 
-import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
+import com.websudos.phantom.column.DateColumn
 import com.websudos.phantom.dsl._
 import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
-import domain.company.CompanyLogo
+import domain.people.PersonAttachment
 
 import scala.concurrent.Future
 
 /**
  * Created by hashcode on 2016/01/03.
  */
-class CompanyLogoRepository extends CassandraTable[CompanyLogoRepository, CompanyLogo] {
+class PersonAttachmentRepository extends CassandraTable[PersonAttachmentRepository, PersonAttachment] {
 
 
   object company extends StringColumn(this) with PartitionKey[String]
@@ -22,14 +22,16 @@ class CompanyLogoRepository extends CassandraTable[CompanyLogoRepository, Compan
 
   object url extends StringColumn(this)
 
+  object description extends StringColumn(this)
+
   object size extends OptionalStringColumn(this)
 
   object mime extends StringColumn(this)
 
   object date extends DateColumn(this)
 
-  override def fromRow(r: Row): CompanyLogo = {
-    CompanyLogo(
+  override def fromRow(r: Row): PersonAttachment = {
+    PersonAttachment(
       company(r),
       id(r),
       url(r),
@@ -39,14 +41,14 @@ class CompanyLogoRepository extends CassandraTable[CompanyLogoRepository, Compan
   }
 }
 
-object CompanyLogoRepository extends CompanyLogoRepository with RootConnector {
+object PersonAttachmentRepository extends PersonAttachmentRepository with RootConnector {
   override lazy val tableName = "clogos"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 
   override implicit def session: Session = DataConnection.session
 
-  def save(dept: CompanyLogo) = {
+  def save(dept: PersonAttachment) = {
     insert
       .value(_.company, dept.company)
       .value(_.id, dept.id)
@@ -57,11 +59,11 @@ object CompanyLogoRepository extends CompanyLogoRepository with RootConnector {
       .future()
   }
 
-  def findDCompanyLogo(company: String, id: String): Future[Option[CompanyLogo]] = {
+  def findDCompanyLogo(company: String, id: String): Future[Option[PersonAttachment]] = {
     select.where(_.company eqs company).and(_.id eqs id).one()
   }
 
-  def findCompanyLogos(company: String): Future[Seq[CompanyLogo]] = {
+  def findCompanyLogos(company: String): Future[Seq[PersonAttachment]] = {
     select.where(_.company eqs company) fetchEnumerator() run Iteratee.collect()
   }
 }
