@@ -61,7 +61,7 @@ object PersonAttachmentRepository extends PersonAttachmentRepository with RootCo
       .future()
   }
 
-  def findDCompanyLogo(company: String, personId:String,id: String): Future[Option[PersonAttachment]] = {
+  def getAttachment(company: String, personId:String,id: String): Future[Option[PersonAttachment]] = {
     select.where(_.company eqs company).and(_.personId eqs personId).and(_.id eqs id).one()
   }
 

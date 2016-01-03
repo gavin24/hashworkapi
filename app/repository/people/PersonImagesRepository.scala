@@ -52,7 +52,7 @@ object PersonImagesRepository extends PersonImagesRepository with RootConnector 
 
   override implicit def session: Session = DataConnection.session
 
-  def save(image: PersonImages) = {
+  def save(image: PersonImages):Future[ResultSet] = {
     insert
       .value(_.company, image.company)
       .value(_.personId, image.personId)

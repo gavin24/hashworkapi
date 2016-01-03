@@ -3,193 +3,195 @@
 # ~~~~
 
 #CORS Path
-OPTIONS        /*path                                         @controllers.Application.options(path)
+OPTIONS        /*path                                             @controllers.Application.options(path)
 # Home page
-GET            /                                              @controllers.Application.index
-GET            /setup                                         @controllers.Application.setup
+GET            /                                                  @controllers.Application.index
+GET            /setup                                             @controllers.Application.setup
 
 # Person
-POST           /api/people/post                               @controllers.people.PeopleController.createOrUpdate
-GET            /api/people/get/:company/:id                   @controllers.people.PeopleController.getPerson(company,id)
-GET            /api/peoples/:company                          @controllers.people.PeopleController.getCompanyPeople(company)
-GET            /api/people/email/:email                       @controllers.people.PeopleController.getPersonByEmail(email)
+POST           /api/people/post                                   @controllers.people.PeopleController.createOrUpdate
+GET            /api/people/get/:company/:id                       @controllers.people.PeopleController.getPerson(company,id)
+GET            /api/peoples/:company                              @controllers.people.PeopleController.getCompanyPeople(company)
+GET            /api/people/email/:email                           @controllers.people.PeopleController.getPersonByEmail(email)
 
-POST           /api/prole/post                                @controllers.people.PersonRoleController.createOrUpdate
-GET            /api/prole/get/:id/:roleId                     @controllers.people.PersonRoleController.getById(id,roleId)
-GET            /api/proles/:personId                          @controllers.people.PersonRoleController.getAllPersonRoles(personId)
+POST           /api/prole/post                                    @controllers.people.PersonRoleController.createOrUpdate
+GET            /api/prole/get/:id/:roleId                         @controllers.people.PersonRoleController.getById(id,roleId)
+GET            /api/proles/:personId                              @controllers.people.PersonRoleController.getAllPersonRoles(personId)
 #1
-POST           /api/paddr/post                                @controllers.people.PersonAddressController.createOrUpdate
-GET            /api/paddr/get/:personId/:id                   @controllers.people.PersonAddressController.getById(personId,id)
-GET            /api/paddrs/:personId                          @controllers.people.PersonAddressController.getAllValues(personId)
+POST           /api/paddr/post                                    @controllers.people.PersonAddressController.createOrUpdate
+GET            /api/paddr/get/:personId/:id                       @controllers.people.PersonAddressController.getById(personId,id)
+GET            /api/paddrs/:personId                              @controllers.people.PersonAddressController.getAllValues(personId)
 
-POST           /api/pcont/post                                @controllers.people.PersonContactController.createOrUpdate
-GET            /api/pcont/get/:personId/:id                   @controllers.people.PersonContactController.getById(personId,id)
-GET            /api/pconts/:personId                          @controllers.people.PersonContactController.getAllValues(personId)
+POST           /api/pcont/post                                    @controllers.people.PersonContactController.createOrUpdate
+GET            /api/pcont/get/:personId/:id                       @controllers.people.PersonContactController.getById(personId,id)
+GET            /api/pconts/:personId                              @controllers.people.PersonContactController.getAllValues(personId)
 
-POST           /api/pced/post                                 @controllers.people.PersonContinuingEducationController.createOrUpdate
-GET            /api/pced/get/:personId/:id                    @controllers.people.PersonContinuingEducationController.getById(personId,id)
-GET            /api/pceds/:personId                           @controllers.people.PersonContinuingEducationController.getAllValues(personId)
+POST           /api/pced/post                                     @controllers.people.PersonContinuingEducationController.createOrUpdate
+GET            /api/pced/get/:personId/:id                        @controllers.people.PersonContinuingEducationController.getById(personId,id)
+GET            /api/pceds/:personId                               @controllers.people.PersonContinuingEducationController.getAllValues(personId)
 
-POST           /api/pdemo/post                                @controllers.people.PersonDemographicsController.createOrUpdate
-GET            /api/pdemo/get/:personId/:id                   @controllers.people.PersonDemographicsController.getById(personId,id)
-GET            /api/pdemos/:personId                          @controllers.people.PersonDemographicsController.getAllValues(personId)
+POST           /api/pdemo/post                                    @controllers.people.PersonDemographicsController.createOrUpdate
+GET            /api/pdemo/get/:personId/:id                       @controllers.people.PersonDemographicsController.getById(personId,id)
+GET            /api/pdemos/:personId                              @controllers.people.PersonDemographicsController.getAllValues(personId)
 
-POST           /api/pedu/post                                 @controllers.people.PersonEducationHistoryController.createOrUpdate
-GET            /api/pedu/get/:personId/:id                    @controllers.people.PersonEducationHistoryController.getById(personId,id)
-GET            /api/pedus/:personId                           @controllers.people.PersonEducationHistoryController.getAllValues(personId)
+POST           /api/pedu/post                                     @controllers.people.PersonEducationHistoryController.createOrUpdate
+GET            /api/pedu/get/:personId/:id                        @controllers.people.PersonEducationHistoryController.getById(personId,id)
+GET            /api/pedus/:personId                               @controllers.people.PersonEducationHistoryController.getAllValues(personId)
 
-POST           /api/pemp/post                                 @controllers.people.PersonEmploymentHistoryController.createOrUpdate
-GET            /api/pemp/get/:personId/:id                    @controllers.people.PersonEmploymentHistoryController.getById(personId,id)
-GET            /api/pemps/:personId                           @controllers.people.PersonEmploymentHistoryController.getAllValues(personId)
+POST           /api/pemp/post                                     @controllers.people.PersonEmploymentHistoryController.createOrUpdate
+GET            /api/pemp/get/:personId/:id                        @controllers.people.PersonEmploymentHistoryController.getById(personId,id)
+GET            /api/pemps/:personId                               @controllers.people.PersonEmploymentHistoryController.getAllValues(personId)
 
-POST           /api/pid/post                                  @controllers.people.PersonIdentityController.createOrUpdate
-GET            /api/pid/get/:personId/:id                     @controllers.people.PersonIdentityController.getById(personId,id)
-GET            /api/pids/:personId                            @controllers.people.PersonIdentityController.getAllValues(personId)
+POST           /api/pid/post                                      @controllers.people.PersonIdentityController.createOrUpdate
+GET            /api/pid/get/:personId/:id                         @controllers.people.PersonIdentityController.getById(personId,id)
+GET            /api/pids/:personId                                @controllers.people.PersonIdentityController.getAllValues(personId)
 
-POST           /api/plang/post                                @controllers.people.PersonLanguageController.createOrUpdate
-GET            /api/plang/get/:personId/:id                   @controllers.people.PersonLanguageController.getById(personId,id)
-GET            /api/plangs/:personId                          @controllers.people.PersonLanguageController.getAllValues(personId)
+POST           /api/plang/post                                    @controllers.people.PersonLanguageController.createOrUpdate
+GET            /api/plang/get/:personId/:id                       @controllers.people.PersonLanguageController.getById(personId,id)
+GET            /api/plangs/:personId                              @controllers.people.PersonLanguageController.getAllValues(personId)
 
 
 
+POST           /api/pattachment/post                              @controllers.people.PersonAttachmentController.createOrUpdate
+GET            /api/pattachment/get/:company/:personId/:id        @controllers.people.PersonAttachmentController.getPersonAttachment(company,personId,id)
+GET            /api/pattachments/:company/:personId               @controllers.people.PersonAttachmentController.getPersonAttachments(company,personId)
+GET            /api/pcattachments/:company                        @controllers.people.PersonAttachmentController.getCompanyPeopleAttachments(company)
+
+POST           /api/pimage/post                                   @controllers.people.PersonImagesController.createOrUpdate
+GET            /api/pimage/get/:company/:personId/:id             @controllers.people.PersonImagesController.getPersonImage(company,personId,id)
+GET            /api/pimages/:company/:personId                    @controllers.people.PersonImagesController.getPersonImages(company,personId)
+GET            /api/pcimages/:company                             @controllers.people.PersonImagesController.getCompanyPeopleImages(company)
 
 
 #Company
-POST           /api/company/post                              @controllers.company.CompanyController.createOrUpdate
-GET            /api/company/get/:id                           @controllers.company.CompanyController.getById(id)
-GET            /api/companies/get                             @controllers.company.CompanyController.getAll
+POST           /api/company/post                                  @controllers.company.CompanyController.createOrUpdate
+GET            /api/company/get/:id                               @controllers.company.CompanyController.getById(id)
+GET            /api/companies/get                                 @controllers.company.CompanyController.getAll
 
 
-POST           /api/department/post                           @controllers.company.DepartmentController.createOrUpdate
-GET            /api/department/get/:company/:id               @controllers.company.DepartmentController.getById(company,id)
-GET            /api/departments/:company                      @controllers.company.DepartmentController.getAllDepartments(company)
+POST           /api/department/post                               @controllers.company.DepartmentController.createOrUpdate
+GET            /api/department/get/:company/:id                   @controllers.company.DepartmentController.getById(company,id)
+GET            /api/departments/:company                          @controllers.company.DepartmentController.getAllDepartments(company)
 
-POST           /api/companylogo/post                           @controllers.company.CompanyLogoController.createOrUpdate
-GET            /api/companylogo/get/:company/:id               @controllers.company.CompanyLogoController.getCompanyLogo(company,id)
-GET            /api/companylogo/:company                      @controllers.company.CompanyLogoController.getAllCompanyLogos(company)
+POST           /api/companylogo/post                              @controllers.company.CompanyLogoController.createOrUpdate
+GET            /api/companylogo/get/:company/:id                  @controllers.company.CompanyLogoController.getCompanyLogo(company,id)
+GET            /api/companylogos/:company                         @controllers.company.CompanyLogoController.getAllCompanyLogos(company)
 
 
-POST           /api/office/post                               @controllers.company.OfficeController.createOrUpdate
-GET            /api/ofice/get/:company/:id                    @controllers.company.OfficeController.getById(company,id)
-GET            /api/offices/:company                          @controllers.company.OfficeController.getAllOffices(company)
-
+POST           /api/office/post                                   @controllers.company.OfficeController.createOrUpdate
+GET            /api/ofice/get/:company/:id                        @controllers.company.OfficeController.getById(company,id)
+GET            /api/offices/:company                              @controllers.company.OfficeController.getAllOffices(company)
 
 #CompanyContacts
-POST           /api/contact/post                              @controllers.contacts.ContactsController.createOrUpdate
-GET            /api/contact/get/:company/:entityId/:id        @controllers.contacts.ContactsController.getById(company,entityId,id)
-GET            /api/contact/get/:company/:entityId            @controllers.contacts.ContactsController.findEntityContacts(company,entityId)
-GET            /api/contacts/get                              @controllers.contacts.ContactsController.getAll(company)
-
-
-
+POST           /api/contact/post                                  @controllers.contacts.ContactsController.createOrUpdate
+GET            /api/contact/get/:company/:entityId/:id            @controllers.contacts.ContactsController.getById(company,entityId,id)
+GET            /api/contact/get/:company/:entityId                @controllers.contacts.ContactsController.findEntityContacts(company,entityId)
+GET            /api/contacts/get                                  @controllers.contacts.ContactsController.getAll(company)
 
 # Demgraphics
 ## Gender
-POST           /api/demographics/gender/post                  @controllers.common.demographics.GenderController.createOrUpdate
-GET            /api/demographics/gender/get/:id               @controllers.common.demographics.GenderController.getById(id)
-GET            /api/demographics/genders/get                  @controllers.common.demographics.GenderController.getAll
+POST           /api/demographics/gender/post                      @controllers.common.demographics.GenderController.createOrUpdate
+GET            /api/demographics/gender/get/:id                   @controllers.common.demographics.GenderController.getById(id)
+GET            /api/demographics/genders/get                      @controllers.common.demographics.GenderController.getAll
 
 ## IdentificationType
-POST           /api/demographics/idtype/post                  @controllers.common.demographics.IdentificationTypeController.createOrUpdate
-GET            /api/demographics/idtype/get/:id               @controllers.common.demographics.IdentificationTypeController.getById(id)
-GET            /api/demographics/idtypes/get                  @controllers.common.demographics.IdentificationTypeController.getAll
+POST           /api/demographics/idtype/post                      @controllers.common.demographics.IdentificationTypeController.createOrUpdate
+GET            /api/demographics/idtype/get/:id                   @controllers.common.demographics.IdentificationTypeController.getById(id)
+GET            /api/demographics/idtypes/get                      @controllers.common.demographics.IdentificationTypeController.getAll
 
 
 ## Language
-POST           /api/demographics/language/post                @controllers.common.demographics.LanguageController.createOrUpdate
-GET            /api/demographics/language/get/:id             @controllers.common.demographics.LanguageController.getById(id)
-GET            /api/demographics/languages/get                @controllers.common.demographics.LanguageController.getAll
+POST           /api/demographics/language/post                    @controllers.common.demographics.LanguageController.createOrUpdate
+GET            /api/demographics/language/get/:id                 @controllers.common.demographics.LanguageController.getById(id)
+GET            /api/demographics/languages/get                    @controllers.common.demographics.LanguageController.getAll
 
 ## LanguageProficiency
-POST           /api/demographics/languagep/post               @controllers.common.demographics.LanguageProficiencyController.createOrUpdate
-GET            /api/demographics/languagep/get/:id            @controllers.common.demographics.LanguageProficiencyController.getById(id)
-GET            /api/demographics/languageps/get               @controllers.common.demographics.LanguageProficiencyController.getAll
+POST           /api/demographics/languagep/post                   @controllers.common.demographics.LanguageProficiencyController.createOrUpdate
+GET            /api/demographics/languagep/get/:id                @controllers.common.demographics.LanguageProficiencyController.getById(id)
+GET            /api/demographics/languageps/get                   @controllers.common.demographics.LanguageProficiencyController.getAll
 
 # MaritalStatus
-POST           /api/demographics/mstatus/post                 @controllers.common.demographics.MaritalStatusController.createOrUpdate
-GET            /api/demographics/mstatus/get/:id              @controllers.common.demographics.MaritalStatusController.getById(id)
-GET            /api/demographics/mstatuses/get                @controllers.common.demographics.MaritalStatusController.getAll
+POST           /api/demographics/mstatus/post                     @controllers.common.demographics.MaritalStatusController.createOrUpdate
+GET            /api/demographics/mstatus/get/:id                  @controllers.common.demographics.MaritalStatusController.getById(id)
+GET            /api/demographics/mstatuses/get                    @controllers.common.demographics.MaritalStatusController.getAll
 
 # Race
-POST           /api/demographics/race/post                    @controllers.common.demographics.RaceController.createOrUpdate
-GET            /api/demographics/race/get/:id                 @controllers.common.demographics.RaceController.getById(id)
-GET            /api/demographics/races/get                    @controllers.common.demographics.RaceController.getAll
+POST           /api/demographics/race/post                        @controllers.common.demographics.RaceController.createOrUpdate
+GET            /api/demographics/race/get/:id                     @controllers.common.demographics.RaceController.getById(id)
+GET            /api/demographics/races/get                        @controllers.common.demographics.RaceController.getAll
 
 # Roles
-POST           /api/demographics/role/post                    @controllers.common.demographics.RoleController.createOrUpdate
-GET            /api/demographics/role/get/:id                 @controllers.common.demographics.RoleController.getById(id)
-GET            /api/demographics/roles/get                    @controllers.common.demographics.RoleController.getAll
+POST           /api/demographics/role/post                        @controllers.common.demographics.RoleController.createOrUpdate
+GET            /api/demographics/role/get/:id                     @controllers.common.demographics.RoleController.getById(id)
+GET            /api/demographics/roles/get                        @controllers.common.demographics.RoleController.getAll
 
 
 # Title
-POST           /api/demographics/title/post                   @controllers.common.demographics.TitleController.createOrUpdate
-GET            /api/demographics/title/get/:id                @controllers.common.demographics.TitleController.getById(id)
-GET            /api/demographics/titles/get                   @controllers.common.demographics.TitleController.getAll
+POST           /api/demographics/title/post                       @controllers.common.demographics.TitleController.createOrUpdate
+GET            /api/demographics/title/get/:id                    @controllers.common.demographics.TitleController.getById(id)
+GET            /api/demographics/titles/get                       @controllers.common.demographics.TitleController.getAll
 
 ## Education
 # Evaluation
-POST           /api/education/evaluation/post                 @controllers.common.education.EvaluationController.createOrUpdate
-GET            /api/education/evaluation/get/:id              @controllers.common.education.EvaluationController.getById(id)
-GET            /api/education/evaluations/get                 @controllers.common.education.EvaluationController.getAll
+POST           /api/education/evaluation/post                     @controllers.common.education.EvaluationController.createOrUpdate
+GET            /api/education/evaluation/get/:id                  @controllers.common.education.EvaluationController.getById(id)
+GET            /api/education/evaluations/get                     @controllers.common.education.EvaluationController.getAll
 
 
 # EducationType
-POST           /api/education/edutype/post                    @controllers.common.education.EducationTypeController.createOrUpdate
-GET            /api/education/edutype/get/:id                 @controllers.common.education.EducationTypeController.getById(id)
-GET            /api/education/edutypes/get                    @controllers.common.education.EducationTypeController.getAll
+POST           /api/education/edutype/post                        @controllers.common.education.EducationTypeController.createOrUpdate
+GET            /api/education/edutype/get/:id                     @controllers.common.education.EducationTypeController.getById(id)
+GET            /api/education/edutypes/get                        @controllers.common.education.EducationTypeController.getAll
 
 # DegreeType
-POST           /api/education/degreetype/post                 @controllers.common.education.DegreeTypeController.createOrUpdate
-GET            /api/education/degreetype/get/:id              @controllers.common.education.DegreeTypeController.getById(id)
-GET            /api/education/degreetypes/get                 @controllers.common.education.DegreeTypeController.getAll
+POST           /api/education/degreetype/post                     @controllers.common.education.DegreeTypeController.createOrUpdate
+GET            /api/education/degreetype/get/:id                  @controllers.common.education.DegreeTypeController.getById(id)
+GET            /api/education/degreetypes/get                     @controllers.common.education.DegreeTypeController.getAll
 
 #Job
 # JobClassification
-POST           /api/job/jobclassiffication/post               @controllers.common.job.JobClassificationController.createOrUpdate
-GET            /api/job/jobclassiffication/get/:id            @controllers.common.job.JobClassificationController.getById(id)
-GET            /api/jobs/jobclassiffications/get              @controllers.common.job.JobClassificationController.getAll
+POST           /api/job/jobclassiffication/post                   @controllers.common.job.JobClassificationController.createOrUpdate
+GET            /api/job/jobclassiffication/get/:id                @controllers.common.job.JobClassificationController.getById(id)
+GET            /api/jobs/jobclassiffications/get                  @controllers.common.job.JobClassificationController.getAll
 
 #Location
-POST           /api/location/addresstype/post                 @controllers.common.location.AddressTypeController.createOrUpdate
-GET            /api/location/addresstype/get/:id              @controllers.common.location.AddressTypeController.getById(id)
-GET            /api/location/addresstypes/get                 @controllers.common.location.AddressTypeController.getAll
+POST           /api/location/addresstype/post                     @controllers.common.location.AddressTypeController.createOrUpdate
+GET            /api/location/addresstype/get/:id                  @controllers.common.location.AddressTypeController.getById(id)
+GET            /api/location/addresstypes/get                     @controllers.common.location.AddressTypeController.getAll
 
 
-POST           /api/location/contacttype/post                 @controllers.common.location.ContactTypeController.createOrUpdate
-GET            /api/location/contacttype/get/:id              @controllers.common.location.ContactTypeController.getById(id)
-GET            /api/location/contacttypes/get                 @controllers.common.location.ContactTypeController.getAll
+POST           /api/location/contacttype/post                     @controllers.common.location.ContactTypeController.createOrUpdate
+GET            /api/location/contacttype/get/:id                  @controllers.common.location.ContactTypeController.getById(id)
+GET            /api/location/contacttypes/get                     @controllers.common.location.ContactTypeController.getAll
 
 
-POST           /api/location/locationtype/post                @controllers.common.location.LocationTypeController.createOrUpdate
-GET            /api/location/locationtype/get/:id             @controllers.common.location.LocationTypeController.getById(id)
-GET            /api/location/locationtypes/get                @controllers.common.location.LocationTypeController.getAll
+POST           /api/location/locationtype/post                    @controllers.common.location.LocationTypeController.createOrUpdate
+GET            /api/location/locationtype/get/:id                 @controllers.common.location.LocationTypeController.getById(id)
+GET            /api/location/locationtypes/get                    @controllers.common.location.LocationTypeController.getAll
 
 # Position
 
-POST           /api/position/ptype/post                       @controllers.common.position.PositionTypeController.createOrUpdate
-GET            /api/position/ptype/get/:id                    @controllers.common.position.PositionTypeController.getById(id)
-GET            /api/position/ptypes/get                       @controllers.common.position.PositionTypeController.getAll
+POST           /api/position/ptype/post                           @controllers.common.position.PositionTypeController.createOrUpdate
+GET            /api/position/ptype/get/:id                        @controllers.common.position.PositionTypeController.getById(id)
+GET            /api/position/ptypes/get                           @controllers.common.position.PositionTypeController.getAll
 
 
 
 #Util
 
-POST           /api/util/currency/post                        @controllers.common.util.CurrencyController.createOrUpdate
-GET            /api/util/currency/get/:id                     @controllers.common.util.CurrencyController.getById(id)
-GET            /api/util/currencies/get                       @controllers.common.util.CurrencyController.getAll
+POST           /api/util/currency/post                            @controllers.common.util.CurrencyController.createOrUpdate
+GET            /api/util/currency/get/:id                         @controllers.common.util.CurrencyController.getById(id)
+GET            /api/util/currencies/get                           @controllers.common.util.CurrencyController.getAll
 
-POST           /api/util/status/post                          @controllers.common.util.StatusController.createOrUpdate
-GET            /api/util/status/get/:id                       @controllers.common.util.StatusController.getById(id)
-GET            /api/util/statuses/get                         @controllers.common.util.StatusController.getAll
+POST           /api/util/status/post                              @controllers.common.util.StatusController.createOrUpdate
+GET            /api/util/status/get/:id                           @controllers.common.util.StatusController.getById(id)
+GET            /api/util/statuses/get                             @controllers.common.util.StatusController.getAll
 
-POST           /api/util/mail/post                            @controllers.common.util.MailController.createOrUpdate
-GET            /api/util/mail/get/:id                         @controllers.common.util.MailController.getById(id)
-GET            /api/util/mails/get                            @controllers.common.util.MailController.getAll
-
-
-
+POST           /api/util/mail/post                                @controllers.common.util.MailController.createOrUpdate
+GET            /api/util/mail/get/:id                             @controllers.common.util.MailController.getById(id)
+GET            /api/util/mails/get                                @controllers.common.util.MailController.getAll
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET            /assets/*file                                  controllers.Assets.versioned(path="/public", file: Asset)
+GET            /assets/*file                                      controllers.Assets.versioned(path="/public", file: Asset)
 
