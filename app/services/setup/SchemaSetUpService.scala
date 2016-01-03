@@ -1,7 +1,7 @@
 package services.setup
 
 
-import repository.company.{CompanyRepository, OfficeRepository, DepartmentRepository}
+import repository.company.{CompanyLogoRepository, CompanyRepository, OfficeRepository, DepartmentRepository}
 import repository.contacts.ContactsRepository
 import repository.common.demographics._
 import repository.common.education.{DegreeTypeRepository, EvaluationRepository, EducationTypeRepository}
@@ -78,6 +78,7 @@ object SchemaSetUpService extends Service {
     plang <- PersonLanguageRepository.create.ifNotExists().future()
     cfiles <- CompanyFilesRepository.create.ifNotExists().future()
     cimages <- CompanyImagesRepository.create.ifNotExists().future()
+    clogos <- CompanyLogoRepository.create.ifNotExists().future()
 
 
   } yield person

@@ -64,6 +64,10 @@ POST           /api/department/post                           @controllers.compa
 GET            /api/department/get/:company/:id               @controllers.company.DepartmentController.getById(company,id)
 GET            /api/departments/:company                      @controllers.company.DepartmentController.getAllDepartments(company)
 
+POST           /api/companylogo/post                           @controllers.company.CompanyLogoController.createOrUpdate
+GET            /api/companylogo/get/:company/:id               @controllers.company.CompanyLogoController.getCompanyLogo(company,id)
+GET            /api/companylogo/:company                      @controllers.company.CompanyLogoController.getAllCompanyLogos(company)
+
 
 POST           /api/office/post                               @controllers.company.OfficeController.createOrUpdate
 GET            /api/ofice/get/:company/:id                    @controllers.company.OfficeController.getById(company,id)
