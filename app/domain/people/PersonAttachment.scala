@@ -11,6 +11,7 @@ case class PersonAttachment(company: String,
                             personId: String,
                             id: String,
                             url: String,
+                            description:String,
                             mime: String,
                             date: Date
                              )

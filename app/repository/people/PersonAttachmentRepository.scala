@@ -20,12 +20,12 @@ class PersonAttachmentRepository extends CassandraTable[PersonAttachmentReposito
 
   object id extends StringColumn(this) with PrimaryKey[String]
 
+  object personId extends StringColumn(this) with PrimaryKey[String]
+
   object url extends StringColumn(this)
 
   object description extends StringColumn(this)
-
-  object size extends OptionalStringColumn(this)
-
+  
   object mime extends StringColumn(this)
 
   object date extends DateColumn(this)
@@ -33,37 +33,44 @@ class PersonAttachmentRepository extends CassandraTable[PersonAttachmentReposito
   override def fromRow(r: Row): PersonAttachment = {
     PersonAttachment(
       company(r),
+      personId(r),
       id(r),
       url(r),
-      size(r),
+      description(r),
       mime(r),
       date(r))
   }
 }
 
 object PersonAttachmentRepository extends PersonAttachmentRepository with RootConnector {
-  override lazy val tableName = "clogos"
+  override lazy val tableName = "pattachments"
 
   override implicit def space: KeySpace = DataConnection.keySpace
 
   override implicit def session: Session = DataConnection.session
 
-  def save(dept: PersonAttachment) = {
+  def save(attachment: PersonAttachment) = {
     insert
-      .value(_.company, dept.company)
-      .value(_.id, dept.id)
-      .value(_.url, dept.url)
-      .value(_.size, dept.size)
-      .value(_.mime, dept.mime)
-      .value(_.date, dept.date)
+      .value(_.company, attachment.company)
+      .value(_.personId, attachment.personId)
+      .value(_.id, attachment.id)
+      .value(_.url, attachment.url)
+      .value(_.description, attachment.description)
+      .value(_.mime, attachment.mime)
+      .value(_.date, attachment.date)
       .future()
   }
 
-  def findDCompanyLogo(company: String, id: String): Future[Option[PersonAttachment]] = {
-    select.where(_.company eqs company).and(_.id eqs id).one()
+  def findDCompanyLogo(company: String, personId:String,id: String): Future[Option[PersonAttachment]] = {
+    select.where(_.company eqs company).and(_.personId eqs personId).and(_.id eqs id).one()
   }
 
-  def findCompanyLogos(company: String): Future[Seq[PersonAttachment]] = {
+  def getPersonAttachments(company: String,personId:String): Future[Seq[PersonAttachment]] = {
+    select.where(_.company eqs company).and(_.personId eqs personId) fetchEnumerator() run Iteratee.collect()
+  }
+
+  def getCompanyPeopleAttachments(company: String): Future[Seq[PersonAttachment]] = {
     select.where(_.company eqs company) fetchEnumerator() run Iteratee.collect()
   }
 }
+

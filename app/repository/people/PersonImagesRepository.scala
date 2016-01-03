@@ -19,6 +19,8 @@ class PersonImagesRepository extends CassandraTable[PersonImagesRepository, Pers
 
   object company extends StringColumn(this) with PartitionKey[String]
 
+  object personId extends StringColumn(this) with PrimaryKey[String]
+
   object id extends StringColumn(this) with PrimaryKey[String]
 
   object url extends StringColumn(this)
@@ -34,6 +36,7 @@ class PersonImagesRepository extends CassandraTable[PersonImagesRepository, Pers
   override def fromRow(r: Row): PersonImages = {
     PersonImages(
       company(r),
+      personId(r),
       id(r),
       url(r),
       size(r),
@@ -49,22 +52,27 @@ object PersonImagesRepository extends PersonImagesRepository with RootConnector 
 
   override implicit def session: Session = DataConnection.session
 
-  def save(dept: PersonImages) = {
+  def save(image: PersonImages) = {
     insert
-      .value(_.company, dept.company)
-      .value(_.id, dept.id)
-      .value(_.url, dept.url)
-      .value(_.size, dept.size)
-      .value(_.mime, dept.mime)
-      .value(_.date, dept.date)
+      .value(_.company, image.company)
+      .value(_.personId, image.personId)
+      .value(_.id, image.id)
+      .value(_.url, image.url)
+      .value(_.size, image.size)
+      .value(_.mime, image.mime)
+      .value(_.date, image.date)
       .future()
   }
 
-  def findDCompanyLogo(company: String, id: String): Future[Option[PersonImages]] = {
-    select.where(_.company eqs company).and(_.id eqs id).one()
+  def getPersonImage(company: String, personId:String,id: String): Future[Option[PersonImages]] = {
+    select.where(_.company eqs company).and(_.personId eqs personId).and(_.id eqs id).one()
   }
 
-  def findCompanyLogos(company: String): Future[Seq[PersonImages]] = {
+  def getPersonImages(company: String,personId:String): Future[Seq[PersonImages]] = {
+    select.where(_.company eqs company).and(_.personId eqs personId) fetchEnumerator() run Iteratee.collect()
+  }
+
+  def getCompanyPeopleImages(company: String): Future[Seq[PersonImages]] = {
     select.where(_.company eqs company) fetchEnumerator() run Iteratee.collect()
   }
 }

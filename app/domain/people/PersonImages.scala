@@ -8,7 +8,7 @@ import play.api.libs.json.Json
  * Created by hashcode on 2016/01/03.
  */
 case class PersonImages(company: String,
-                        personIdString,
+                        personId:String,
                         id: String,
                         url: String,
                         size: Option[String],
