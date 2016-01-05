@@ -192,6 +192,15 @@ GET            /api/util/mail/get/:id                             @controllers.c
 GET            /api/util/mails/get                                @controllers.common.util.MailController.getAll
 
 
+
+#Storage
+POST           /api/storageurl/post                               @controllers.storage.StorageUrlController.createOrUpdate
+GET            /api/storageurl/get/:id                            @controllers.storage.StorageUrlController.getById(id)
+GET            /api/storageurls/urls                              @controllers.storage.StorageUrlController.getAllLinks
+
+
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET            /assets/*file                                      controllers.Assets.versioned(path="/public", file: Asset)
 
