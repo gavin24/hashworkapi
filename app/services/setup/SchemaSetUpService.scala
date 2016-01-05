@@ -1,18 +1,18 @@
 package services.setup
 
 
-import repository.company.{CompanyLogoRepository, CompanyRepository, OfficeRepository, DepartmentRepository}
-import repository.contacts.ContactsRepository
 import repository.common.demographics._
-import repository.common.education.{DegreeTypeRepository, EvaluationRepository, EducationTypeRepository}
+import repository.common.education.{DegreeTypeRepository, EducationTypeRepository, EvaluationRepository}
 import repository.common.job.JobClassificationRepository
-import repository.common.location.{ContactTypeRepository, AddressTypeRepository, LocationTypeRepository}
+import repository.common.location.{AddressTypeRepository, ContactTypeRepository, LocationTypeRepository}
 import repository.common.position.PositionTypeRepository
-import repository.common.util.{MailRepository, CurrencyRepository, StatusRepository}
+import repository.common.util.{CurrencyRepository, MailRepository, StatusRepository}
+import repository.company.{CompanyLogoRepository, CompanyRepository, DepartmentRepository, OfficeRepository}
+import repository.contacts.ContactsRepository
 import repository.people._
-import repository.storage.{StorageUrlRepository, CompanyImagesRepository, CompanyFilesRepository}
-
+import repository.storage.StorageUrlRepository
 import services.Service
+
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
@@ -76,8 +76,6 @@ object SchemaSetUpService extends Service {
     pemp <-PersonEmploymentHistoryRepository.create.ifNotExists().future()
     pid <- PersonIdentityRepository.create.ifNotExists().future()
     plang <- PersonLanguageRepository.create.ifNotExists().future()
-    cfiles <- CompanyFilesRepository.create.ifNotExists().future()
-    cimages <- CompanyImagesRepository.create.ifNotExists().future()
     clogos <- CompanyLogoRepository.create.ifNotExists().future()
     clinks <-StorageUrlRepository.create.ifNotExists().future()
 
