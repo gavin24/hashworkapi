@@ -22,6 +22,8 @@ class CompanyLogoRepository extends CassandraTable[CompanyLogoRepository, Compan
 
   object url extends StringColumn(this)
 
+  object description extends StringColumn(this)
+
   object size extends OptionalStringColumn(this)
 
   object mime extends StringColumn(this)
@@ -34,6 +36,7 @@ class CompanyLogoRepository extends CassandraTable[CompanyLogoRepository, Compan
       id(r),
       url(r),
       size(r),
+      description(r),
       mime(r),
       date(r))
   }
@@ -54,6 +57,7 @@ object CompanyLogoRepository extends CompanyLogoRepository with RootConnector {
       .value(_.size, dept.size)
       .value(_.mime, dept.mime)
       .value(_.date, dept.date)
+      .value(_.description, dept.description)
       .future()
   }
 

@@ -11,6 +11,7 @@ case class CompanyLogo(company: String,
                        id: String,
                        url: String,
                        size: Option[String],
+                       description:String,
                        mime: String,
                        date: Date)
 
