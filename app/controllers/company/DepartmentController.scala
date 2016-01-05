@@ -3,7 +3,6 @@ package controllers.company
 import domain.company.Department
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.common.demographics.GenderService
 import services.company.DepartmentService
 
 import scala.concurrent.ExecutionContext.Implicits.global

@@ -4,6 +4,7 @@ import domain.company.CompanyDocuments
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
 import services.company.CompanyDocumentsService
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by hashcode on 2016/01/05.
