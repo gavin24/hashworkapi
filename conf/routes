@@ -54,13 +54,13 @@ GET            /api/plangs/:personId                              @controllers.p
 
 POST           /api/pattachment/post                              @controllers.people.PersonAttachmentController.createOrUpdate
 GET            /api/pattachment/get/:company/:personId/:id        @controllers.people.PersonAttachmentController.getPersonAttachment(company,personId,id)
-GET            /api/pattachments/:company/:personId               @controllers.people.PersonAttachmentController.getPersonAttachments(company,personId)
-GET            /api/pcattachments/:company                        @controllers.people.PersonAttachmentController.getCompanyPeopleAttachments(company)
+GET            /api/pattachments/get/:company/:personId           @controllers.people.PersonAttachmentController.getPersonAttachments(company,personId)
+GET            /api/pcattachments/get/:company                    @controllers.people.PersonAttachmentController.getCompanyPeopleAttachments(company)
 
 POST           /api/pimage/post                                   @controllers.people.PersonImagesController.createOrUpdate
 GET            /api/pimage/get/:company/:personId/:id             @controllers.people.PersonImagesController.getPersonImage(company,personId,id)
-GET            /api/pimages/:company/:personId                    @controllers.people.PersonImagesController.getPersonImages(company,personId)
-GET            /api/pcimages/:company                             @controllers.people.PersonImagesController.getCompanyPeopleImages(company)
+GET            /api/pimages/get/:company/:personId                @controllers.people.PersonImagesController.getPersonImages(company,personId)
+GET            /api/pcimages/get/:company                         @controllers.people.PersonImagesController.getCompanyPeopleImages(company)
 
 
 #Company
@@ -76,12 +76,12 @@ GET            /api/departments/:company                          @controllers.c
 
 POST           /api/companydoc/post                               @controllers.company.CompanyDocumentsController.createOrUpdate
 GET            /api/companydoc/get/:company/:id                   @controllers.company.CompanyDocumentsController.getDocuemtById(company,id)
-GET            /api/companydocs/:company                          @controllers.company.CompanyDocumentsController.getAllCompanyDocuments(company)
+GET            /api/companydocs/get/:company                      @controllers.company.CompanyDocumentsController.getAllCompanyDocuments(company)
 
 
 POST           /api/companylogo/post                              @controllers.company.CompanyLogoController.createOrUpdate
 GET            /api/companylogo/get/:company/:id                  @controllers.company.CompanyLogoController.getCompanyLogo(company,id)
-GET            /api/companylogos/:company                         @controllers.company.CompanyLogoController.getAllCompanyLogos(company)
+GET            /api/companylogos/get/:company                     @controllers.company.CompanyLogoController.getAllCompanyLogos(company)
 
 
 POST           /api/office/post                                   @controllers.company.OfficeController.createOrUpdate
@@ -200,9 +200,9 @@ GET            /api/util/mails/get                                @controllers.c
 
 
 #Storage
-POST           /api/storageurl/post                               @controllers.storage.StorageUrlController.createOrUpdate
-GET            /api/storageurl/get/:id                            @controllers.storage.StorageUrlController.getById(id)
-GET            /api/storageurls/urls                              @controllers.storage.StorageUrlController.getAllLinks
+POST           /api/util/storageurl/post                          @controllers.storage.StorageUrlController.createOrUpdate
+GET            /api/util/storageurl/get/:id                       @controllers.storage.StorageUrlController.getById(id)
+GET            /api/util/storageurls/get                          @controllers.storage.StorageUrlController.getAllLinks
 
 
 
