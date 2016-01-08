@@ -10,8 +10,8 @@ import play.api.libs.json.Json
 case class PersonPosition(
                          personId:String,
                          id:String,
-                         positionId:String,
                          statusDate:Date,
+                         positionId:String,
                          statusId:String,
                          reason:String
                            )
