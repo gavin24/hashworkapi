@@ -12,5 +12,4 @@ case class PositionEvent(positionId: String, id: String, date: Date, event: Stri
 object PositionEvent {
 
   implicit val positionFmt = Json.format[PositionEvent]
-
 }
