@@ -57,7 +57,7 @@ object PositionOccupantsRepository extends PositionOccupantsRepository with Root
       .future()
   }
 
-  def getPositionOcupant(positionId: String, id: String): Future[Option[PositionOccupants]] = {
+  def getPositionOccupant(positionId: String, id: String): Future[Option[PositionOccupants]] = {
     select.where(_.positionId eqs positionId).and(_.id eqs id).one()
   }
 

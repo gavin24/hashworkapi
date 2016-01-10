@@ -57,11 +57,11 @@ object PositionPackageRepository extends PositionPackageRepository with RootConn
       .future()
   }
 
-  def findById(positionId: String, id: String): Future[Option[PositionPackage]] = {
+  def getPositionPackage(positionId: String, id: String): Future[Option[PositionPackage]] = {
     select.where(_.positionId eqs positionId).and(_.id eqs id).one()
   }
 
-  def findPersonAddresses(positionId: String): Future[Seq[PositionPackage]] = {
+  def getPositionPackages(positionId: String): Future[Seq[PositionPackage]] = {
     select.where(_.positionId eqs positionId).fetchEnumerator() run Iteratee.collect()
   }
 

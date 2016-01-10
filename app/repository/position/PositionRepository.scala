@@ -21,7 +21,6 @@ import scala.concurrent.Future
  */
 class PositionRepository extends CassandraTable[PositionRepository, Position] {
 
-
   object company extends StringColumn(this) with PartitionKey[String]
 
   object id extends StringColumn(this) with PrimaryKey[String]
