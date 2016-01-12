@@ -1,32 +1,30 @@
 package controllers.people
 
-import domain.common.demographics.Gender
+import domain.people.PersonPosition
 import play.api.libs.json.Json
-import play.api.mvc.Action
-import play.api.mvc.BodyParsers.parse
-import services.common.demographics.GenderService
+import play.api.mvc.{Action, Controller}
+import services.people.PersonPositionService
 
 /**
  * Created by hashcode on 2016/01/11.
  */
-class PersonPositionController {
+class PersonPositionController extends Controller{
   def createOrUpdate = Action.async(parse.json) {
     request =>
-
-      val entity = Json.fromJson[Gender](request.body).get
-      GenderService.saveOrUpdate(entity) map (result =>
+      val entity = Json.fromJson[PersonPosition](request.body).get
+      PersonPositionService.createOrUpdate(entity) map (result =>
         Ok(Json.toJson(entity)))
   }
 
-  def getById(id: String) = Action.async {
+  def getById(personId: String, id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      PersonPositionService.getPersonPosition(personId, id) map (result =>
         Ok(Json.toJson(result)))
   }
 
-  def getAll = Action.async {
+  def getAll(personId: String) = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      PersonPositionService.getPersonPositions(personId) map (result =>
         Ok(Json.toJson(result)))
   }
 }

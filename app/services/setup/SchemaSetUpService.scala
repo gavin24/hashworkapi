@@ -9,7 +9,9 @@ import repository.common.position.PositionTypeRepository
 import repository.common.util.{CurrencyRepository, MailRepository, StatusRepository}
 import repository.company.{CompanyLogoRepository, CompanyRepository, DepartmentRepository, OfficeRepository}
 import repository.contacts.ContactsRepository
+import repository.job.{JobEventRepository, JobRepository}
 import repository.people._
+import repository.position._
 import repository.storage.StorageUrlRepository
 import services.Service
 
@@ -45,7 +47,11 @@ object SchemaSetUpService extends Service {
     eval <- EvaluationRepository.create.ifNotExists().future()
 
     // job
-    job <- JobClassificationRepository.create.ifNotExists().future()
+    jobC <- JobClassificationRepository.create.ifNotExists().future()
+    job <- JobRepository.create.ifNotExists().future()
+    jobEvent <- JobEventRepository.create.ifNotExists().future()
+
+
 
 
     //location
@@ -55,6 +61,13 @@ object SchemaSetUpService extends Service {
     //position
     postype <- PositionTypeRepository.create.ifNotExists().future()
     title <- TitleRepository.create.ifNotExists().future()
+    posi <- PositionRepository.create.ifNotExists().future()
+    dpR <- DepartureReasonRepository.create.ifNotExists().future()
+    posDes <- PositionDesignationRepository.create.ifNotExists().future()
+    posEvent <- PositionEventRepository.create.ifNotExists().future()
+    posOcc <- PositionOccupantsRepository.create.ifNotExists().future()
+    posiPack <- PositionPackageRepository.create.ifNotExists().future()
+
 
     //util
     status <- StatusRepository.create.ifNotExists().future()
@@ -65,19 +78,20 @@ object SchemaSetUpService extends Service {
     company <- CompanyRepository.create.ifNotExists().future()
     locatype <- LocationTypeRepository.create.ifNotExists().future()
     addretype <- AddressTypeRepository.create.ifNotExists().future()
-    mail <-MailRepository.create.ifNotExists().future()
+    mail <- MailRepository.create.ifNotExists().future()
     ctypes <- ContactTypeRepository.create.ifNotExists().future()
-    degreeType <-DegreeTypeRepository.create.ifNotExists().future()
+    degreeType <- DegreeTypeRepository.create.ifNotExists().future()
     pa <- PersonAddressRepository.create.ifNotExists().future()
-    pcont <-PersonContactRepository.create.ifNotExists().future()
-    pced <-PersonContinuingEducationRepository.create.ifNotExists().future()
-    pdemo <-PersonDemographicsRepository.create.ifNotExists().future()
-    pedu <-PersonEducationHistoryRepository.create.ifNotExists().future()
-    pemp <-PersonEmploymentHistoryRepository.create.ifNotExists().future()
+    pcont <- PersonContactRepository.create.ifNotExists().future()
+    pced <- PersonContinuingEducationRepository.create.ifNotExists().future()
+    pdemo <- PersonDemographicsRepository.create.ifNotExists().future()
+    pedu <- PersonEducationHistoryRepository.create.ifNotExists().future()
+    pemp <- PersonEmploymentHistoryRepository.create.ifNotExists().future()
     pid <- PersonIdentityRepository.create.ifNotExists().future()
     plang <- PersonLanguageRepository.create.ifNotExists().future()
     clogos <- CompanyLogoRepository.create.ifNotExists().future()
-    clinks <-StorageUrlRepository.create.ifNotExists().future()
+    clinks <- StorageUrlRepository.create.ifNotExists().future()
+    pposi <- PersonPositionRepository.create.ifNotExists().future()
 
 
   } yield person

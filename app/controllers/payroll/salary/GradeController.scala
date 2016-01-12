@@ -1,32 +1,31 @@
 package controllers.payroll.salary
 
-import domain.common.demographics.Gender
+import domain.payroll.salary.Grade
 import play.api.libs.json.Json
-import play.api.mvc.Action
-import play.api.mvc.BodyParsers.parse
-import services.common.demographics.GenderService
+import play.api.mvc.{Action, Controller}
+import services.payroll.salary.GradeService
 
 /**
  * Created by hashcode on 2016/01/11.
  */
-class GradeController {
+class GradeController extends Controller{
   def createOrUpdate = Action.async(parse.json) {
     request =>
 
-      val entity = Json.fromJson[Gender](request.body).get
-      GenderService.saveOrUpdate(entity) map (result =>
+      val entity = Json.fromJson[Grade](request.body).get
+      GradeService.createOrUpdate(entity) map (result =>
         Ok(Json.toJson(entity)))
   }
 
-  def getById(id: String) = Action.async {
+  def getById(company: String, id: String) = Action.async {
     request =>
-      GenderService.get(id) map (result =>
+      GradeService.getGradeById(company, id) map (result =>
         Ok(Json.toJson(result)))
   }
 
-  def getAll = Action.async {
+  def getAll(company: String) = Action.async {
     request =>
-      GenderService.getAll map (result =>
+      GradeService.getCompanyGrades(company) map (result =>
         Ok(Json.toJson(result)))
   }
 }

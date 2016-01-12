@@ -11,7 +11,7 @@ import scala.concurrent.Future
  * Created by hashcode on 2016/01/10.
  */
 object PositionEventService extends Service {
-  def save(event: PositionEvent): Future[ResultSet] = {
+  def createOrUpdate(event: PositionEvent): Future[ResultSet] = {
     PositionEventRepository.save(event)
   }
 

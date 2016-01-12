@@ -10,7 +10,7 @@ import scala.concurrent.Future
  * Created by hashcode on 2016/01/10.
  */
 object DepartureReasonService extends Service {
-  def save(reason: DepartureReason): Future[ResultSet] = {
+  def createOrUpdate(reason: DepartureReason): Future[ResultSet] = {
     DepartureReasonService.save(reason)
   }
 

@@ -11,7 +11,8 @@ import scala.concurrent.Future
  * Created by hashcode on 2016/01/10.
  */
 object JobService extends Service {
-  def save(job: Job): Future[ResultSet] = {
+
+  def createOrUpdate(job: Job): Future[ResultSet] = {
     JobRepository.save(job)
   }
 

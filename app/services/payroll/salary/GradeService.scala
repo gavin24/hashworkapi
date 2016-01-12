@@ -11,7 +11,7 @@ import scala.concurrent.Future
  * Created by hashcode on 2016/01/10.
  */
 object GradeService extends Service {
-  def save(grade: Grade): Future[ResultSet] = {
+  def createOrUpdate(grade: Grade): Future[ResultSet] = {
    GradeRepository.save(grade)
   }
 

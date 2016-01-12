@@ -12,7 +12,7 @@ import scala.concurrent.Future
  */
 object PositionDesignationService extends Service {
 
-  def save(designation: PositionDesignation): Future[ResultSet] = {
+  def createOrUpdate(designation: PositionDesignation): Future[ResultSet] = {
    PositionDesignationRepository.save(designation)
   }
 
