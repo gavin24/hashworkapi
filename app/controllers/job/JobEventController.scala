@@ -4,6 +4,7 @@ import domain.job.JobEvent
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
 import services.job.JobEventService
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by hashcode on 2016/01/11.

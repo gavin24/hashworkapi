@@ -1,13 +1,10 @@
 package controllers.position
 
-import domain.common.demographics.Gender
-import domain.position.{PositionOccupants, PositionDesignation}
+import domain.position.PositionOccupants
 import play.api.libs.json.Json
-import play.api.mvc.{Controller, Action}
-import play.api.mvc.BodyParsers.parse
-import services.common.demographics.GenderService
-import services.job.JobService
-import services.position.{PositionOccupantsService, PositionDesignationService}
+import play.api.mvc.{Action, Controller}
+import services.position.PositionOccupantsService
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by hashcode on 2016/01/11.

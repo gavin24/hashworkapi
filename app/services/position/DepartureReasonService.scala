@@ -2,6 +2,7 @@ package services.position
 
 import com.websudos.phantom.dsl._
 import domain.position.DepartureReason
+import repository.position.DepartureReasonRepository
 import services.Service
 
 import scala.concurrent.Future
@@ -11,15 +12,15 @@ import scala.concurrent.Future
  */
 object DepartureReasonService extends Service {
   def createOrUpdate(reason: DepartureReason): Future[ResultSet] = {
-    DepartureReasonService.save(reason)
+    DepartureReasonRepository.save(reason)
   }
 
   def getDepartureReason(company: String, id: String): Future[Option[DepartureReason]] = {
-    DepartureReasonService.getDepartureReason(company,id)
+    DepartureReasonRepository.getDepartureReason(company,id)
   }
 
   def getCompanyDepatureReasons(company: String): Future[Seq[DepartureReason]] = {
-    DepartureReasonService.getCompanyDepatureReasons(company)
+    DepartureReasonRepository.getCompanyDepatureReasons(company)
   }
 
 }

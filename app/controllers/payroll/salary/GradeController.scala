@@ -4,6 +4,7 @@ import domain.payroll.salary.Grade
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
 import services.payroll.salary.GradeService
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by hashcode on 2016/01/11.
