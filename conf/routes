@@ -204,6 +204,7 @@ GET            /api/position/departure/get/:company/:id             @controllers
 GET            /api/position/departures/get/:company                @controllers.position.DepartureReasonController.getAll(company)
 
 POST           /api/position/position/post                          @controllers.position.PositionController.createOrUpdate
+POST           /api/position/batchcreate/post                          @controllers.position.PositionController.batchCreate
 GET            /api/position/position/get/:company/:id              @controllers.position.PositionController.getById(company,id)
 GET            /api/position/positions/get/:company                 @controllers.position.PositionController.getAll(company)
 
