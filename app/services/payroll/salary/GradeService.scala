@@ -1,7 +1,10 @@
 package services.payroll.salary
 
+import java.util.UUID
+
 import com.websudos.phantom.dsl._
-import domain.payroll.salary.Grade
+import conf.util.Util
+import domain.payroll.salary.{Notch, Grade}
 import repository.payroll.salary.GradeRepository
 import services.Service
 
@@ -25,7 +28,7 @@ object GradeService extends Service {
   }
 
   def createNotches(gradeId:String, topAmount:BigDecimal, lowerAmount:BigDecimal)={
-    
+    Notch(gradeId,Util.md5Hash(UUID.randomUUID().toString),"name",BigDecimal("23"))
   }
 
 }
