@@ -3,7 +3,7 @@ package controllers.payroll.salary
 import domain.payroll.salary.Grade
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.payroll.salary.GradeService
+import services.payroll.salary.{NotchService, GradeService}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
@@ -29,4 +29,18 @@ class GradeController extends Controller{
       GradeService.getCompanyGrades(company) map (result =>
         Ok(Json.toJson(result)))
   }
+
+  def getNotchById(gradeId: String, id: String) = Action.async {
+    request =>
+      NotchService.getNotchById(gradeId, id) map (result =>
+        Ok(Json.toJson(result)))
+  }
+
+  def getGradeNotches(gradeId: String) = Action.async {
+    request =>
+      NotchService.getGradeNotches(gradeId) map (result =>
+        Ok(Json.toJson(result)))
+  }
+
+
 }

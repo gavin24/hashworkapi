@@ -162,15 +162,12 @@ GET            /api/education/degreetypes/get                       @controllers
 
 #Job
 POST           /api/job/job/post                                    @controllers.job.JobController.createOrUpdate
-GET            /api/job/job/get/:jobId/:id                          @controllers.job.JobController.getById(jobId,id)
-GET            /api/jobs/jobs/get/:jobId                            @controllers.job.JobController.getAll(jobId)
+GET            /api/job/job/get/:company/:id                        @controllers.job.JobController.getById(company,id)
+GET            /api/jobs/jobs/get/:company                          @controllers.job.JobController.getAll(company)
 
 POST           /api/job/jobevent/post                               @controllers.job.JobEventController.createOrUpdate
 GET            /api/job/jobevent/get/:jobId/:id                     @controllers.job.JobEventController.getById(jobId,id)
 GET            /api/jobs/jobevents/get/:jobId                       @controllers.job.JobEventController.getAll(jobId)
-
-
-
 
 # JobClassification
 POST           /api/job/jobclassiffication/post                     @controllers.common.job.JobClassificationController.createOrUpdate
@@ -204,7 +201,7 @@ GET            /api/position/departure/get/:company/:id             @controllers
 GET            /api/position/departures/get/:company                @controllers.position.DepartureReasonController.getAll(company)
 
 POST           /api/position/position/post                          @controllers.position.PositionController.createOrUpdate
-POST           /api/position/batchcreate/post                          @controllers.position.PositionController.batchCreate
+POST           /api/position/batchcreate/post                       @controllers.position.PositionController.batchCreate
 GET            /api/position/position/get/:company/:id              @controllers.position.PositionController.getById(company,id)
 GET            /api/position/positions/get/:company                 @controllers.position.PositionController.getAll(company)
 
@@ -213,19 +210,19 @@ GET            /api/position/designation/get/:positionId/:id        @controllers
 GET            /api/position/designations/get/:positionId           @controllers.position.PositionDesignationController.getAll(positionId)
 
 
-POST           /api/position/event/post                       @controllers.position.PositionEventController.createOrUpdate
-GET            /api/position/event/get/:positionId/:id        @controllers.position.PositionEventController.getById(positionId,id)
-GET            /api/position/events/get/:positionId           @controllers.position.PositionEventController.getAll(positionId)
+POST           /api/position/event/post                             @controllers.position.PositionEventController.createOrUpdate
+GET            /api/position/event/get/:positionId/:id              @controllers.position.PositionEventController.getById(positionId,id)
+GET            /api/position/events/get/:positionId                 @controllers.position.PositionEventController.getAll(positionId)
 
 
-POST           /api/position/occupant/post                       @controllers.position.PositionOccupantsController.createOrUpdate
-GET            /api/position/occupant/get/:positionId/:id        @controllers.position.PositionOccupantsController.getById(positionId,id)
-GET            /api/position/occupants/get/:positionId           @controllers.position.PositionOccupantsController.getAll(positionId)
+POST           /api/position/occupant/post                          @controllers.position.PositionOccupantsController.createOrUpdate
+GET            /api/position/occupant/get/:positionId/:id           @controllers.position.PositionOccupantsController.getById(positionId,id)
+GET            /api/position/occupants/get/:positionId              @controllers.position.PositionOccupantsController.getAll(positionId)
 
 
-POST           /api/position/package/post                       @controllers.position.PositionPackageController.createOrUpdate
-GET            /api/position/package/get/:positionId/:id        @controllers.position.PositionPackageController.getById(positionId,id)
-GET            /api/position/packages/get/:positionId           @controllers.position.PositionPackageController.getAll(positionId)
+POST           /api/position/package/post                           @controllers.position.PositionPackageController.createOrUpdate
+GET            /api/position/package/get/:positionId/:id            @controllers.position.PositionPackageController.getById(positionId,id)
+GET            /api/position/packages/get/:positionId               @controllers.position.PositionPackageController.getAll(positionId)
 
 
 
@@ -233,9 +230,13 @@ GET            /api/position/packages/get/:positionId           @controllers.pos
 
 # Payroll
 
+#GRADE
+
 POST           /api/payroll/grade/post                              @controllers.payroll.salary.GradeController.createOrUpdate
 GET            /api/payroll/grade/get/:company/:id                  @controllers.payroll.salary.GradeController.getById(company,id)
 GET            /api/payroll/grades/get/:company                     @controllers.payroll.salary.GradeController.getAll(company)
+GET            /api/payroll/notch/get/:gradeId/:id                  @controllers.payroll.salary.GradeController.getNotchById(gradeId,id)
+GET            /api/payroll/noteches/get/:gradeId                   @controllers.payroll.salary.GradeController.getGradeNotches(gradeId)
 
 
 

@@ -10,6 +10,7 @@ import repository.common.util.{CurrencyRepository, MailRepository, StatusReposit
 import repository.company.{CompanyLogoRepository, CompanyRepository, DepartmentRepository, OfficeRepository}
 import repository.contacts.ContactsRepository
 import repository.job.{JobEventRepository, JobRepository}
+import repository.payroll.salary.NotchRepository
 import repository.people._
 import repository.position._
 import repository.storage.StorageUrlRepository
@@ -92,6 +93,7 @@ object SchemaSetUpService extends Service {
     clogos <- CompanyLogoRepository.create.ifNotExists().future()
     clinks <- StorageUrlRepository.create.ifNotExists().future()
     pposi <- PersonPositionRepository.create.ifNotExists().future()
+    notch <- NotchRepository.create.ifNotExists().future()
 
 
   } yield person

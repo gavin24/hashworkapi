@@ -28,15 +28,11 @@ class GradeRepository extends CassandraTable[GradeRepository, Grade] {
 
   object name extends StringColumn(this)
 
-  object notch extends StringColumn(this)
-
   object numberOfNotches extends IntColumn(this)
 
   object lowerAmount extends BigDecimalColumn(this)
 
   object topAmount extends BigDecimalColumn(this)
-
-  object notchAmount extends BigDecimalColumn(this)
 
   object currencyId extends StringColumn(this)
 
@@ -51,11 +47,9 @@ class GradeRepository extends CassandraTable[GradeRepository, Grade] {
       company(r),
       id(r),
       name(r),
-      notch(r),
       numberOfNotches(r),
       lowerAmount(r),
       topAmount(r),
-      notchAmount(r),
       currencyId(r),
       date(r),
       notes(r)
@@ -77,11 +71,9 @@ object GradeRepository extends GradeRepository with RootConnector {
       .value(_.company, grade.company)
       .value(_.id, grade.id)
       .value(_.name, grade.name)
-      .value(_.notch, grade.notch)
       .value(_.numberOfNotches, grade.numberOfNotches)
       .value(_.lowerAmount, grade.lowerAmount)
       .value(_.topAmount, grade.topAmount)
-      .value(_.notchAmount, grade.notchAmount)
       .value(_.currencyId, grade.currencyId)
       .value(_.date, grade.date)
       .value(_.notes, grade.notes)

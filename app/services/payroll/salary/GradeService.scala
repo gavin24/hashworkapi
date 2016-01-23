@@ -12,6 +12,7 @@ import scala.concurrent.Future
  */
 object GradeService extends Service {
   def createOrUpdate(grade: Grade): Future[ResultSet] = {
+
    GradeRepository.save(grade)
   }
 
@@ -21,6 +22,10 @@ object GradeService extends Service {
 
   def getCompanyGrades(company: String): Future[Seq[Grade]] = {
     GradeRepository.getCompanyGrades(company)
+  }
+
+  def createNotches(gradeId:String, topAmount:BigDecimal, lowerAmount:BigDecimal)={
+    
   }
 
 }

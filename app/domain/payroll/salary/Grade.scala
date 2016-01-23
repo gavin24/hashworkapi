@@ -11,11 +11,9 @@ case class Grade(
                   company:String,
                   id:String,
                   name:String,
-                  notch:String,
                   numberOfNotches:Int,
                   lowerAmount:BigDecimal,
                   topAmount:BigDecimal,
-                  notchAmount:BigDecimal,
                   currencyId:String,
                   date:Date,
                   notes:String
