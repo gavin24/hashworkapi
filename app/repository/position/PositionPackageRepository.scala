@@ -21,7 +21,7 @@ class PositionPackageRepository extends CassandraTable[PositionPackageRepository
 
   object positionId extends StringColumn(this) with PartitionKey[String]
 
-  object id extends StringColumn(this) with PrimaryKey[String]
+  object id extends StringColumn(this) with PrimaryKey[String] with ClusteringOrder[String] with Descending
 
   object gradeId extends StringColumn(this)
 

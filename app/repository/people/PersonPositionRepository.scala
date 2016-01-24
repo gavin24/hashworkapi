@@ -21,7 +21,7 @@ class PersonPositionRepository extends CassandraTable[PersonPositionRepository, 
 
   object personId extends StringColumn(this) with PartitionKey[String]
 
-  object id extends StringColumn(this) with PrimaryKey[String]
+  object id extends StringColumn(this) with PrimaryKey[String] with ClusteringOrder[String] with Descending
 
   object statusDate extends DateColumn(this) with PrimaryKey[Date] with ClusteringOrder[Date] with Descending
 

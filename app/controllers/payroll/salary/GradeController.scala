@@ -1,15 +1,16 @@
 package controllers.payroll.salary
 
-import domain.payroll.salary.Grade
+import domain.payroll.salary.{Grade, Notch}
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import services.payroll.salary.{NotchService, GradeService}
+import services.payroll.salary.{GradeService, NotchService}
+
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
- * Created by hashcode on 2016/01/11.
- */
-class GradeController extends Controller{
+  * Created by hashcode on 2016/01/11.
+  */
+class GradeController extends Controller {
   def createOrUpdate = Action.async(parse.json) {
     request =>
 
@@ -42,5 +43,11 @@ class GradeController extends Controller{
         Ok(Json.toJson(result)))
   }
 
+  def createOrUpdateNotch = Action.async(parse.json) {
+    request =>
+      val entity = Json.fromJson[Notch](request.body).get
+      NotchService.createOrUpdate(entity) map (result =>
+        Ok(Json.toJson(entity)))
+  }
 
 }

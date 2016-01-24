@@ -236,7 +236,8 @@ POST           /api/payroll/grade/post                              @controllers
 GET            /api/payroll/grade/get/:company/:id                  @controllers.payroll.salary.GradeController.getById(company,id)
 GET            /api/payroll/grades/get/:company                     @controllers.payroll.salary.GradeController.getAll(company)
 GET            /api/payroll/notch/get/:gradeId/:id                  @controllers.payroll.salary.GradeController.getNotchById(gradeId,id)
-GET            /api/payroll/notches/get/:gradeId                   @controllers.payroll.salary.GradeController.getGradeNotches(gradeId)
+GET            /api/payroll/notches/get/:gradeId                    @controllers.payroll.salary.GradeController.getGradeNotches(gradeId)
+POST           /api/payroll/notch/post                              @controllers.payroll.salary.GradeController.createOrUpdateNotch
 
 
 

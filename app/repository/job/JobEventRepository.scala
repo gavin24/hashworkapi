@@ -22,7 +22,7 @@ class JobEventRepository extends CassandraTable[JobEventRepository, JobEvent] {
 
   object jobId extends StringColumn(this) with PartitionKey[String]
 
-  object id extends StringColumn(this) with PrimaryKey[String]
+  object id extends StringColumn(this) with PrimaryKey[String] with ClusteringOrder[String] with Descending
 
   object date extends DateColumn(this) with PrimaryKey[Date] with ClusteringOrder[Date] with Descending
 
