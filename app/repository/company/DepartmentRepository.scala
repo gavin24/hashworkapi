@@ -11,8 +11,8 @@ import domain.company.{Company, Department}
 import scala.concurrent.Future
 
 /**
- * Created by hashcode on 2015/10/31.
- */
+  * Created by hashcode on 2015/10/31.
+  */
 
 //company:String,
 //id: String,
@@ -30,7 +30,10 @@ sealed class DepartmentRepository extends CassandraTable[DepartmentRepository, D
   object description extends StringColumn(this)
 
   object active extends StringColumn(this)
+
   object state extends StringColumn(this)
+
+  object date extends DateColumn(this)
 
   override def fromRow(r: Row): Department = {
     Department(
@@ -39,7 +42,8 @@ sealed class DepartmentRepository extends CassandraTable[DepartmentRepository, D
       name(r),
       description(r),
       active(r),
-      state(r))
+      state(r),
+      date(r))
   }
 }
 
@@ -58,13 +62,15 @@ object DepartmentRepository extends DepartmentRepository with RootConnector {
       .value(_.description, dept.description)
       .value(_.active, dept.active)
       .value(_.state, dept.state)
+      .value(_.date, dept.date)
       .future()
   }
 
-  def findDepartment(company:String, id: String):Future[Option[Department]] = {
+  def findDepartment(company: String, id: String): Future[Option[Department]] = {
     select.where(_.company eqs company).and(_.id eqs id).one()
   }
-  def findDepartments(company:String):Future[Seq[Department]] = {
-    select.where(_.company eqs company)fetchEnumerator() run Iteratee.collect()
+
+  def findDepartments(company: String): Future[Seq[Department]] = {
+    select.where(_.company eqs company) fetchEnumerator() run Iteratee.collect()
   }
 }
