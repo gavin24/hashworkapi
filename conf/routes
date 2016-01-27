@@ -91,7 +91,7 @@ GET            /api/companylogos/get/:company                       @controllers
 
 
 POST           /api/office/post                                     @controllers.company.OfficeController.createOrUpdate
-GET            /api/ofice/get/:company/:id                          @controllers.company.OfficeController.getById(company,id)
+GET            /api/office/get/:company/:id                          @controllers.company.OfficeController.getById(company,id)
 GET            /api/offices/:company                                @controllers.company.OfficeController.getAllOffices(company)
 
 #CompanyContacts
