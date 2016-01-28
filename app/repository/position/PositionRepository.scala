@@ -17,8 +17,8 @@ import repository.people.PersonAddressRepository._
 import scala.concurrent.Future
 
 /**
- * Created by hashcode on 2016/01/09.
- */
+  * Created by hashcode on 2016/01/09.
+  */
 class PositionRepository extends CassandraTable[PositionRepository, Position] {
 
   object company extends StringColumn(this) with PartitionKey[String]
@@ -36,7 +36,9 @@ class PositionRepository extends CassandraTable[PositionRepository, Position] {
   object description extends StringColumn(this)
 
   object supervisorId extends StringColumn(this)
+
   object state extends StringColumn(this)
+
   object date extends DateColumn(this)
 
   override def fromRow(r: Row): Position = {
@@ -48,8 +50,8 @@ class PositionRepository extends CassandraTable[PositionRepository, Position] {
       jobId(r),
       positionType(r),
       description(r),
-      supervisorId(r)
-      ,state(r),
+      supervisorId(r),
+      state(r),
       date(r)
     )
   }
@@ -71,7 +73,8 @@ object PositionRepository extends PositionRepository with RootConnector {
       .value(_.jobId, position.jobId)
       .value(_.positionType, position.positionType)
       .value(_.description, position.description)
-      .value(_.supervisorId, position.supervisorId)
+      .value(_.state, position.state)
+      .value(_.date, position.date)
       .future()
   }
 
