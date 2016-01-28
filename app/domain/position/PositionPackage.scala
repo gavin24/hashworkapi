@@ -10,6 +10,7 @@ import play.api.libs.json.Json
 case class PositionPackage(positionId: String,
                            id: String,
                            gradeId: String,
+                           notchId:String,
                            date: Date,
                            state: String)
 

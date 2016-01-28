@@ -25,6 +25,8 @@ class PositionPackageRepository extends CassandraTable[PositionPackageRepository
 
   object gradeId extends StringColumn(this)
 
+  object notchId extends StringColumn(this)
+
   object date extends DateColumn(this) with PrimaryKey[Date] with ClusteringOrder[Date] with Descending
 
   object state extends StringColumn(this)
@@ -34,6 +36,7 @@ class PositionPackageRepository extends CassandraTable[PositionPackageRepository
       positionId(r),
       id(r),
       gradeId(r),
+      notchId(r),
       date(r),
       state(r)
     )
@@ -52,6 +55,7 @@ object PositionPackageRepository extends PositionPackageRepository with RootConn
       .value(_.positionId, pospackage.positionId)
       .value(_.id, pospackage.id)
       .value(_.gradeId, pospackage.gradeId)
+      .value(_.notchId, pospackage.notchId)
       .value(_.date, pospackage.date)
       .value(_.state, pospackage.state)
       .future()
