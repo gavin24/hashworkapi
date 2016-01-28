@@ -36,6 +36,8 @@ class PositionRepository extends CassandraTable[PositionRepository, Position] {
   object description extends StringColumn(this)
 
   object supervisorId extends StringColumn(this)
+  object state extends StringColumn(this)
+  object date extends DateColumn(this)
 
   override def fromRow(r: Row): Position = {
     Position(
@@ -47,6 +49,8 @@ class PositionRepository extends CassandraTable[PositionRepository, Position] {
       positionType(r),
       description(r),
       supervisorId(r)
+      ,state(r),
+      date(r)
     )
   }
 }

@@ -1,11 +1,13 @@
 package domain.position
 
 
+import java.util.Date
+
 import play.api.libs.json.Json
 
 /**
- * Created by hashcode on 2015/12/22.
- */
+  * Created by hashcode on 2015/12/22.
+  */
 case class Position(
                      company: String,
                      id: String,
@@ -14,8 +16,10 @@ case class Position(
                      jobId: String,
                      positionType: String,
                      description: String,
-                     supervisorId: String
-                     )
+                     supervisorId: String,
+                     state: String,
+                     date: Date
+                   )
 
 
 object Position {
