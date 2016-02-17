@@ -13,7 +13,12 @@ val PhantomVersion = "1.18.1"
 maintainer := "Boniface Kabaso <boniface@kabaso.com>"
 packageSummary in Linux := "Hashwork REST API"
 packageDescription :=  "Hashwork API Backend "
-serverLoading in Debian := ServerLoader.SystemV
+serverLoading in Debian := ServerLoader.Systemd
+
+bashScriptExtraDefines ++= Seq(
+  """addJava "-Xms1024m"""",
+  """addJava "-Xmx2048m""""
+)
 
 libraryDependencies ++= Seq(
   jdbc,
