@@ -8,12 +8,12 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala,DebianPlugin,Java
 
 scalaVersion := "2.11.7"
 
-val PhantomVersion = "1.18.1"
+val PhantomVersion = "1.22.0"
 
 maintainer := "Boniface Kabaso <boniface@kabaso.com>"
 packageSummary in Linux := "Hashwork REST API"
 packageDescription :=  "Hashwork API Backend "
-serverLoading in Debian := ServerLoader.Systemd
+serverLoading in Debian := ServerLoader.SystemV
 
 bashScriptExtraDefines ++= Seq(
   """addJava "-Xms1024m"""",
@@ -26,7 +26,6 @@ libraryDependencies ++= Seq(
   ws,
   specs2 % Test,
   "com.websudos"  %% "phantom-dsl"                   % PhantomVersion,
-  "com.websudos"  %% "phantom-testkit"               % PhantomVersion,
   "org.scalatest" % "scalatest_2.11"                 % "2.2.5"
 )
 libraryDependencies += "com.jason-goodwin" % "authentikat-jwt_2.11" % "0.4.1"

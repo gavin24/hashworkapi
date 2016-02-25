@@ -6,22 +6,26 @@ import com.websudos.phantom.dsl._
 import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
-import domain.company.Company
 import domain.common.demographics.Role
 
 import scala.concurrent.Future
 
 /**
- * Created by hashcode on 2015/10/31.
- */
+  * Created by hashcode on 2015/10/31.
+  */
 //id: String, name: String, description: String
-sealed class RoleRepository extends CassandraTable[RoleRepository,Role]{
+sealed class RoleRepository extends CassandraTable[RoleRepository, Role] {
+
   object id extends StringColumn(this) with PartitionKey[String]
+
   object name extends StringColumn(this)
+
   object description extends StringColumn(this)
+
   object state extends StringColumn(this)
+
   override def fromRow(r: Row): Role = {
-    Role(id(r),name(r),description(r),state(r))
+    Role(id(r), name(r), description(r), state(r))
   }
 }
 
@@ -41,14 +45,15 @@ object RoleRepository extends RoleRepository with RootConnector {
       .future()
   }
 
-  def findById(id: String):Future[Option[Role]] = {
+  def findById(id: String): Future[Option[Role]] = {
     select.where(_.id eqs id).one()
   }
+
   def findAll: Future[Seq[Role]] = {
     select.fetchEnumerator() run Iteratee.collect()
   }
 
-  def deleteById(id:String): Future[ResultSet] = {
+  def deleteById(id: String): Future[ResultSet] = {
     delete.where(_.id eqs id).future()
   }
 }

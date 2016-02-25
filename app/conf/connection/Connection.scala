@@ -4,10 +4,8 @@ import java.net.InetAddress
 
 import com.datastax.driver.core.Cluster
 import com.typesafe.config.ConfigFactory
-import com.websudos.phantom.connectors.{SessionProvider, KeySpace, ContactPoints}
+import com.websudos.phantom.connectors.{KeySpace, SessionProvider}
 import com.websudos.phantom.dsl.Session
-import tyrex.resource.jca.Connector
-
 
 import scala.collection.JavaConversions._
 

@@ -80,6 +80,12 @@ GET            /api/department/get/:company/:id                     @controllers
 GET            /api/departments/:company                            @controllers.company.DepartmentController.getAllDepartments(company)
 
 
+POST           /api/location/post                                 @controllers.company.LocationController.createOrUpdate
+GET            /api/location/get/:company/:id                     @controllers.company.LocationController.getById(company,id)
+GET            /api/locations/:company                            @controllers.company.LocationController.getAllDepartments(company)
+
+
+
 POST           /api/companydoc/post                                 @controllers.company.CompanyDocumentsController.createOrUpdate
 GET            /api/companydoc/get/:company/:id                     @controllers.company.CompanyDocumentsController.getDocuemtById(company,id)
 GET            /api/companydocs/get/:company                        @controllers.company.CompanyDocumentsController.getAllCompanyDocuments(company)
