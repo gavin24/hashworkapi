@@ -33,7 +33,6 @@ GET            /api/pceds/:personId                                 @controllers
 POST           /api/pdemo/post                                      @controllers.people.PersonDemographicsController.createOrUpdate
 GET            /api/pdemo/get/:personId/:id                         @controllers.people.PersonDemographicsController.getById(personId,id)
 GET            /api/pdemos/:personId                                @controllers.people.PersonDemographicsController.getAllValues(personId)
-
 POST           /api/pedu/post                                       @controllers.people.PersonEducationHistoryController.createOrUpdate
 GET            /api/pedu/get/:personId/:id                          @controllers.people.PersonEducationHistoryController.getById(personId,id)
 GET            /api/pedus/:personId                                 @controllers.people.PersonEducationHistoryController.getAllValues(personId)
