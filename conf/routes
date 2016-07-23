@@ -33,7 +33,6 @@ GET            /api/pceds/:personId                                 @controllers
 POST           /api/pdemo/post                                      @controllers.people.PersonDemographicsController.createOrUpdate
 GET            /api/pdemo/get/:personId/:id                         @controllers.people.PersonDemographicsController.getById(personId,id)
 GET            /api/pdemos/:personId                                @controllers.people.PersonDemographicsController.getAllValues(personId)
-
 POST           /api/pedu/post                                       @controllers.people.PersonEducationHistoryController.createOrUpdate
 GET            /api/pedu/get/:personId/:id                          @controllers.people.PersonEducationHistoryController.getById(personId,id)
 GET            /api/pedus/:personId                                 @controllers.people.PersonEducationHistoryController.getAllValues(personId)
@@ -41,7 +40,6 @@ GET            /api/pedus/:personId                                 @controllers
 POST           /api/pemp/post                                       @controllers.people.PersonEmploymentHistoryController.createOrUpdate
 GET            /api/pemp/get/:personId/:id                          @controllers.people.PersonEmploymentHistoryController.getById(personId,id)
 GET            /api/pemps/:personId                                 @controllers.people.PersonEmploymentHistoryController.getAllValues(personId)
-
 POST           /api/pid/post                                        @controllers.people.PersonIdentityController.createOrUpdate
 GET            /api/pid/get/:personId/:id                           @controllers.people.PersonIdentityController.getById(personId,id)
 GET            /api/pids/:personId                                  @controllers.people.PersonIdentityController.getAllValues(personId)
