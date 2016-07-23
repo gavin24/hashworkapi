@@ -10,6 +10,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
  * Created by hashcode on 2015/11/08.
  */
 class CompanyController extends Controller{
+  
 
   def createOrUpdate = Action.async(parse.json) {
     request =>
