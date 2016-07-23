@@ -41,7 +41,6 @@ GET            /api/pedus/:personId                                 @controllers
 POST           /api/pemp/post                                       @controllers.people.PersonEmploymentHistoryController.createOrUpdate
 GET            /api/pemp/get/:personId/:id                          @controllers.people.PersonEmploymentHistoryController.getById(personId,id)
 GET            /api/pemps/:personId                                 @controllers.people.PersonEmploymentHistoryController.getAllValues(personId)
-
 POST           /api/pid/post                                        @controllers.people.PersonIdentityController.createOrUpdate
 GET            /api/pid/get/:personId/:id                           @controllers.people.PersonIdentityController.getById(personId,id)
 GET            /api/pids/:personId                                  @controllers.people.PersonIdentityController.getAllValues(personId)
