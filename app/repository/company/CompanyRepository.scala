@@ -30,7 +30,6 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
 
   object date extends DateColumn(this)
 
-
   object state extends StringColumn(this)
 
   override def fromRow(r: Row): Company = {
