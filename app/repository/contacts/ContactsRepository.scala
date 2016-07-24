@@ -3,7 +3,7 @@ package repository.contacts
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
-import com.websudos.phantom.iteratee.Iteratee
+import com.websudos.phantom.reactivestreams._
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
 import domain.companycontacts.CompanyContacts
@@ -31,13 +31,13 @@ sealed class ContactsRepository extends CassandraTable[ContactsRepository, Compa
 
   object id extends StringColumn(this) with PrimaryKey[String]
 
-  object postalAddress extends MapColumn[ContactsRepository, CompanyContacts, String, String](this)
+  object postalAddress extends MapColumn[String, String](this)
 
-  object physicalAddress extends MapColumn[ContactsRepository, CompanyContacts, String, String](this)
+  object physicalAddress extends MapColumn[String, String](this)
 
-  object contactNumber extends MapColumn[ContactsRepository, CompanyContacts, String, String](this)
+  object contactNumber extends MapColumn[String, String](this)
 
-  object emailAddress extends MapColumn[ContactsRepository, CompanyContacts, String, String](this)
+  object emailAddress extends MapColumn[String, String](this)
 
   object state extends StringColumn(this)
 

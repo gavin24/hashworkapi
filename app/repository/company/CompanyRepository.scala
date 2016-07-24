@@ -4,7 +4,7 @@ import java.util.Date
 
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.dsl._
-import com.websudos.phantom.iteratee.Iteratee
+import com.websudos.phantom.reactivestreams._
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
 import domain.company.Company
@@ -24,7 +24,7 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
 
   object name extends StringColumn(this)
 
-  object details extends MapColumn[CompanyRepository, Company, String, String](this)
+  object details extends MapColumn[String, String](this)
 
   object adminattached extends StringColumn(this)
 

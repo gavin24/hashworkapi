@@ -4,10 +4,9 @@ import java.util.Date
 
 import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
-import com.websudos.phantom.column.DateColumn
 import com.websudos.phantom.dsl._
-import com.websudos.phantom.iteratee.Iteratee
 import com.websudos.phantom.keys.PartitionKey
+import com.websudos.phantom.reactivestreams._
 import conf.connection.DataConnection
 import domain.job.JobEvent
 

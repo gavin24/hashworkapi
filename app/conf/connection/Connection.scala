@@ -10,8 +10,8 @@ import com.websudos.phantom.dsl.Session
 import scala.collection.JavaConversions._
 
 /**
- * Created by hashcode on 2015/10/29.
- */
+  * Created by hashcode on 2015/10/29.
+  */
 
 object Config {
   val config = ConfigFactory.load()
@@ -30,14 +30,12 @@ object DataConnection {
   val hosts: Seq[String] = Config.config.getStringList("cassandra.host").toList
   val inets = hosts.map(InetAddress.getByName)
   val keySpace: KeySpace = KeySpace(Config.config.getString("cassandra.keyspace"))
-
   val cluster =
     Cluster.builder()
       .addContactPoints(inets)
       .withClusterName(Config.config.getString("cassandra.cluster"))
-//      .withCredentials(config.getString("cassandra.username"), config.getString("cassandra.password"))
+      //      .withCredentials(config.getString("cassandra.username"), config.getString("cassandra.password"))
       .build()
   val session: Session = cluster.connect(keySpace.name)
 }
-
 

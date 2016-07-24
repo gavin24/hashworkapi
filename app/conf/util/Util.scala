@@ -1,6 +1,5 @@
 package conf.util
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 /**
  * Created by hashcode on 2015/11/07.
@@ -14,10 +13,6 @@ object Util {
     }.foldLeft("") {
       _ + _
     }
-  }
-
-  def encode(name:String) ={
-    new BCryptPasswordEncoder().encode(name)
   }
 
 }
