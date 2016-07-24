@@ -1,22 +1,39 @@
 package conf.security
 
 import java.security.SecureRandom
+import java.security.SecureRandom
 import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 
 import base64.Decode.{apply => fromBase64, urlSafe => fromBase64UrlSafe}
 import base64.Encode.{apply => toBase64, urlSafe => toBase64UrlSafe}
+import com.github.t3hnar.bcrypt._
+import org.apache.commons.lang3.RandomStringUtils
 
 /**
- * Created by hashcode on 2015/11/01.
- */
+  * Created by hashcode on 2015/11/01.
+  */
 trait AuthUtil {
   def hashAuth(key: String): String
-  def hashCheck(key:String, hash:String):Boolean
+
+  def hashCheck(key: String, hash: String): Boolean
 }
 
 object AuthUtil {
-  def apply():AuthUtil = new AuthServiceImpl
+
+  def generateRandomPassword(): String = {
+    val length: Int = 8
+    val useLetters: Boolean = true
+    val useNumbers: Boolean = true
+    RandomStringUtils.random(length, useLetters, useNumbers)
+  }
+
+  def encode(name:String) ={
+    name.bcrypt(generateSalt)
+  }
+
+  def apply(): AuthUtil = new AuthServiceImpl
+
   private class AuthServiceImpl extends AuthUtil {
 
     private val RandomSource = new SecureRandom()
@@ -29,7 +46,9 @@ object AuthUtil {
     // This Scala implementation of password hashing was inspired by:
     // https://crackstation.net/hashing-security.htm#javasourcecode
     def hashPassword(password: String): String = hashPassword(password, generateRandomBytes(SizeOfPasswordSaltInBytes))
+
     def hashPassword(password: String, salt: Array[Byte]): String = hashPassword(password, salt, DefaultNrOfPasswordHashIterations)
+
     def hashPassword(password: String, salt: Array[Byte], nrOfIterations: Int): String = {
       val hash = pbkdf2(password, salt, nrOfIterations)
       val salt64 = new String(toBase64UrlSafe(salt))
@@ -73,7 +92,7 @@ object AuthUtil {
     }
 
     override def hashCheck(key: String, hash: String): Boolean = {
-      validatePassword(key,hash)
+      validatePassword(key, hash)
     }
   }
 }

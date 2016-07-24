@@ -6,13 +6,11 @@ import com.datastax.driver.core.Row
 import com.websudos.phantom.CassandraTable
 import com.websudos.phantom.column.{DateColumn, PrimitiveColumn}
 import com.websudos.phantom.dsl._
-import com.websudos.phantom.iteratee.Iteratee
+import com.websudos.phantom.reactivestreams._
 import com.websudos.phantom.keys.PartitionKey
 import conf.connection.DataConnection
 import domain.payroll.salary.Grade
-import domain.people.PersonAddress
-import repository.people.PersonAddressRepository
-import repository.people.PersonAddressRepository._
+
 
 import scala.concurrent.Future
 
