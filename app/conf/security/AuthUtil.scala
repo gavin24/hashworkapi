@@ -1,7 +1,6 @@
 package conf.security
 
 import java.security.SecureRandom
-import java.security.SecureRandom
 import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 

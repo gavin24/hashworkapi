@@ -1,5 +1,6 @@
 package services.setup
 
+import conf.security.AuthUtil
 import conf.util.Util
 import domain.common.demographics.Role
 import domain.common.demographics.RolesList._
@@ -50,7 +51,7 @@ object AccountSetupService extends Service {
       "System",
       "Admin",
       "admin@test.com",
-      "Administrator", "MR", Util.encode("admin"), true, true, true, true,"ACTIVE")
+      "Administrator", "MR", AuthUtil.encode("admin"), true, true, true, true,"ACTIVE")
 
     val personrole = PersonRole(person.id, ROLE_ADMIN,"ACTIVE")
 

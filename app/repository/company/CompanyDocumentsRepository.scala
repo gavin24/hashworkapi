@@ -1,10 +1,9 @@
 package repository.company
 
 import com.websudos.phantom.CassandraTable
-import com.websudos.phantom.column.DateColumn
 import com.websudos.phantom.dsl._
-import com.websudos.phantom.reactivestreams._
 import com.websudos.phantom.keys.PartitionKey
+import com.websudos.phantom.reactivestreams._
 import conf.connection.DataConnection
 import domain.company.CompanyDocuments
 
@@ -21,7 +20,7 @@ class CompanyDocumentsRepository extends CassandraTable[CompanyDocumentsReposito
   object url extends StringColumn(this)
   object mime extends StringColumn(this)
   object date extends DateColumn(this)
-  object permission extends SetColumn[CompanyDocumentsRepository, CompanyDocuments, String](this)
+  object permission extends SetColumn[String](this)
   object state extends StringColumn(this)
 
   override def fromRow(r: Row): CompanyDocuments = {

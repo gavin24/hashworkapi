@@ -24,7 +24,7 @@ sealed class CompanyRepository extends CassandraTable[CompanyRepository, Company
 
   object name extends StringColumn(this)
 
-  object details extends MapColumn[CompanyRepository, Company, String, String](this)
+  object details extends MapColumn[String, String](this)
 
   object adminattached extends StringColumn(this)
 
