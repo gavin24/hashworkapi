@@ -75,7 +75,6 @@ resolvers ++= Seq(
   "Twitter Repository"               at "http://maven.twttr.com",
   "Websudos releases"                at "https://dl.bintray.com/websudos/oss-releases/"
 )
-
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),
   Resolver.sonatypeRepo("snapshots")
