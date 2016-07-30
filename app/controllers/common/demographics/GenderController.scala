@@ -37,4 +37,9 @@ class GenderController extends Controller {
       GenderService.getAll map (result =>
         Ok(Json.toJson(result)))
   }
+  def getCall = Action.async {
+    request =>
+      GenderService.getAll map (result =>
+        Ok(Json.toJson(result)))
+  }
 }
